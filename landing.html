@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to MultiLingua Blog</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Preline UI -->
+  <link rel="stylesheet" href="https://unpkg.com/preline/dist/preline.css" />
+  <script src="https://unpkg.com/preline/dist/preline.js"></script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body class="bg-slate-100 dark:bg-slate-900">
+  <header class="relative flex flex-col w-full h-screen overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-slate-900 to-slate-800 opacity-90"></div>
+    
+    <div class="absolute inset-0 flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 z-10">
+      <div class="text-center">
+        <h1 class="text-5xl font-bold text-white sm:text-6xl lg:text-7xl mb-6">
+          MultiLingua<span class="text-sky-500">Blog</span>
+        </h1>
+        <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-10">
+          Explore ideas, share stories, and connect with authors across languages and cultures.
+          One platform, multiple voices.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a href="register.html" class="inline-flex justify-center items-center gap-2 py-3 px-6 font-semibold text-white bg-sky-600 hover:bg-sky-700 rounded-lg transition-all">
+            <i class="fas fa-user-plus"></i> Get Started
+          </a>
+          <a href="login.html" class="inline-flex justify-center items-center gap-2 py-3 px-6 font-semibold text-white bg-gray-700 hover:bg-gray-800 rounded-lg transition-all">
+            <i class="fas fa-sign-in-alt"></i> Sign In
+          </a>
+        </div>
+      </div>
+      
+      <div class="mt-16 text-center">
+        <h2 class="text-2xl font-semibold text-white mb-6">Trusted by Content Creators Worldwide</h2>
+        <div class="flex flex-wrap justify-center gap-8">
+          <div class="text-gray-400 text-lg font-semibold">10k+ Authors</div>
+          <div class="text-gray-400 text-lg font-semibold">50k+ Articles</div>
+          <div class="text-gray-400 text-lg font-semibold">12 Languages</div>
+          <div class="text-gray-400 text-lg font-semibold">100+ Countries</div>
+        </div>
+      </div>
+      
+      <div class="absolute bottom-10 left-0 right-0 text-center">
+        <a href="home.html" class="text-gray-400 hover:text-white transition-colors">
+          <span>Continue to Home</span>
+          <i class="fas fa-chevron-down ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Dark Mode Toggle Button -->
+  <button id="dark-mode-toggle" class="dark-mode-toggle">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/language.js"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aristonis</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Preline UI -->
+  <link rel="stylesheet" href="https://unpkg.com/preline/dist/preline.css" />
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/custom.css">
+  <style>
+    .splash-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: #1e293b;
+      z-index: 9999;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .logo {
+      font-size: 3rem;
+      font-weight: bold;
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .tagline {
+      font-size: 1.5rem;
+      color: #94a3b8;
+      text-align: center;
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+
+    .fade-out {
+      opacity: 0;
+    }
+  </style>
+</head>
+<body class="bg-slate-100 dark:bg-slate-900">
+  <div class="splash-screen">
+    <div class="logo">Aristonis<span class="text-sky-500">Blog</span></div>
+    <p class="tagline">Explore ideas across languages and cultures</p>
+    <div class="animate-pulse text-sky-500 font-semibold">Loading your experience...</div>
+  </div>
+
+  <script>
+    // Redirect to landing page after 2 seconds
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        const splashScreen = document.querySelector('.splash-screen');
+        splashScreen.classList.add('fade-out');
+        
+        setTimeout(() => {
+          window.location.href = 'landing.html';
+        }, 1000);
+      }, 2000);
+    });
+  </script>
+</body>
+</html>

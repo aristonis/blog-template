@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home - Aristonis</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Preline UI -->
+    <link rel="stylesheet" href="https://unpkg.com/preline/dist/preline.css" />
+    
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/custom.css" />
+    
+  </head>
+  <body class="bg-slate-100 dark:bg-slate-900 min-h-screen flex flex-col">
+    <!-- Header & Navigation -->
+    <header
+      class="sticky top-0 z-50 bg-white dark:bg-slate-800 border-b border-gray-200 dark:border-gray-700"
+    >
+      <nav class="px-4 sm:px-6 lg:px-8 py-4">
+        <div
+          class="flex flex-wrap items-center justify-between gap-x-6 gap-y-2"
+        >
+          <!-- Logo -->
+          <a
+            href="home.html"
+            class="flex items-center gap-2 text-xl font-bold text-slate-900 dark:text-white"
+          >
+            Aristonis<span class="text-sky-500">Blog</span>
+          </a>
+
+          <!-- Navigation links - visible on desktop -->
+          <div class="hidden lg:flex lg:items-center lg:gap-x-6">
+            <a
+              href="home.html"
+              class="text-slate-900 dark:text-white font-medium hover:text-sky-600 dark:hover:text-sky-500"
+              >Home</a
+            >
+            <a
+              href="authors.html"
+              class="text-slate-600 dark:text-slate-300 font-medium hover:text-sky-600 dark:hover:text-sky-500"
+              >Authors</a
+            >
+            <a
+              href="sections.html"
+              class="text-slate-600 dark:text-slate-300 font-medium hover:text-sky-600 dark:hover:text-sky-500"
+              >Sections</a
+            >
+            <a
+              href="contact.html"
+              class="text-slate-600 dark:text-slate-300 font-medium hover:text-sky-600 dark:hover:text-sky-500"
+              >Contact Us</a
+            >
+            <a
+              href="about.html"
+              class="text-slate-600 dark:text-slate-300 font-medium hover:text-sky-600 dark:hover:text-sky-500"
+              >About Us</a
+            >
+          </div>
+
+          <div class="flex items-center gap-x-4 ml-auto lg:ml-0">
+            <!-- Language Selector -->
+            <div class="relative inline-flex">
+              <button
+                id="language-switcher"
+                type="button"
+                class="inline-flex items-center gap-x-2 text-sm font-medium text-gray-600 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-300"
+              >
+                <i class="fas fa-globe"></i>
+                <span id="current-language" class="language-text">English</span>
+                <i class="fas fa-chevron-down text-xs"></i>
+              </button>
+
+              <div
+                id="language-menu"
+                class="hidden absolute right-0 z-10 mt-2 min-w-40 bg-white dark:bg-gray-800 shadow-md rounded-lg p-2 dark:border dark:border-gray-700"
+              >
+                <!-- Language options will be dynamically populated by language.js -->
+              </div>
+            </div>
+
+            <!-- User Profile dropdown -->
+            <div class="relative inline-flex">
+              <button
+                id="user-menu-button"
+                type="button"
+                class="inline-flex items-center gap-x-2 text-sm font-medium text-gray-600 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-300"
+              >
+                <img
+                  class="w-8 h-8 rounded-full"
+                  src="./assets/images/user-avatar.png"
+                  alt="User Profile"
+                />
+                <span class="hidden sm:inline-block">John Doe</span>
+                <i class="fas fa-chevron-down text-xs"></i>
+              </button>
+
+              <div
+                id="user-menu"
+                class="hidden absolute right-0 z-10 mt-2 min-w-40 bg-white dark:bg-gray-800 shadow-md rounded-lg p-2 dark:border dark:border-gray-700"
+              >
+                <a
+                  class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200"
+                  href="author-profile.html"
+                >
+                  <i class="fas fa-user"></i> My Profile
+                </a>
+                <a
+                  class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200"
+                  href="settings.html"
+                >
+                  <i class="fas fa-cog"></i> Settings
+                </a>
+                <a
+                  class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200"
+                  href="statistics.html"
+                >
+                  <i class="fas fa-chart-bar"></i> Statistics
+                </a>
+                <div
+                  class="border-t border-gray-200 dark:border-gray-700 my-2"
+                ></div>
+                <a
+                  class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200"
+                  href="login.html"
+                >
+                  <i class="fas fa-sign-out-alt"></i> Sign Out
+                </a>
+              </div>
+            </div>
+
+            <!-- Hamburger menu for mobile -->
+            <button
+              type="button"
+              class="lg:hidden inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs dark:bg-gray-800 dark:hover:bg-slate-800 dark:text-gray-400 dark:hover:text-white dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800"
+              data-hs-overlay="#mobile-menu"
+            >
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Mobile menu -->
+    <div
+      id="mobile-menu"
+      class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full fixed top-0 left-0 transition-all duration-300 transform h-full max-w-xs w-full z-[60] bg-white border-r dark:bg-gray-800 dark:border-gray-700"
+      tabindex="-1"
+    >
+      <div
+        class="flex justify-between items-center py-3 px-4 border-b dark:border-gray-700"
+      >
+        <h3 class="font-bold text-gray-800 dark:text-white">Menu</h3>
+        <button
+          type="button"
+          class="inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white text-sm dark:text-gray-400 dark:hover:text-gray-200 dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800"
+          data-hs-overlay="#mobile-menu"
+        >
+          <span class="sr-only">Close modal</span>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="p-4">
+        <a
+          href="home.html"
+          class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+          >Home</a
+        >
+        <a
+          href="authors.html"
+          class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+          >Authors</a
+        >
+        <a
+          href="sections.html"
+          class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+          >Sections</a
+        >
+        <a
+          href="contact.html"
+          class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+          >Contact Us</a
+        >
+        <a
+          href="about.html"
+          class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+          >About Us</a
+        >
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-grow px-4 sm:px-6 lg:px-8 py-8">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- Main Content Area -->
+          <div class="lg:col-span-2">
+            <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+              Latest Articles
+            </h1>
+
+            <!-- Article Cards -->
+            <div class="space-y-8">
+              <!-- Article 1 -->
+              <article
+                class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-shadow"
+              >
+                <div class="p-6">
+                  <div class="flex items-center mb-4">
+                    <img
+                      class="w-10 h-10 rounded-full mr-4"
+                      src="./assets/images/user-avatar.png"
+                      alt="Sarah Johnson"
+                    />
+                    <div>
+                      <h4
+                        class="text-sm font-semibold text-gray-900 dark:text-white"
+                      >
+                        Sarah Johnson
+                      </h4>
+                      <span class="text-xs text-gray-500 dark:text-gray-400"
+                        >Travel & Culture</span
+                      >
+                    </div>
+                    <span
+                      class="ml-auto text-xs text-gray-500 dark:text-gray-400"
+                      >2 days ago</span
+                    >
+                  </div>
+
+                  <h2
+                    class="text-xl font-bold text-gray-900 dark:text-white mb-2"
+                  >
+                    The Hidden Gems of Mediterranean Cuisine
+                  </h2>
+
+                  <p class="text-gray-600 dark:text-gray-300 mb-4">
+                    The Mediterranean diet is celebrated worldwide for its
+                    health benefits, but beyond the well-known staples lie
+                    hidden culinary treasures. From the aromatic herbs of
+                    Provence to the unique seafood preparations of coastal
+                    Croatia...
+                  </p>
+
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <span
+                      class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100"
+                    >
+                      <i class="fas fa-utensils text-xs"></i> Food
+                    </span>
+                    <span
+                      class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100"
+                    >
+                      <i class="fas fa-plane text-xs"></i> Travel
+                    </span>
+                  </div>
+
+                  <div class="flex items-center gap-3">
+                    <button
+                      class="text-sm text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium"
+                    >
+                      <i class="fas fa-language mr-1"></i> Translate
+                    </button>
+                    <a
+                      href="post.html"
+                      class="text-sm text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium"
+                    >
+                      Read More <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Article 2 -->
+              <article
+                class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-shadow"
+              >
+                <div class="p-6">
+                  <div class="flex items-center mb-4">
+                    <img
+                      class="w-10 h-10 rounded-full mr-4"
+                      src="./assets/images/user-avatar.png"
+                      alt="Michael Chen"
+                    />
+                    <div>
+                      <h4
+                        class="text-sm font-semibold text-gray-900 dark:text-white"
+                      >
+                        Michael Chen
+                      </h4>
+                      <span class="text-xs text-gray-500 dark:text-gray-400"
+                        >Technology</span
+                      >
+                    </div>
+                    <span
+                      class="ml-auto text-xs text-gray-500 dark:text-gray-400"
+                      >4 days ago</span
+                    >
+                  </div>
+
+                  <h2
+                    class="text-xl font-bold text-gray-900 dark:text-white mb-2"
+                  >
+                    AI-Powered Language Learning: Breaking Communication
+                    Barriers
+                  </h2>
+
+                  <p class="text-gray-600 dark:text-gray-300 mb-4">
+                    The landscape of language learning is undergoing a
+                    revolutionary transformation powered by artificial
+                    intelligence. New AI tools are creating immersive
+                    environments where learners can practice conversation with
+                    virtual native speakers...
+                  </p>
+
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <span
+                      class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-100"
+                    >
+                      <i class="fas fa-microchip text-xs"></i> AI
+                    </span>
+                    <span
+                      class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-100"
+                    >
+                      <i class="fas fa-language text-xs"></i> Languages
+                    </span>
+                  </div>
+
+                  <div class="flex items-center gap-3">
+                    <button
+                      class="text-sm text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium"
+                    >
+                      <i class="fas fa-language mr-1"></i> Translate
+                    </button>
+                    <a
+                      href="post.html"
+                      class="text-sm text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium"
+                    >
+                      Read More <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Article 3 -->
+              <article
+                class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-shadow"
+              >
+                <div class="p-6">
+                  <div class="flex items-center mb-4">
+                    <img
+                      class="w-10 h-10 rounded-full mr-4"
+                      src="./assets/images/user-avatar.png"
+                      alt="Elena Rodriguez"
+                    />
+                    <div>
+                      <h4
+                        class="text-sm font-semibold text-gray-900 dark:text-white"
+                      >
+                        Elena Rodriguez
+                      </h4>
+                      <span class="text-xs text-gray-500 dark:text-gray-400"
+                        >Literature & Art</span
+                      >
+                    </div>
+                    <span
+                      class="ml-auto text-xs text-gray-500 dark:text-gray-400"
+                      >1 week ago</span
+                    >
+                  </div>
+
+                  <h2
+                    class="text-xl font-bold text-gray-900 dark:text-white mb-2"
+                  >
+                    Literary Translations: The Art of Preserving Cultural Nuance
+                  </h2>
+
+                  <p class="text-gray-600 dark:text-gray-300 mb-4">
+                    Great literary translations are works of art in their own
+                    right. Translating isn't simply converting words from one
+                    language to another—it's about capturing the rhythm,
+                    cultural references, and emotional resonance of the original
+                    while making it accessible...
+                  </p>
+
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <span
+                      class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-100"
+                    >
+                      <i class="fas fa-book text-xs"></i> Literature
+                    </span>
+                    <span
+                      class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-100"
+                    >
+                      <i class="fas fa-globe-americas text-xs"></i> Culture
+                    </span>
+                  </div>
+
+                  <div class="flex items-center gap-3">
+                    <button
+                      class="text-sm text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium"
+                    >
+                      <i class="fas fa-language mr-1"></i> Translate
+                    </button>
+                    <a
+                      href="post.html"
+                      class="text-sm text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium"
+                    >
+                      Read More <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <!-- Pagination -->
+            <nav
+              class="flex items-center justify-between border-t border-gray-200 dark:border-gray-700 px-4 sm:px-0 mt-8 pt-4"
+            >
+              <div class="hidden md:-mt-px md:flex">
+                <a
+                  href="#"
+                  class="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
+                >
+                  <i class="fas fa-arrow-left mr-2"></i>
+                  Previous
+                </a>
+              </div>
+              <div class="hidden md:-mt-px md:flex">
+                <a
+                  href="#"
+                  class="inline-flex items-center border-t-2 border-sky-500 px-4 pt-4 text-sm font-medium text-sky-600 dark:text-sky-500"
+                  >1</a
+                >
+                <a
+                  href="#"
+                  class="inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
+                  >2</a
+                >
+                <a
+                  href="#"
+                  class="inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
+                  >3</a
+                >
+                <span
+                  class="inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium text-gray-500 dark:text-gray-400"
+                  >...</span
+                >
+                <a
+                  href="#"
+                  class="inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
+                  >10</a
+                >
+              </div>
+              <div class="hidden md:-mt-px md:flex">
+                <a
+                  href="#"
+                  class="inline-flex items-center border-t-2 border-transparent pl-1 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
+                >
+                  Next
+                  <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+              </div>
+
+              <!-- Mobile pagination -->
+              <div class="flex items-center md:hidden">
+                <a
+                  href="#"
+                  class="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700"
+                  >Previous</a
+                >
+                <a
+                  href="#"
+                  class="ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700"
+                  >Next</a
+                >
+              </div>
+            </nav>
+          </div>
+
+          <!-- Sidebar -->
+          <div class="lg:col-span-1 space-y-8">
+            <!-- Popular Posts -->
+            <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6">
+              <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">
+                Popular Posts
+              </h3>
+
+              <div class="space-y-4">
+                <a href="post.html" class="flex gap-3 group">
+                  <div
+                    class="flex-shrink-0 w-16 h-16 bg-gray-200 dark:bg-gray-700 rounded overflow-hidden"
+                  >
+                    <img
+                      src="./assets/images/pc-img.png"
+                      alt="Blog post"
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h4
+                      class="text-sm font-semibold text-gray-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky-500 transition-colors"
+                    >
+                      Aristonisl UX Design: Creating Inclusive Digital
+                      Products
+                    </h4>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                      2.4k views
+                    </p>
+                  </div>
+                </a>
+
+                <a href="post.html" class="flex gap-3 group">
+                  <div
+                    class="flex-shrink-0 w-16 h-16 bg-gray-200 dark:bg-gray-700 rounded overflow-hidden"
+                  >
+                    <img
+                      src="./assets/images/pc-img.png"
+                      alt="Blog post"
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h4
+                      class="text-sm font-semibold text-gray-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky-500 transition-colors"
+                    >
+                      The Neuroscience of Bilingualism: How Languages Shape Our
+                      Brain
+                    </h4>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                      1.8k views
+                    </p>
+                  </div>
+                </a>
+
+                <a href="post.html" class="flex gap-3 group">
+                  <div
+                    class="flex-shrink-0 w-16 h-16 bg-gray-200 dark:bg-gray-700 rounded overflow-hidden"
+                  >
+                    <img
+                      src="./assets/images/pc-img.png"
+                      alt="Blog post"
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h4
+                      class="text-sm font-semibold text-gray-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky-500 transition-colors"
+                    >
+                      Indigenous Language Preservation in the Digital Age
+                    </h4>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                      1.5k views
+                    </p>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <!-- Popular Authors -->
+            <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6">
+              <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">
+                Popular Authors
+              </h3>
+
+              <div class="space-y-4">
+                <a
+                  href="author-profile.html"
+                  class="flex items-center gap-3 group"
+                >
+                  <img
+                    class="w-10 h-10 rounded-full"
+                    src="./assets/images/user-avatar.png"
+                    alt="Author"
+                  />
+                  <div>
+                    <h4
+                      class="text-sm font-semibold text-gray-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky-500 transition-colors"
+                    >
+                      David Kim
+                    </h4>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">
+                      42 articles
+                    </p>
+                  </div>
+                </a>
+
+                <a
+                  href="author-profile.html"
+                  class="flex items-center gap-3 group"
+                >
+                  <img
+                    class="w-10 h-10 rounded-full"
+                    src="./assets/images/user-avatar.png"
+                    alt="Author"
+                  />
+                  <div>
+                    <h4
+                      class="text-sm font-semibold text-gray-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky-500 transition-colors"
+                    >
+                      Maria Santos
+                    </h4>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">
+                      38 articles
+                    </p>
+                  </div>
+                </a>
+
+                <a
+                  href="author-profile.html"
+                  class="flex items-center gap-3 group"
+                >
+                  <img
+                    class="w-10 h-10 rounded-full"
+                    src="./assets/images/user-avatar.png"
+                    alt="Author"
+                  />
+                  <div>
+                    <h4
+                      class="text-sm font-semibold text-gray-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky-500 transition-colors"
+                    >
+                      Sarah Johnson
+                    </h4>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">
+                      31 articles
+                    </p>
+                  </div>
+                </a>
+              </div>
+
+              <a
+                href="authors.html"
+                class="mt-4 inline-flex items-center text-sm font-medium text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400"
+              >
+                View All Authors
+                <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+
+            <!-- Categories -->
+            <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6">
+              <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">
+                Categories
+              </h3>
+
+              <div class="flex flex-wrap gap-2">
+                <a
+                  href="#"
+                  class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-sm font-medium bg-blue-100 text-blue-800 hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-100 dark:hover:bg-blue-800 transition-colors"
+                >
+                  <i class="fas fa-utensils text-xs"></i> Food & Cuisine
+                </a>
+                <a
+                  href="#"
+                  class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-sm font-medium bg-green-100 text-green-800 hover:bg-green-200 dark:bg-green-900 dark:text-green-100 dark:hover:bg-green-800 transition-colors"
+                >
+                  <i class="fas fa-plane text-xs"></i> Travel
+                </a>
+                <a
+                  href="#"
+                  class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-sm font-medium bg-purple-100 text-purple-800 hover:bg-purple-200 dark:bg-purple-900 dark:text-purple-100 dark:hover:bg-purple-800 transition-colors"
+                >
+                  <i class="fas fa-microchip text-xs"></i> Technology
+                </a>
+                <a
+                  href="#"
+                  class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800 hover:bg-yellow-200 dark:bg-yellow-900 dark:text-yellow-100 dark:hover:bg-yellow-800 transition-colors"
+                >
+                  <i class="fas fa-language text-xs"></i> Languages
+                </a>
+                <a
+                  href="#"
+                  class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-sm font-medium bg-pink-100 text-pink-800 hover:bg-pink-200 dark:bg-pink-900 dark:text-pink-100 dark:hover:bg-pink-800 transition-colors"
+                >
+                  <i class="fas fa-book text-xs"></i> Literature
+                </a>
+                <a
+                  href="#"
+                  class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-sm font-medium bg-orange-100 text-orange-800 hover:bg-orange-200 dark:bg-orange-900 dark:text-orange-100 dark:hover:bg-orange-800 transition-colors"
+                >
+                  <i class="fas fa-globe-americas text-xs"></i> Culture
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Popular Authors Slider -->
+        <div class="mt-16">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+            Featured Authors
+          </h2>
+
+          <div class="relative">
+            <div class="flex overflow-x-auto pb-4 space-x-6 scrollbar-hide">
+              <!-- Author 1 -->
+              <div
+                class="flex-shrink-0 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+              >
+                <a href="author-profile.html" class="block">
+                  <img
+                    class="w-full h-40 object-cover"
+                    src="./assets/images/user-avatar.png"
+                    alt="David Kim"
+                  />
+                  <div class="p-4 text-center">
+                    <h4 class="font-semibold text-gray-900 dark:text-white">
+                      David Kim
+                    </h4>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                      Technology & Science
+                    </p>
+                    <div class="flex justify-center mt-3 space-x-2">
+                      <span class="text-xs text-gray-500 dark:text-gray-400"
+                        >42 articles</span
+                      >
+                      <span class="text-xs text-gray-500 dark:text-gray-400"
+                        >•</span
+                      >
+                      <span class="text-xs text-gray-500 dark:text-gray-400"
+                        >32k followers</span
+                      >
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+              <!-- Author 2 -->
+              <div
+                class="flex-shrink-0 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+              >
+                <a href="author-profile.html" class="block">
+                  <img
+                    class="w-full h-40 object-cover"
+                    src="./assets/images/user-avatar.png"
+                    alt="Maria Santos"
+                  />
+                  <div class="p-4 text-center">
+                    <h4 class="font-semibold text-gray-900 dark:text-white">
+                      Maria Santos
+                    </h4>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                      Culture & History
+                    </p>
+                    <div class="flex justify-center mt-3 space-x-2">
+                      <span class="text-xs text-gray-500 dark:text-gray-400"
+                        >38 articles</span
+                      >
+                      <span class="text-xs text-gray-500 dark:text-gray-400"
+                        >•</span
+                      >
+                      <span class="text-xs text-gray-500 dark:text-gray-400"
+                        >28k followers</span
+                      >
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+              <!-- Author 3 -->
+              <div
+                class="flex-shrink-0 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+              >
+                <a href="author-profile.html" class="block">
+                  <img
+                    class="w-full h-40 object-cover"
+                    src="./assets/images/user-avatar.png"
+                    alt="Sarah Johnson"
+                  />
+                  <div class="p-4 text-center">
+                    <h4 class="font-semibold text-gray-900 dark:text-white">
+                      Sarah Johnson
+                    </h4>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                      Travel & Food
+                    </p>
+                    <div class="flex justify-center mt-3 space-x-2">
+                      <span class="text-xs text-gray-500 dark:text-gray-400"
+                        >31 articles</span
+                      >
+                      <span class="text-xs text-gray-500 dark:text-gray-400"
+                        >•</span
+                      >
+                      <span class="text-xs text-gray-500 dark:text-gray-400"
+                        >24k followers</span
+                      >
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+              <!-- Author 4 -->
+              <div
+                class="flex-shrink-0 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+              >
+                <a href="author-profile.html" class="block">
+                  <img
+                    class="w-full h-40 object-cover"
+                    src="./assets/images/user-avatar.png"
+                    alt="Michael Chen"
+                  />
+                  <div class="p-4 text-center">
+                    <h4 class="font-semibold text-gray-900 dark:text-white">
+                      Michael Chen
+                    </h4>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                      Technology & AI
+                    </p>
+                    <div class="flex justify-center mt-3 space-x-2">
+                      <span class="text-xs text-gray-500 dark:text-gray-400"
+                        >27 articles</span
+                      >
+                      <span class="text-xs text-gray-500 dark:text-gray-400"
+                        >•</span
+                      >
+                      <span class="text-xs text-gray-500 dark:text-gray-400"
+                        >19k followers</span
+                      >
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+              <!-- Author 5 -->
+              <div
+                class="flex-shrink-0 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+              >
+                <a href="author-profile.html" class="block">
+                  <img
+                    class="w-full h-40 object-cover"
+                    src="./assets/images/user-avatar.png"
+                    alt="Elena Rodriguez"
+                  />
+                  <div class="p-4 text-center">
+                    <h4 class="font-semibold text-gray-900 dark:text-white">
+                      Elena Rodriguez
+                    </h4>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                      Literature & Art
+                    </p>
+                    <div class="flex justify-center mt-3 space-x-2">
+                      <span class="text-xs text-gray-500 dark:text-gray-400"
+                        >25 articles</span
+                      >
+                      <span class="text-xs text-gray-500 dark:text-gray-400"
+                        >•</span
+                      >
+                      <span class="text-xs text-gray-500 dark:text-gray-400"
+                        >18k followers</span
+                      >
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+              <!-- Author 6 -->
+              <div
+                class="flex-shrink-0 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+              >
+                <a href="author-profile.html" class="block">
+                  <img
+                    class="w-full h-40 object-cover"
+                    src="./assets/images/user-avatar.png"
+                    alt="James Wilson"
+                  />
+                  <div class="p-4 text-center">
+                    <h4 class="font-semibold text-gray-900 dark:text-white">
+                      James Wilson
+                    </h4>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                      Business & Economy
+                    </p>
+                    <div class="flex justify-center mt-3 space-x-2">
+                      <span class="text-xs text-gray-500 dark:text-gray-400"
+                        >22 articles</span
+                      >
+                      <span class="text-xs text-gray-500 dark:text-gray-400"
+                        >•</span
+                      >
+                      <span class="text-xs text-gray-500 dark:text-gray-400"
+                        >15k followers</span
+                      >
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <!-- Scroll controls - can be enhanced with JavaScript -->
+            <button
+              class="absolute top-1/2 left-0 -translate-y-1/2 bg-white dark:bg-slate-700 rounded-full p-2 shadow-md hover:bg-gray-100 dark:hover:bg-slate-600 transition-colors"
+            >
+              <i
+                class="fas fa-chevron-left text-gray-600 dark:text-gray-300"
+              ></i>
+            </button>
+            <button
+              class="absolute top-1/2 right-0 -translate-y-1/2 bg-white dark:bg-slate-700 rounded-full p-2 shadow-md hover:bg-gray-100 dark:hover:bg-slate-600 transition-colors"
+            >
+              <i
+                class="fas fa-chevron-right text-gray-600 dark:text-gray-300"
+              ></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer
+      class="bg-white dark:bg-slate-800 border-t border-gray-200 dark:border-gray-700 mt-auto"
+    >
+      <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- About -->
+          <div>
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">
+              About Aristonis
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              Aristonis is a platform dedicated to connecting readers and
+              writers across languages and cultures. Our mission is to break
+              down linguistic barriers and promote global understanding.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="text-gray-500 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500"
+              >
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-500 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500"
+              >
+                <i class="fab fa-facebook"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-500 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-500 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">
+              Quick Links
+            </h3>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="home.html"
+                  class="text-gray-600 hover:text-sky-600 dark:text-gray-300 dark:hover:text-sky-500"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="authors.html"
+                  class="text-gray-600 hover:text-sky-600 dark:text-gray-300 dark:hover:text-sky-500"
+                  >Authors</a
+                >
+              </li>
+              <li>
+                <a
+                  href="sections.html"
+                  class="text-gray-600 hover:text-sky-600 dark:text-gray-300 dark:hover:text-sky-500"
+                  >Sections</a
+                >
+              </li>
+              <li>
+                <a
+                  href="about.html"
+                  class="text-gray-600 hover:text-sky-600 dark:text-gray-300 dark:hover:text-sky-500"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="contact.html"
+                  class="text-gray-600 hover:text-sky-600 dark:text-gray-300 dark:hover:text-sky-500"
+                  >Contact Us</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact Info -->
+          <div>
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">
+              Contact Us
+            </h3>
+            <ul class="space-y-2">
+              <li class="flex items-start gap-2">
+                <i
+                  class="fas fa-map-marker-alt text-gray-500 dark:text-gray-400 mt-1"
+                ></i>
+                <span class="text-gray-600 dark:text-gray-300"
+                  >Homs, Syria</span
+                >
+              </li>
+              <li class="flex items-start gap-2">
+                <i
+                  class="fas fa-envelope text-gray-500 dark:text-gray-400 mt-1"
+                ></i>
+                <span class="text-gray-600 dark:text-gray-300"
+                  >mekadalibrahem123@gmail.com</span
+                >
+              </li>
+              <li class="flex items-start gap-2">
+                <i
+                  class="fas fa-phone text-gray-500 dark:text-gray-400 mt-1"
+                ></i>
+                <span class="text-gray-600 dark:text-gray-300"
+                  >+963 99801935</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-gray-200 dark:border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center"
+        >
+          <p class="text-gray-500 dark:text-gray-400 text-sm">
+            &copy; 2023 Aristonis. All rights reserved.
+          </p>
+          <div class="mt-4 md:mt-0 flex space-x-6">
+            <a
+              href="#"
+              class="text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300 text-sm"
+              >Privacy Policy</a
+            >
+            <a
+              href="#"
+              class="text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300 text-sm"
+              >Terms of Service</a
+            >
+            <a
+              href="#"
+              class="text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300 text-sm"
+              >Cookie Policy</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Dark Mode Toggle Button -->
+    <button id="dark-mode-toggle" class="dark-mode-toggle">
+      <i class="fas fa-moon"></i>
+    </button>
+
+    <button
+      type="button"
+      class="hs-dark-mode hs-dark-mode-active:hidden flex items-center gap-x-2 py-2 px-3 bg-white/10 rounded-full text-sm text-white hover:bg-white/20 focus:outline-hidden focus:bg-white/20"
+      data-hs-theme-click-value="dark"
+    >
+      <svg
+        class="shrink-0 size-4"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+      </svg>
+      Dark
+    </button>
+    <button
+      type="button"
+      class="hs-dark-mode hs-dark-mode-active:inline-flex hidden items-center gap-x-2 py-2 px-3 bg-white/10 rounded-full text-sm text-white hover:bg-white/20 focus:outline-hidden focus:bg-white/20"
+      data-hs-theme-click-value="light"
+    >
+      <svg
+        class="shrink-0 size-4"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M12 2v2"></path>
+        <path d="M12 20v2"></path>
+        <path d="m4.93 4.93 1.41 1.41"></path>
+        <path d="m17.66 17.66 1.41 1.41"></path>
+        <path d="M2 12h2"></path>
+        <path d="M20 12h2"></path>
+        <path d="m6.34 17.66-1.41 1.41"></path>
+        <path d="m19.07 4.93-1.41 1.41"></path>
+      </svg>
+      Light
+    </button>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/language.js"></script>
+  </body>
+</html>

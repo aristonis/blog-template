@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create New Post - Aristonis</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Preline UI -->
+  <link rel="stylesheet" href="https://unpkg.com/preline/dist/preline.css" />
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body class="bg-slate-100 dark:bg-slate-900 min-h-screen flex flex-col">
+  <!-- Header & Navigation -->
+  <header class="sticky top-0 z-50 bg-white dark:bg-slate-800 border-b border-gray-200 dark:border-gray-700">
+    <nav class="px-4 sm:px-6 lg:px-8 py-4">
+      <div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
+        <!-- Logo -->
+        <a href="home.html" class="flex items-center gap-2 text-xl font-bold text-slate-900 dark:text-white">
+          Aristonis<span class="text-sky-500">Blog</span>
+        </a>
+        
+        <!-- Navigation links - visible on desktop -->
+        <div class="hidden lg:flex lg:items-center lg:gap-x-6">
+          <a href="home.html" class="text-slate-600 dark:text-slate-300 font-medium hover:text-sky-600 dark:hover:text-sky-500">Home</a>
+          <a href="authors.html" class="text-slate-600 dark:text-slate-300 font-medium hover:text-sky-600 dark:hover:text-sky-500">Authors</a>
+          <a href="sections.html" class="text-slate-600 dark:text-slate-300 font-medium hover:text-sky-600 dark:hover:text-sky-500">Sections</a>
+          <a href="contact.html" class="text-slate-600 dark:text-slate-300 font-medium hover:text-sky-600 dark:hover:text-sky-500">Contact Us</a>
+          <a href="about.html" class="text-slate-600 dark:text-slate-300 font-medium hover:text-sky-600 dark:hover:text-sky-500">About Us</a>
+        </div>
+        
+        <div class="flex items-center gap-x-4 ml-auto lg:ml-0">
+          <!-- Language Selector -->
+          <div class="hs-dropdown relative inline-flex">
+            <button id="language-dropdown" type="button" class="hs-dropdown-toggle inline-flex items-center gap-x-2 text-sm font-medium text-gray-600 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-300">
+              <i class="fas fa-globe"></i>
+              <span class="language-text">English</span>
+              <i class="fas fa-chevron-down text-xs"></i>
+            </button>
+
+            <div class="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] hs-dropdown-open:opacity-100 opacity-0 hidden min-w-40 bg-white dark:bg-gray-800 shadow-md rounded-lg p-2 mt-2 dark:border dark:border-gray-700" aria-labelledby="language-dropdown">
+              <a class="language-option flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200" href="#" data-lang="en">
+                English
+              </a>
+              <a class="language-option flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200" href="#" data-lang="es">
+                Español
+              </a>
+              <a class="language-option flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200" href="#" data-lang="fr">
+                Français
+              </a>
+              <a class="language-option flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200" href="#" data-lang="de">
+                Deutsch
+              </a>
+              <a class="language-option flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200" href="#" data-lang="zh">
+                中文
+              </a>
+            </div>
+          </div>
+          
+          <!-- User Profile dropdown -->
+          <div class="hs-dropdown relative inline-flex">
+            <button id="user-dropdown" type="button" class="hs-dropdown-toggle inline-flex items-center gap-x-2 text-sm font-medium text-gray-600 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-300">
+              <img class="w-8 h-8 rounded-full" src="./assets/images/user-avatar.png" alt="User Profile">
+              <span class="hidden sm:inline-block">John Doe</span>
+              <i class="fas fa-chevron-down text-xs"></i>
+            </button>
+
+            <div class="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] hs-dropdown-open:opacity-100 opacity-0 hidden min-w-40 bg-white dark:bg-gray-800 shadow-md rounded-lg p-2 mt-2 dark:border dark:border-gray-700" aria-labelledby="user-dropdown">
+              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200" href="author-profile.html">
+                <i class="fas fa-user"></i> My Profile
+              </a>
+              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200" href="settings.html">
+                <i class="fas fa-cog"></i> Settings
+              </a>
+              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200" href="statistics.html">
+                <i class="fas fa-chart-bar"></i> Statistics
+              </a>
+              <div class="border-t border-gray-200 dark:border-gray-700 my-2"></div>
+              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200" href="login.html">
+                <i class="fas fa-sign-out-alt"></i> Sign Out
+              </a>
+            </div>
+          </div>
+          
+          <!-- Hamburger menu for mobile -->
+          <button type="button" class="lg:hidden inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs dark:bg-gray-800 dark:hover:bg-slate-800 dark:text-gray-400 dark:hover:text-white dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800" data-hs-overlay="#mobile-menu">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+  
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full fixed top-0 left-0 transition-all duration-300 transform h-full max-w-xs w-full z-[60] bg-white border-r dark:bg-gray-800 dark:border-gray-700" tabindex="-1">
+    <div class="flex justify-between items-center py-3 px-4 border-b dark:border-gray-700">
+      <h3 class="font-bold text-gray-800 dark:text-white">
+        Menu
+      </h3>
+      <button type="button" class="inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white text-sm dark:text-gray-400 dark:hover:text-gray-200 dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800" data-hs-overlay="#mobile-menu">
+        <span class="sr-only">Close modal</span>
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="p-4">
+      <a href="home.html" class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-700">Home</a>
+      <a href="authors.html" class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-700">Authors</a>
+      <a href="sections.html" class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-700">Sections</a>
+      <a href="contact.html" class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-700">Contact Us</a>
+      <a href="about.html" class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-700">About Us</a>
+    </div>
+  </div>
+  
+  <!-- Main Content -->
+  <main class="flex-grow px-4 sm:px-6 lg:px-8 py-8">
+    <div class="max-w-4xl mx-auto">
+      <div class="mb-8">
+        <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Create New Post</h1>
+        <p class="text-gray-600 dark:text-gray-300">
+          Share your knowledge and ideas with the Aristonis community.
+        </p>
+      </div>
+      
+      <!-- Post Creation Form -->
+      <form id="create-post-form" class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6">
+        <!-- Title -->
+        <div class="mb-6">
+          <label for="title" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Post Title</label>
+          <input type="text" id="title" name="title" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-sky-500 focus:ring-sky-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-300" placeholder="Enter a descriptive title" required>
+        </div>
+        
+        <!-- Category/Section -->
+        <div class="mb-6">
+          <label for="category" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Category</label>
+          <select id="category" name="category" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-sky-500 focus:ring-sky-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-300" required>
+            <option value="">Select a category</option>
+            <option value="technology">Technology</option>
+            <option value="culture">Culture</option>
+            <option value="food">Food & Cuisine</option>
+            <option value="travel">Travel</option>
+            <option value="science">Science</option>
+            <option value="arts">Arts & Literature</option>
+            <option value="language">Language & Linguistics</option>
+            <option value="business">Business & Economy</option>
+          </select>
+        </div>
+        
+        <!-- Tags -->
+        <div class="mb-6">
+          <label for="tags" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Tags</label>
+          <input type="text" id="tags" name="tags" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-sky-500 focus:ring-sky-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-300" placeholder="Enter tags separated by commas (e.g., AI, technology, future)">
+          <p class="mt-2 text-xs text-gray-500 dark:text-gray-400">Tags help readers find your content. Add 3-5 relevant tags.</p>
+        </div>
+        
+        <!-- Featured Image -->
+        <div class="mb-6">
+          <label for="featured-image" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Featured Image</label>
+          <div class="bg-gray-100 dark:bg-slate-900 border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-lg p-4 text-center">
+            <div class="flex flex-col items-center justify-center">
+              <i class="fas fa-image text-3xl text-gray-400 mb-2"></i>
+              <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Drag and drop an image here, or click to select a file</p>
+              <p class="text-xs text-gray-500 dark:text-gray-400">Recommended size: 1200 x 630 pixels</p>
+              <input type="file" id="featured-image" name="featured-image" class="hidden" accept="image/*">
+              <button type="button" class="mt-4 py-2 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-sky-600 text-white hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800" onclick="document.getElementById('featured-image').click()">
+                <i class="fas fa-upload"></i> Upload Image
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Content -->
+        <div class="mb-6">
+          <label for="content" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Post Content</label>
+          <div class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-gray-700 rounded-lg">
+            <!-- Simple rich text toolbar -->
+            <div class="flex flex-wrap items-center gap-2 border-b border-gray-200 dark:border-gray-700 p-3">
+              <button type="button" class="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
+                <i class="fas fa-bold"></i>
+              </button>
+              <button type="button" class="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
+                <i class="fas fa-italic"></i>
+              </button>
+              <button type="button" class="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
+                <i class="fas fa-underline"></i>
+              </button>
+              <button type="button" class="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
+                <i class="fas fa-link"></i>
+              </button>
+              <span class="w-px h-6 bg-gray-200 dark:bg-gray-700"></span>
+              <button type="button" class="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
+                <i class="fas fa-heading"></i>
+              </button>
+              <button type="button" class="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
+                <i class="fas fa-list-ul"></i>
+              </button>
+              <button type="button" class="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
+                <i class="fas fa-list-ol"></i>
+              </button>
+              <button type="button" class="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
+                <i class="fas fa-quote-right"></i>
+              </button>
+              <span class="w-px h-6 bg-gray-200 dark:bg-gray-700"></span>
+              <button type="button" class="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
+                <i class="fas fa-image"></i>
+              </button>
+              <button type="button" class="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
+                <i class="fas fa-video"></i>
+              </button>
+              <button type="button" class="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
+                <i class="fas fa-code"></i>
+              </button>
+            </div>
+            <textarea id="content" name="content" class="py-3 px-4 block w-full border-0 rounded-b-lg text-sm focus:ring-0 dark:bg-slate-900 dark:text-gray-300" rows="12" placeholder="Write your post content here..." required></textarea>
+          </div>
+          <p class="mt-2 text-xs text-gray-500 dark:text-gray-400">You can use markdown for formatting. Include images, videos, and code snippets as needed.</p>
+        </div>
+        
+        <!-- Language Options -->
+        <div class="mb-6">
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Language Options</label>
+          <div class="bg-gray-50 dark:bg-slate-900 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+            <div class="flex items-center mb-4">
+              <input type="radio" id="language-single" name="language-option" value="single" class="shrink-0 mt-0.5 border-gray-200 rounded-full text-sky-600 focus:ring-sky-500 dark:bg-gray-800 dark:border-gray-700" checked>
+              <label for="language-single" class="text-sm text-gray-600 ml-2 dark:text-gray-400">Single Language (Current: English)</label>
+            </div>
+            <div class="flex items-center">
+              <input type="radio" id="language-multi" name="language-option" value="multi" class="shrink-0 mt-0.5 border-gray-200 rounded-full text-sky-600 focus:ring-sky-500 dark:bg-gray-800 dark:border-gray-700">
+              <label for="language-multi" class="text-sm text-gray-600 ml-2 dark:text-gray-400">Enable Aristonisl Versions</label>
+            </div>
+            
+            <div id="Aristonisl-options" class="mt-4 pl-6 hidden">
+              <div class="space-y-3">
+                <div class="flex items-center">
+                  <input type="checkbox" id="lang-es" name="languages[]" value="es" class="shrink-0 mt-0.5 border-gray-200 rounded text-sky-600 focus:ring-sky-500 dark:bg-gray-800 dark:border-gray-700">
+                  <label for="lang-es" class="text-sm text-gray-600 ml-2 dark:text-gray-400">Spanish</label>
+                </div>
+                <div class="flex items-center">
+                  <input type="checkbox" id="lang-fr" name="languages[]" value="fr" class="shrink-0 mt-0.5 border-gray-200 rounded text-sky-600 focus:ring-sky-500 dark:bg-gray-800 dark:border-gray-700">
+                  <label for="lang-fr" class="text-sm text-gray-600 ml-2 dark:text-gray-400">French</label>
+                </div>
+                <div class="flex items-center">
+                  <input type="checkbox" id="lang-de" name="languages[]" value="de" class="shrink-0 mt-0.5 border-gray-200 rounded text-sky-600 focus:ring-sky-500 dark:bg-gray-800 dark:border-gray-700">
+                  <label for="lang-de" class="text-sm text-gray-600 ml-2 dark:text-gray-400">German</label>
+                </div>
+                <div class="flex items-center">
+                  <input type="checkbox" id="lang-zh" name="languages[]" value="zh" class="shrink-0 mt-0.5 border-gray-200 rounded text-sky-600 focus:ring-sky-500 dark:bg-gray-800 dark:border-gray-700">
+                  <label for="lang-zh" class="text-sm text-gray-600 ml-2 dark:text-gray-400">Chinese</label>
+                </div>
+              </div>
+              <p class="mt-2 text-xs text-gray-500 dark:text-gray-400">Selected languages will be available for translation. You can add translations later.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Publication Options -->
+        <div class="mb-6">
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Publication Options</label>
+          <div class="bg-gray-50 dark:bg-slate-900 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+            <div class="flex items-center mb-4">
+              <input type="radio" id="publish-now" name="publication-option" value="now" class="shrink-0 mt-0.5 border-gray-200 rounded-full text-sky-600 focus:ring-sky-500 dark:bg-gray-800 dark:border-gray-700" checked>
+              <label for="publish-now" class="text-sm text-gray-600 ml-2 dark:text-gray-400">Publish Now</label>
+            </div>
+            <div class="flex items-center mb-4">
+              <input type="radio" id="publish-draft" name="publication-option" value="draft" class="shrink-0 mt-0.5 border-gray-200 rounded-full text-sky-600 focus:ring-sky-500 dark:bg-gray-800 dark:border-gray-700">
+              <label for="publish-draft" class="text-sm text-gray-600 ml-2 dark:text-gray-400">Save as Draft</label>
+            </div>
+            <div class="flex items-center">
+              <input type="radio" id="publish-schedule" name="publication-option" value="schedule" class="shrink-0 mt-0.5 border-gray-200 rounded-full text-sky-600 focus:ring-sky-500 dark:bg-gray-800 dark:border-gray-700">
+              <label for="publish-schedule" class="text-sm text-gray-600 ml-2 dark:text-gray-400">Schedule Publication</label>
+            </div>
+            
+            <div id="schedule-options" class="mt-4 pl-6 hidden">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="schedule-date" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Date</label>
+                  <input type="date" id="schedule-date" name="schedule-date" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-sky-500 focus:ring-sky-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-300">
+                </div>
+                <div>
+                  <label for="schedule-time" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Time</label>
+                  <input type="time" id="schedule-time" name="schedule-time" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-sky-500 focus:ring-sky-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-300">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Submit Buttons -->
+        <div class="flex flex-col-reverse sm:flex-row sm:justify-between sm:space-x-4">
+          <a href="author-profile.html" class="mt-3 sm:mt-0 py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-sky-600 transition-all text-sm dark:bg-slate-900 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-slate-800 dark:focus:ring-offset-gray-800">
+            Cancel
+          </a>
+          <div class="flex gap-3">
+            <button type="button" id="preview-button" class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-sky-200 font-medium bg-sky-100 text-sky-700 hover:bg-sky-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-sky-600 transition-all text-sm dark:bg-sky-800/30 dark:border-sky-800/20 dark:text-sky-500 dark:hover:bg-sky-800/40 dark:focus:ring-offset-gray-800">
+              <i class="fas fa-eye"></i> Preview
+            </button>
+            <button type="submit" class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-sky-600 text-white hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
+              <i class="fas fa-paper-plane"></i> Publish Post
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </main>
+  
+  <!-- Footer -->
+  <footer class="bg-white dark:bg-slate-800 border-t border-gray-200 dark:border-gray-700 mt-auto">
+    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- About -->
+        <div>
+          <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">About Aristonis</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">
+            Aristonis is a platform dedicated to connecting readers and writers across languages and cultures.
+            Our mission is to break down linguistic barriers and promote global understanding.
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-500 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="text-gray-500 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="#" class="text-gray-500 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="text-gray-500 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Quick Links -->
+        <div>
+          <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li>
+              <a href="home.html" class="text-gray-600 hover:text-sky-600 dark:text-gray-300 dark:hover:text-sky-500">Home</a>
+            </li>
+            <li>
+              <a href="authors.html" class="text-gray-600 hover:text-sky-600 dark:text-gray-300 dark:hover:text-sky-500">Authors</a>
+            </li>
+            <li>
+              <a href="sections.html" class="text-gray-600 hover:text-sky-600 dark:text-gray-300 dark:hover:text-sky-500">Sections</a>
+            </li>
+            <li>
+              <a href="about.html" class="text-gray-600 hover:text-sky-600 dark:text-gray-300 dark:hover:text-sky-500">About Us</a>
+            </li>
+            <li>
+              <a href="contact.html" class="text-gray-600 hover:text-sky-600 dark:text-gray-300 dark:hover:text-sky-500">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Contact Info -->
+        <div>
+          <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Contact Us</h3>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2">
+              <i class="fas fa-map-marker-alt text-gray-500 dark:text-gray-400 mt-1"></i>
+              <span class="text-gray-600 dark:text-gray-300">Homs, Syria</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i class="fas fa-envelope text-gray-500 dark:text-gray-400 mt-1"></i>
+              <span class="text-gray-600 dark:text-gray-300">mekadalibrahem123@gmail.com</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i class="fas fa-phone text-gray-500 dark:text-gray-400 mt-1"></i>
+              <span class="text-gray-600 dark:text-gray-300">+963 99801935</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-200 dark:border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-500 dark:text-gray-400 text-sm">
+          &copy; 2023 Aristonis. All rights reserved.
+        </p>
+        <div class="mt-4 md:mt-0 flex space-x-6">
+          <a href="#" class="text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300 text-sm">Privacy Policy</a>
+          <a href="#" class="text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300 text-sm">Terms of Service</a>
+          <a href="#" class="text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300 text-sm">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/language.js"></script>
+  <script>
+    // Show/hide Aristonisl options based on radio selection
+    const languageSingle = document.getElementById('language-single');
+    const languageMulti = document.getElementById('language-multi');
+    const AristonislOptions = document.getElementById('Aristonisl-options');
+    
+    languageSingle.addEventListener('change', function() {
+      if (this.checked) {
+        AristonislOptions.classList.add('hidden');
+      }
+    });
+    
+    languageMulti.addEventListener('change', function() {
+      if (this.checked) {
+        AristonislOptions.classList.remove('hidden');
+      }
+    });
+    
+    // Show/hide schedule options based on radio selection
+    const publishNow = document.getElementById('publish-now');
+    const publishDraft = document.getElementById('publish-draft');
+    const publishSchedule = document.getElementById('publish-schedule');
+    const scheduleOptions = document.getElementById('schedule-options');
+    
+    publishNow.addEventListener('change', function() {
+      if (this.checked) {
+        scheduleOptions.classList.add('hidden');
+      }
+    });
+    
+    publishDraft.addEventListener('change', function() {
+      if (this.checked) {
+        scheduleOptions.classList.add('hidden');
+      }
+    });
+    
+    publishSchedule.addEventListener('change', function() {
+      if (this.checked) {
+        scheduleOptions.classList.remove('hidden');
+      }
+    });
+    
+    // Handle form submission
+    document.getElementById('create-post-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // In a real app, we would process the form data and submit it to the server
+      // For this static demo, we'll just redirect to the author profile page
+      window.location.href = 'author-profile.html';
+    });
+    
+    // Handle preview button
+    document.getElementById('preview-button').addEventListener('click', function() {
+      alert('Post preview functionality would be implemented here');
+    });
+  </script>
+</body>
+</html>

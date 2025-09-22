@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Author Statistics - Aristonis</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Preline UI -->
+    <link rel="stylesheet" href="https://unpkg.com/preline/dist/preline.css" />
+
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Chart.js for statistics visualization -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="./assets/css/custom.css" />
+  </head>
+  <body class="bg-slate-100 dark:bg-slate-900 min-h-screen flex flex-col">
+    <!-- Header & Navigation -->
+    <header
+      class="sticky top-0 z-50 bg-white dark:bg-slate-800 border-b border-gray-200 dark:border-gray-700"
+    >
+      <nav class="px-4 sm:px-6 lg:px-8 py-4">
+        <div
+          class="flex flex-wrap items-center justify-between gap-x-6 gap-y-2"
+        >
+          <!-- Logo -->
+          <a
+            href="home.html"
+            class="flex items-center gap-2 text-xl font-bold text-slate-900 dark:text-white"
+          >
+            Aristonis<span class="text-sky-500">Blog</span>
+          </a>
+
+          <!-- Navigation links - visible on desktop -->
+          <div class="hidden lg:flex lg:items-center lg:gap-x-6">
+            <a
+              href="home.html"
+              class="text-slate-600 dark:text-slate-300 font-medium hover:text-sky-600 dark:hover:text-sky-500"
+              >Home</a
+            >
+            <a
+              href="authors.html"
+              class="text-slate-600 dark:text-slate-300 font-medium hover:text-sky-600 dark:hover:text-sky-500"
+              >Authors</a
+            >
+            <a
+              href="sections.html"
+              class="text-slate-600 dark:text-slate-300 font-medium hover:text-sky-600 dark:hover:text-sky-500"
+              >Sections</a
+            >
+            <a
+              href="contact.html"
+              class="text-slate-600 dark:text-slate-300 font-medium hover:text-sky-600 dark:hover:text-sky-500"
+              >Contact Us</a
+            >
+            <a
+              href="about.html"
+              class="text-slate-600 dark:text-slate-300 font-medium hover:text-sky-600 dark:hover:text-sky-500"
+              >About Us</a
+            >
+          </div>
+
+          <div class="flex items-center gap-x-4 ml-auto lg:ml-0">
+            <!-- Language Switch Button -->
+            <div class="inline-flex relative">
+              <button
+                id="language-switcher"
+                class="inline-flex items-center gap-x-2 text-sm font-medium text-gray-600 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-300"
+              >
+                <i class="fas fa-globe"></i>
+                <span id="current-language">English</span>
+                <i class="fas fa-chevron-down text-xs"></i>
+              </button>
+
+              <!-- Language Menu (Hidden by default, shown with JavaScript) -->
+              <div
+                id="language-menu"
+                class="hidden absolute top-full right-0 mt-2 min-w-40 bg-white dark:bg-gray-800 shadow-md rounded-lg p-2 z-50 dark:border dark:border-gray-700"
+              >
+                <a
+                  href="#"
+                  class="language-option flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200"
+                  data-lang="en"
+                >
+                  English
+                </a>
+                <a
+                  href="#"
+                  class="language-option flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200"
+                  data-lang="es"
+                >
+                  Español
+                </a>
+                <a
+                  href="#"
+                  class="language-option flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200"
+                  data-lang="fr"
+                >
+                  Français
+                </a>
+                <a
+                  href="#"
+                  class="language-option flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200"
+                  data-lang="de"
+                >
+                  Deutsch
+                </a>
+                <a
+                  href="#"
+                  class="language-option flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200"
+                  data-lang="zh"
+                >
+                  中文
+                </a>
+              </div>
+            </div>
+
+            <!-- User Menu Button -->
+            <div class="inline-flex relative">
+              <button
+                id="user-menu-button"
+                class="inline-flex items-center gap-x-2 text-sm font-medium text-gray-600 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-300"
+              >
+                <img
+                  class="w-8 h-8 rounded-full"
+                  src="./assets/images/user-avatar.png"
+                  alt="User Profile"
+                />
+                <span class="hidden sm:inline-block">John Doe</span>
+                <i class="fas fa-chevron-down text-xs"></i>
+              </button>
+
+              <!-- User Menu (Hidden by default, shown with JavaScript) -->
+              <div
+                id="user-menu"
+                class="hidden absolute top-full right-0 mt-2 min-w-40 bg-white dark:bg-gray-800 shadow-md rounded-lg p-2 z-50 dark:border dark:border-gray-700"
+              >
+                <a
+                  class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200"
+                  href="author-profile.html"
+                >
+                  <i class="fas fa-user"></i> My Profile
+                </a>
+                <a
+                  class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200"
+                  href="settings.html"
+                >
+                  <i class="fas fa-cog"></i> Settings
+                </a>
+                <a
+                  class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200"
+                  href="statistics.html"
+                >
+                  <i class="fas fa-chart-bar"></i> Statistics
+                </a>
+                <div
+                  class="border-t border-gray-200 dark:border-gray-700 my-2"
+                ></div>
+                <a
+                  class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200"
+                  href="login.html"
+                >
+                  <i class="fas fa-sign-out-alt"></i> Sign Out
+                </a>
+              </div>
+            </div>
+
+            <!-- Hamburger menu for mobile -->
+            <button
+              type="button"
+              class="lg:hidden inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs dark:bg-gray-800 dark:hover:bg-slate-800 dark:text-gray-400 dark:hover:text-white dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800"
+              data-hs-overlay="#mobile-menu"
+            >
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Mobile menu -->
+    <div
+      id="mobile-menu"
+      class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full fixed top-0 left-0 transition-all duration-300 transform h-full max-w-xs w-full z-[60] bg-white border-r dark:bg-gray-800 dark:border-gray-700"
+      tabindex="-1"
+    >
+      <div
+        class="flex justify-between items-center py-3 px-4 border-b dark:border-gray-700"
+      >
+        <h3 class="font-bold text-gray-800 dark:text-white">Menu</h3>
+        <button
+          type="button"
+          class="inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white text-sm dark:text-gray-400 dark:hover:text-gray-200 dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800"
+          data-hs-overlay="#mobile-menu"
+        >
+          <span class="sr-only">Close modal</span>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="p-4">
+        <a
+          href="home.html"
+          class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+          >Home</a
+        >
+        <a
+          href="authors.html"
+          class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+          >Authors</a
+        >
+        <a
+          href="sections.html"
+          class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+          >Sections</a
+        >
+        <a
+          href="contact.html"
+          class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+          >Contact Us</a
+        >
+        <a
+          href="about.html"
+          class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+          >About Us</a
+        >
+      </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div
+      class="bg-white dark:bg-slate-800 border-b border-gray-200 dark:border-gray-700 py-2"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav class="flex" aria-label="Breadcrumb">
+          <ol class="inline-flex items-center space-x-1 md:space-x-3">
+            <li class="inline-flex items-center">
+              <a
+                href="home.html"
+                class="inline-flex items-center text-sm font-medium text-gray-600 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500"
+              >
+                <i class="fas fa-home mr-2"></i>
+                Home
+              </a>
+            </li>
+            <li>
+              <div class="flex items-center">
+                <i class="fas fa-chevron-right text-gray-400 mx-1 text-xs"></i>
+                <a
+                  href="author-profile.html"
+                  class="ml-1 text-sm font-medium text-gray-600 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500"
+                  >Profile</a
+                >
+              </div>
+            </li>
+            <li aria-current="page">
+              <div class="flex items-center">
+                <i class="fas fa-chevron-right text-gray-400 mx-1 text-xs"></i>
+                <span
+                  class="ml-1 text-sm font-medium text-gray-700 dark:text-gray-300"
+                  >Statistics</span
+                >
+              </div>
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-grow px-4 sm:px-6 lg:px-8 py-8">
+      <div class="max-w-7xl mx-auto">
+        <!-- Author Statistics Header -->
+        <div
+          class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden mb-8"
+        >
+          <div
+            class="relative h-32 bg-gradient-to-r from-sky-600 to-indigo-700"
+          >
+            <div class="absolute inset-0 flex items-center px-6">
+              <div class="flex items-center">
+                <img
+                  src="./assets/images/user-avatar.png"
+                  alt="John Doe"
+                  class="w-24 h-24 rounded-full border-4 border-white dark:border-slate-800"
+                />
+                <div class="ml-6">
+                  <h1 class="text-2xl sm:text-3xl font-bold text-white">
+                    John Doe's Statistics
+                  </h1>
+                  <p class="text-gray-200">
+                    Performance metrics and insights for your content
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6">
+            <!-- Time Range Selector -->
+            <div class="flex justify-end mb-6">
+              <div class="inline-flex rounded-md shadow-sm">
+                <button
+                  type="button"
+                  class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-l-lg border bg-sky-600 text-white hover:bg-sky-700 disabled:opacity-50 disabled:pointer-events-none dark:bg-sky-600 dark:border-gray-700 dark:text-white dark:hover:bg-sky-700"
+                >
+                  Last 30 Days
+                </button>
+                <button
+                  type="button"
+                  class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium border bg-white text-gray-800 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-slate-800"
+                >
+                  Last 90 Days
+                </button>
+                <button
+                  type="button"
+                  class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium border bg-white text-gray-800 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-slate-800"
+                >
+                  Last Year
+                </button>
+                <button
+                  type="button"
+                  class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-r-lg border bg-white text-gray-800 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-slate-800"
+                >
+                  All Time
+                </button>
+              </div>
+            </div>
+
+            <!-- Summary Stats -->
+            <div
+              class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"
+            >
+              <!-- Total Views -->
+              <div
+                class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-gray-700 rounded-xl p-6"
+              >
+                <div class="flex items-center gap-4">
+                  <div
+                    class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center"
+                  >
+                    <i
+                      class="fas fa-eye text-blue-600 dark:text-blue-300 text-xl"
+                    ></i>
+                  </div>
+                  <div>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-1">
+                      Total Views
+                    </p>
+                    <h3
+                      class="text-2xl font-bold text-gray-900 dark:text-white"
+                    >
+                      42,893
+                    </h3>
+                    <p class="text-xs text-green-600 dark:text-green-400">
+                      <i class="fas fa-arrow-up mr-1"></i> 12.5% vs previous
+                      period
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Engagement Rate -->
+              <div
+                class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-gray-700 rounded-xl p-6"
+              >
+                <div class="flex items-center gap-4">
+                  <div
+                    class="flex-shrink-0 w-12 h-12 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center"
+                  >
+                    <i
+                      class="fas fa-thumbs-up text-green-600 dark:text-green-300 text-xl"
+                    ></i>
+                  </div>
+                  <div>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-1">
+                      Engagement Rate
+                    </p>
+                    <h3
+                      class="text-2xl font-bold text-gray-900 dark:text-white"
+                    >
+                      8.7%
+                    </h3>
+                    <p class="text-xs text-green-600 dark:text-green-400">
+                      <i class="fas fa-arrow-up mr-1"></i> 2.3% vs previous
+                      period
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Total Comments -->
+              <div
+                class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-gray-700 rounded-xl p-6"
+              >
+                <div class="flex items-center gap-4">
+                  <div
+                    class="flex-shrink-0 w-12 h-12 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center"
+                  >
+                    <i
+                      class="fas fa-comment text-purple-600 dark:text-purple-300 text-xl"
+                    ></i>
+                  </div>
+                  <div>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-1">
+                      Comments
+                    </p>
+                    <h3
+                      class="text-2xl font-bold text-gray-900 dark:text-white"
+                    >
+                      1,458
+                    </h3>
+                    <p class="text-xs text-green-600 dark:text-green-400">
+                      <i class="fas fa-arrow-up mr-1"></i> 5.9% vs previous
+                      period
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Followers -->
+              <div
+                class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-gray-700 rounded-xl p-6"
+              >
+                <div class="flex items-center gap-4">
+                  <div
+                    class="flex-shrink-0 w-12 h-12 rounded-full bg-amber-100 dark:bg-amber-900 flex items-center justify-center"
+                  >
+                    <i
+                      class="fas fa-users text-amber-600 dark:text-amber-300 text-xl"
+                    ></i>
+                  </div>
+                  <div>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-1">
+                      Followers
+                    </p>
+                    <h3
+                      class="text-2xl font-bold text-gray-900 dark:text-white"
+                    >
+                      2,845
+                    </h3>
+                    <p class="text-xs text-green-600 dark:text-green-400">
+                      <i class="fas fa-arrow-up mr-1"></i> 8.2% vs previous
+                      period
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Main Charts Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+              <!-- Page Views Over Time -->
+              <div
+                class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-gray-700 rounded-xl p-6"
+              >
+                <h3
+                  class="text-lg font-semibold text-gray-900 dark:text-white mb-4"
+                >
+                  Page Views Over Time
+                </h3>
+                <div class="h-80">
+                  <canvas id="pageViewsChart"></canvas>
+                </div>
+              </div>
+
+              <!-- Content Performance by Category -->
+              <div
+                class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-gray-700 rounded-xl p-6"
+              >
+                <h3
+                  class="text-lg font-semibold text-gray-900 dark:text-white mb-4"
+                >
+                  Content Performance by Category
+                </h3>
+                <div class="h-80">
+                  <canvas id="categoryPerformanceChart"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- Secondary Charts Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+              <!-- Reader Demographics -->
+              <div
+                class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-gray-700 rounded-xl p-6"
+              >
+                <h3
+                  class="text-lg font-semibold text-gray-900 dark:text-white mb-4"
+                >
+                  Reader Demographics
+                </h3>
+                <div class="h-64">
+                  <canvas id="demographicsChart"></canvas>
+                </div>
+              </div>
+
+              <!-- Language Distribution -->
+              <div
+                class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-gray-700 rounded-xl p-6"
+              >
+                <h3
+                  class="text-lg font-semibold text-gray-900 dark:text-white mb-4"
+                >
+                  Language Distribution
+                </h3>
+                <div class="h-64">
+                  <canvas id="languageChart"></canvas>
+                </div>
+              </div>
+
+              <!-- Reading Device Type -->
+              <div
+                class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-gray-700 rounded-xl p-6"
+              >
+                <h3
+                  class="text-lg font-semibold text-gray-900 dark:text-white mb-4"
+                >
+                  Reading Device Type
+                </h3>
+                <div class="h-64">
+                  <canvas id="deviceChart"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- Top Performing Articles -->
+            <div
+              class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-gray-700 rounded-xl p-6 mb-8"
+            >
+              <h3
+                class="text-lg font-semibold text-gray-900 dark:text-white mb-4"
+              >
+                Top Performing Articles
+              </h3>
+              <div class="overflow-x-auto">
+                <table
+                  class="min-w-full divide-y divide-gray-200 dark:divide-gray-700"
+                >
+                  <thead>
+                    <tr>
+                      <th
+                        scope="col"
+                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400"
+                      >
+                        Title
+                      </th>
+                      <th
+                        scope="col"
+                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400"
+                      >
+                        Views
+                      </th>
+                      <th
+                        scope="col"
+                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400"
+                      >
+                        Engagement
+                      </th>
+                      <th
+                        scope="col"
+                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400"
+                      >
+                        Comments
+                      </th>
+                      <th
+                        scope="col"
+                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400"
+                      >
+                        Published
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody
+                    class="bg-white divide-y divide-gray-200 dark:bg-slate-900 dark:divide-gray-700"
+                  >
+                    <tr>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="flex items-center">
+                          <div
+                            class="text-sm font-medium text-gray-900 dark:text-white"
+                          >
+                            How Neural Networks Are Revolutionizing Language
+                            Translation
+                          </div>
+                        </div>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900 dark:text-white">
+                          8,945
+                        </div>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900 dark:text-white">
+                          12.4%
+                        </div>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900 dark:text-white">
+                          287
+                        </div>
+                      </td>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400"
+                      >
+                        Apr 15, 2025
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="flex items-center">
+                          <div
+                            class="text-sm font-medium text-gray-900 dark:text-white"
+                          >
+                            The Future of VR: Beyond Gaming and Entertainment
+                          </div>
+                        </div>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900 dark:text-white">
+                          7,632
+                        </div>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900 dark:text-white">
+                          10.9%
+                        </div>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900 dark:text-white">
+                          193
+                        </div>
+                      </td>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400"
+                      >
+                        Mar 28, 2025
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="flex items-center">
+                          <div
+                            class="text-sm font-medium text-gray-900 dark:text-white"
+                          >
+                            Zero Trust Security: Why Your Organization Needs It
+                            Now
+                          </div>
+                        </div>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900 dark:text-white">
+                          6,821
+                        </div>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900 dark:text-white">
+                          9.7%
+                        </div>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900 dark:text-white">
+                          176
+                        </div>
+                      </td>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400"
+                      >
+                        Mar 12, 2025
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="flex items-center">
+                          <div
+                            class="text-sm font-medium text-gray-900 dark:text-white"
+                          >
+                            Why TypeScript is Taking Over Frontend Development
+                          </div>
+                        </div>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900 dark:text-white">
+                          5,974
+                        </div>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900 dark:text-white">
+                          9.2%
+                        </div>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900 dark:text-white">
+                          142
+                        </div>
+                      </td>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400"
+                      >
+                        Feb 27, 2025
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="flex items-center">
+                          <div
+                            class="text-sm font-medium text-gray-900 dark:text-white"
+                          >
+                            Sustainable Tech: How Companies Are Making
+                            Electronics More Eco-Friendly
+                          </div>
+                        </div>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900 dark:text-white">
+                          5,246
+                        </div>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900 dark:text-white">
+                          8.5%
+                        </div>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900 dark:text-white">
+                          128
+                        </div>
+                      </td>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400"
+                      >
+                        Feb 14, 2025
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Recommendations -->
+            <div
+              class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-gray-700 rounded-xl p-6"
+            >
+              <h3
+                class="text-lg font-semibold text-gray-900 dark:text-white mb-4"
+              >
+                Recommendations to Improve Performance
+              </h3>
+              <div class="space-y-4">
+                <div
+                  class="p-4 bg-blue-50 border-l-4 border-blue-500 dark:bg-blue-900/30 dark:border-blue-500"
+                >
+                  <h4
+                    class="text-base font-medium text-blue-800 dark:text-blue-300"
+                  >
+                    Content Frequency
+                  </h4>
+                  <p class="mt-1 text-sm text-blue-700 dark:text-blue-200">
+                    Your posting frequency has decreased in the last month.
+                    Consider posting at least once a week to maintain
+                    engagement.
+                  </p>
+                </div>
+
+                <div
+                  class="p-4 bg-green-50 border-l-4 border-green-500 dark:bg-green-900/30 dark:border-green-500"
+                >
+                  <h4
+                    class="text-base font-medium text-green-800 dark:text-green-300"
+                  >
+                    Topic Expansion
+                  </h4>
+                  <p class="mt-1 text-sm text-green-700 dark:text-green-200">
+                    Your articles on AI and machine learning receive 45% more
+                    engagement. Consider expanding your content in this area.
+                  </p>
+                </div>
+
+                <div
+                  class="p-4 bg-purple-50 border-l-4 border-purple-500 dark:bg-purple-900/30 dark:border-purple-500"
+                >
+                  <h4
+                    class="text-base font-medium text-purple-800 dark:text-purple-300"
+                  >
+                    Language Reach
+                  </h4>
+                  <p class="mt-1 text-sm text-purple-700 dark:text-purple-200">
+                    Your articles translated to Spanish perform well. Consider
+                    focusing on creating more Aristonisl content.
+                  </p>
+                </div>
+
+                <div
+                  class="p-4 bg-amber-50 border-l-4 border-amber-500 dark:bg-amber-900/30 dark:border-amber-500"
+                >
+                  <h4
+                    class="text-base font-medium text-amber-800 dark:text-amber-300"
+                  >
+                    Comment Engagement
+                  </h4>
+                  <p class="mt-1 text-sm text-amber-700 dark:text-amber-200">
+                    Responding to comments within 24 hours increases reader
+                    return rate by 32%. Try to improve your response time.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer
+      class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-8"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div class="col-span-1 md:col-span-2">
+            <a
+              href="home.html"
+              class="flex items-center gap-2 text-xl font-bold text-slate-900 dark:text-white mb-4"
+            >
+              Aristonis<span class="text-sky-500">Blog</span>
+            </a>
+            <p class="text-gray-600 dark:text-gray-400 mb-4">
+              Connecting cultures through content. Aristonis is a platform for
+              Aristonisl content creators and readers who want to explore ideas
+              across languages and cultural boundaries.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="text-gray-400 hover:text-sky-600 dark:hover:text-sky-500"
+              >
+                <i class="fab fa-twitter text-lg"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-sky-600 dark:hover:text-sky-500"
+              >
+                <i class="fab fa-facebook text-lg"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-sky-600 dark:hover:text-sky-500"
+              >
+                <i class="fab fa-instagram text-lg"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-sky-600 dark:hover:text-sky-500"
+              >
+                <i class="fab fa-linkedin text-lg"></i>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h3
+              class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4"
+            >
+              Explore
+            </h3>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="home.html"
+                  class="text-gray-600 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="authors.html"
+                  class="text-gray-600 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500"
+                  >Authors</a
+                >
+              </li>
+              <li>
+                <a
+                  href="sections.html"
+                  class="text-gray-600 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500"
+                  >Sections</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3
+              class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4"
+            >
+              Company
+            </h3>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="about.html"
+                  class="text-gray-600 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="contact.html"
+                  class="text-gray-600 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500"
+                  >Contact Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-600 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500"
+                  >Privacy Policy</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-600 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500"
+                  >Terms of Service</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-gray-200 dark:border-gray-700 mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center"
+        >
+          <p class="text-gray-500 dark:text-gray-400 text-sm">
+            &copy; 2025 Aristonis. All rights reserved.
+          </p>
+          <div class="mt-4 sm:mt-0">
+            <select
+              id="footer-language"
+              class="py-2 px-3 border-gray-200 rounded-lg text-sm focus:border-sky-500 focus:ring-sky-500 dark:bg-slate-800 dark:border-gray-700 dark:text-gray-300"
+            >
+              <option value="en">English</option>
+              <option value="es">Español</option>
+              <option value="fr">Français</option>
+              <option value="de">Deutsch</option>
+              <option value="zh">中文</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Dark Mode Toggle Button -->
+    <button
+      id="dark-mode-toggle"
+      class="dark-mode-toggle"
+      aria-label="Toggle dark mode"
+    >
+      <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- JavaScript for toggles and functionality -->
+    <script>
+      // Dark mode toggle
+      const darkModeToggle = document.getElementById("dark-mode-toggle");
+      const iconElement = darkModeToggle.querySelector("i");
+
+      // Check for saved theme preference or prefer-color-scheme
+      if (
+        localStorage.getItem("color-theme") === "dark" ||
+        (!localStorage.getItem("color-theme") &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+        iconElement.classList.remove("fa-moon");
+        iconElement.classList.add("fa-sun");
+      } else {
+        document.documentElement.classList.remove("dark");
+        iconElement.classList.remove("fa-sun");
+        iconElement.classList.add("fa-moon");
+      }
+
+      darkModeToggle.addEventListener("click", function () {
+        if (document.documentElement.classList.contains("dark")) {
+          document.documentElement.classList.remove("dark");
+          localStorage.setItem("color-theme", "light");
+          iconElement.classList.remove("fa-sun");
+          iconElement.classList.add("fa-moon");
+        } else {
+          document.documentElement.classList.add("dark");
+          localStorage.setItem("color-theme", "dark");
+          iconElement.classList.remove("fa-moon");
+          iconElement.classList.add("fa-sun");
+        }
+
+        // Redraw charts when theme changes
+        initCharts();
+      });
+
+      // Language menu toggle
+      const languageSwitcher = document.getElementById("language-switcher");
+      const languageMenu = document.getElementById("language-menu");
+      const currentLanguage = document.getElementById("current-language");
+      const languageOptions = document.querySelectorAll(".language-option");
+
+      languageSwitcher.addEventListener("click", function (e) {
+        e.stopPropagation();
+        languageMenu.classList.toggle("hidden");
+      });
+
+      // Close language menu when clicking elsewhere
+      document.addEventListener("click", function () {
+        languageMenu.classList.add("hidden");
+      });
+
+      // Prevent menu closing when clicking inside it
+      languageMenu.addEventListener("click", function (e) {
+        e.stopPropagation();
+      });
+
+      // Language selection
+      languageOptions.forEach((option) => {
+        option.addEventListener("click", function () {
+          const lang = this.getAttribute("data-lang");
+          const langText = this.textContent.trim();
+          currentLanguage.textContent = langText;
+          languageMenu.classList.add("hidden");
+          // Here you would normally update the page content based on selected language
+          console.log(`Language changed to: ${lang}`);
+        });
+      });
+
+      // User menu toggle
+      const userMenuButton = document.getElementById("user-menu-button");
+      const userMenu = document.getElementById("user-menu");
+
+      userMenuButton.addEventListener("click", function (e) {
+        e.stopPropagation();
+        userMenu.classList.toggle("hidden");
+      });
+
+      // Close user menu when clicking elsewhere
+      document.addEventListener("click", function () {
+        userMenu.classList.add("hidden");
+      });
+
+      // Prevent menu closing when clicking inside it
+      userMenu.addEventListener("click", function (e) {
+        e.stopPropagation();
+      });
+
+      // Initialize Charts
+      function initCharts() {
+        const isDarkMode = document.documentElement.classList.contains("dark");
+        const textColor = isDarkMode ? "#e2e8f0" : "#334155";
+        const gridColor = isDarkMode
+          ? "rgba(255, 255, 255, 0.1)"
+          : "rgba(0, 0, 0, 0.1)";
+
+        // Common chart settings
+        Chart.defaults.font.family =
+          "'Inter', 'Helvetica', 'Arial', sans-serif";
+        Chart.defaults.color = textColor;
+
+        // Page Views Chart
+        const pageViewsCtx = document
+          .getElementById("pageViewsChart")
+          .getContext("2d");
+        const pageViewsChart = new Chart(pageViewsCtx, {
+          type: "line",
+          data: {
+            labels: [
+              "Jan",
+              "Feb",
+              "Mar",
+              "Apr",
+              "May",
+              "Jun",
+              "Jul",
+              "Aug",
+              "Sep",
+              "Oct",
+              "Nov",
+              "Dec",
+            ],
+            datasets: [
+              {
+                label: "Page Views",
+                data: [
+                  1200, 1900, 3000, 3580, 2500, 4000, 4800, 5100, 6200, 7000,
+                  8300, 9100,
+                ],
+                backgroundColor: "rgba(59, 130, 246, 0.2)",
+                borderColor: "rgb(59, 130, 246)",
+                borderWidth: 2,
+                tension: 0.3,
+                pointBackgroundColor: "rgb(59, 130, 246)",
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginAtZero: true,
+                grid: {
+                  color: gridColor,
+                },
+              },
+              x: {
+                grid: {
+                  color: gridColor,
+                },
+              },
+            },
+          },
+        });
+
+        // Category Performance Chart
+        const categoryCtx = document
+          .getElementById("categoryPerformanceChart")
+          .getContext("2d");
+        const categoryChart = new Chart(categoryCtx, {
+          type: "bar",
+          data: {
+            labels: [
+              "Technology",
+              "Culture",
+              "Travel",
+              "Food",
+              "Science",
+              "Art",
+            ],
+            datasets: [
+              {
+                label: "Average Views",
+                data: [4800, 2900, 3200, 2100, 4200, 2600],
+                backgroundColor: [
+                  "rgba(59, 130, 246, 0.7)",
+                  "rgba(168, 85, 247, 0.7)",
+                  "rgba(16, 185, 129, 0.7)",
+                  "rgba(245, 158, 11, 0.7)",
+                  "rgba(239, 68, 68, 0.7)",
+                  "rgba(236, 72, 153, 0.7)",
+                ],
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginAtZero: true,
+                grid: {
+                  color: gridColor,
+                },
+              },
+              x: {
+                grid: {
+                  color: gridColor,
+                  display: false,
+                },
+              },
+            },
+          },
+        });
+
+        // Demographics Chart
+        const demographicsCtx = document
+          .getElementById("demographicsChart")
+          .getContext("2d");
+        const demographicsChart = new Chart(demographicsCtx, {
+          type: "pie",
+          data: {
+            labels: ["18-24", "25-34", "35-44", "45-54", "55+"],
+            datasets: [
+              {
+                data: [15, 35, 25, 18, 7],
+                backgroundColor: [
+                  "rgba(59, 130, 246, 0.7)",
+                  "rgba(16, 185, 129, 0.7)",
+                  "rgba(245, 158, 11, 0.7)",
+                  "rgba(239, 68, 68, 0.7)",
+                  "rgba(168, 85, 247, 0.7)",
+                ],
+                borderColor: isDarkMode ? "#1e293b" : "#ffffff",
+                borderWidth: 2,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: "bottom",
+              },
+            },
+          },
+        });
+
+        // Language Chart
+        const languageCtx = document
+          .getElementById("languageChart")
+          .getContext("2d");
+        const languageChart = new Chart(languageCtx, {
+          type: "doughnut",
+          data: {
+            labels: [
+              "English",
+              "Spanish",
+              "French",
+              "German",
+              "Chinese",
+              "Other",
+            ],
+            datasets: [
+              {
+                data: [45, 20, 12, 8, 10, 5],
+                backgroundColor: [
+                  "rgba(59, 130, 246, 0.7)",
+                  "rgba(16, 185, 129, 0.7)",
+                  "rgba(245, 158, 11, 0.7)",
+                  "rgba(239, 68, 68, 0.7)",
+                  "rgba(168, 85, 247, 0.7)",
+                  "rgba(236, 72, 153, 0.7)",
+                ],
+                borderColor: isDarkMode ? "#1e293b" : "#ffffff",
+                borderWidth: 2,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: "bottom",
+              },
+            },
+          },
+        });
+
+        // Device Chart
+        const deviceCtx = document
+          .getElementById("deviceChart")
+          .getContext("2d");
+        const deviceChart = new Chart(deviceCtx, {
+          type: "polarArea",
+          data: {
+            labels: ["Mobile", "Desktop", "Tablet"],
+            datasets: [
+              {
+                data: [65, 28, 7],
+                backgroundColor: [
+                  "rgba(59, 130, 246, 0.7)",
+                  "rgba(16, 185, 129, 0.7)",
+                  "rgba(245, 158, 11, 0.7)",
+                ],
+                borderColor: isDarkMode ? "#1e293b" : "#ffffff",
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: "bottom",
+              },
+            },
+          },
+        });
+      }
+
+      // Initialize charts when page loads
+      document.addEventListener("DOMContentLoaded", function () {
+        initCharts();
+      });
+    </script>
+  </body>
+</html>

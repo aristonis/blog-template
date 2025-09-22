@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Aristonis</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Preline UI -->
+  <link rel="stylesheet" href="https://unpkg.com/preline/dist/preline.css" />
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+ <link rel="stylesheet"  href="./assets/css/custom.css"  />
+</head>
+<body class="bg-slate-100 dark:bg-slate-900 min-h-screen flex flex-col">
+  <!-- Header & Navigation -->
+  <header class="sticky top-0 z-50 bg-white dark:bg-slate-800 border-b border-gray-200 dark:border-gray-700">
+    <nav class="px-4 sm:px-6 lg:px-8 py-4">
+      <div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
+        <!-- Logo -->
+        <a href="home.html" class="flex items-center gap-2 text-xl font-bold text-slate-900 dark:text-white">
+          Aristonis<span class="text-sky-500">Blog</span>
+        </a>
+        
+        <!-- Navigation links - visible on desktop -->
+        <div class="hidden lg:flex lg:items-center lg:gap-x-6">
+          <a href="home.html" class="text-slate-600 dark:text-slate-300 font-medium hover:text-sky-600 dark:hover:text-sky-500">Home</a>
+          <a href="authors.html" class="text-slate-600 dark:text-slate-300 font-medium hover:text-sky-600 dark:hover:text-sky-500">Authors</a>
+          <a href="sections.html" class="text-slate-600 dark:text-slate-300 font-medium hover:text-sky-600 dark:hover:text-sky-500">Sections</a>
+          <a href="contact.html" class="text-slate-600 dark:text-slate-300 font-medium hover:text-sky-600 dark:hover:text-sky-500">Contact Us</a>
+          <a href="about.html" class="text-slate-900 dark:text-white font-medium hover:text-sky-600 dark:hover:text-sky-500">About Us</a>
+        </div>
+        
+        <div class="flex items-center gap-x-4 ml-auto lg:ml-0">
+          <!-- Language Switch Button -->
+          <div class="inline-flex relative">
+            <button id="language-switcher" class="inline-flex items-center gap-x-2 text-sm font-medium text-gray-600 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-300">
+              <i class="fas fa-globe"></i>
+              <span id="current-language">English</span>
+              <i class="fas fa-chevron-down text-xs"></i>
+            </button>
+            
+            <!-- Language Menu (Hidden by default, shown with JavaScript) -->
+            <div id="language-menu" class="hidden absolute top-full right-0 mt-2 min-w-40 bg-white dark:bg-gray-800 shadow-md rounded-lg p-2 z-50 dark:border dark:border-gray-700">
+              <a href="#" class="language-option flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200" data-lang="en">
+                English
+              </a>
+              <a href="#" class="language-option flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200" data-lang="es">
+                Español
+              </a>
+              <a href="#" class="language-option flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200" data-lang="fr">
+                Français
+              </a>
+              <a href="#" class="language-option flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200" data-lang="de">
+                Deutsch
+              </a>
+              <a href="#" class="language-option flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200" data-lang="zh">
+                中文
+              </a>
+            </div>
+          </div>
+          
+          <!-- User Menu Button -->
+          <div class="inline-flex relative">
+            <button id="user-menu-button" class="inline-flex items-center gap-x-2 text-sm font-medium text-gray-600 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-300">
+              <img class="w-8 h-8 rounded-full" src="./assets/images/user-avatar.png" alt="User Profile">
+              <span class="hidden sm:inline-block">John Doe</span>
+              <i class="fas fa-chevron-down text-xs"></i>
+            </button>
+            
+            <!-- User Menu (Hidden by default, shown with JavaScript) -->
+            <div id="user-menu" class="hidden absolute top-full right-0 mt-2 min-w-40 bg-white dark:bg-gray-800 shadow-md rounded-lg p-2 z-50 dark:border dark:border-gray-700">
+              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200" href="author-profile.html">
+                <i class="fas fa-user"></i> My Profile
+              </a>
+              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200" href="settings.html">
+                <i class="fas fa-cog"></i> Settings
+              </a>
+              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200" href="statistics.html">
+                <i class="fas fa-chart-bar"></i> Statistics
+              </a>
+              <div class="border-t border-gray-200 dark:border-gray-700 my-2"></div>
+              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200" href="login.html">
+                <i class="fas fa-sign-out-alt"></i> Sign Out
+              </a>
+            </div>
+          </div>
+          
+          <!-- Hamburger menu for mobile -->
+          <button type="button" class="lg:hidden inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs dark:bg-gray-800 dark:hover:bg-slate-800 dark:text-gray-400 dark:hover:text-white dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800" data-hs-overlay="#mobile-menu">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+  
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full fixed top-0 left-0 transition-all duration-300 transform h-full max-w-xs w-full z-[60] bg-white border-r dark:bg-gray-800 dark:border-gray-700" tabindex="-1">
+    <div class="flex justify-between items-center py-3 px-4 border-b dark:border-gray-700">
+      <h3 class="font-bold text-gray-800 dark:text-white">
+        Menu
+      </h3>
+      <button type="button" class="inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white text-sm dark:text-gray-400 dark:hover:text-gray-200 dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800" data-hs-overlay="#mobile-menu">
+        <span class="sr-only">Close modal</span>
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="p-4">
+      <a href="home.html" class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-700">Home</a>
+      <a href="authors.html" class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-700">Authors</a>
+      <a href="sections.html" class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-700">Sections</a>
+      <a href="contact.html" class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-700">Contact Us</a>
+      <a href="about.html" class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">About Us</a>
+    </div>
+  </div>
+  
+  <!-- Main Content -->
+  <main class="flex-grow px-4 sm:px-6 lg:px-8 py-8">
+    <div class="max-w-4xl mx-auto">
+      <!-- About Us Hero Section -->
+      <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden mb-8">
+        <div class="relative h-64 bg-gradient-to-r from-sky-600 to-indigo-700">
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="text-center z-10 p-6">
+              <h1 class="text-4xl font-bold text-white mb-2">About Aristonis</h1>
+              <p class="text-xl text-gray-200">Connecting cultures through content since 2020</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="p-8">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Our Mission</h2>
+          <p class="text-gray-600 dark:text-gray-300 mb-6">
+            Aristonis was founded with a simple yet powerful mission: to break down language barriers and connect people from different cultures through quality content. We believe that knowledge and ideas should be accessible regardless of the language you speak, and that diverse perspectives enrich our understanding of the world.
+          </p>
+          
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">What We Do</h2>
+          <p class="text-gray-600 dark:text-gray-300 mb-6">
+            Our platform hosts content from writers around the globe, covering topics from technology and science to culture and arts. What makes us unique is our focus on Aristonisl content - each article can be translated into multiple languages while preserving the author's original intent and cultural nuances.
+          </p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-slate-50 dark:bg-slate-700 rounded-lg p-5 text-center">
+              <div class="flex justify-center mb-4 text-sky-600 dark:text-sky-400">
+                <i class="fas fa-globe-americas text-4xl"></i>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Global Reach</h3>
+              <p class="text-gray-600 dark:text-gray-300">Content available in 12 languages reaching readers in over 100 countries</p>
+            </div>
+            
+            <div class="bg-slate-50 dark:bg-slate-700 rounded-lg p-5 text-center">
+              <div class="flex justify-center mb-4 text-sky-600 dark:text-sky-400">
+                <i class="fas fa-users text-4xl"></i>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Diverse Contributors</h3>
+              <p class="text-gray-600 dark:text-gray-300">Over 10,000 authors from diverse backgrounds and specializations</p>
+            </div>
+            
+            <div class="bg-slate-50 dark:bg-slate-700 rounded-lg p-5 text-center">
+              <div class="flex justify-center mb-4 text-sky-600 dark:text-sky-400">
+                <i class="fas fa-book-open text-4xl"></i>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Quality Content</h3>
+              <p class="text-gray-600 dark:text-gray-300">Curated articles and stories with cultural sensitivity and authenticity</p>
+            </div>
+          </div>
+          
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Our Story</h2>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">
+            Aristonis began as a small project by a group of polyglot friends who were frustrated by the language limitations of existing content platforms. What started as a side project quickly grew into a vibrant community of writers and readers from around the world.
+          </p>
+          <p class="text-gray-600 dark:text-gray-300 mb-6">
+            Today, we're proud to host content in a dozen languages, with plans to expand to even more. Our technology combines human expertise with advanced AI to ensure translations maintain the original author's voice and cultural context.
+          </p>
+          
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Our Team</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <!-- Team Member 1 -->
+            <div class="text-center">
+              <img class="w-24 h-24 rounded-full mx-auto mb-3" src="./assets/images/user-avatar.png" alt="Sarah Chen">
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Sarah Chen</h3>
+              <p class="text-gray-600 dark:text-gray-400">Founder & CEO</p>
+            </div>
+            
+            <!-- Team Member 2 -->
+            <div class="text-center">
+              <img class="w-24 h-24 rounded-full mx-auto mb-3" src="./assets/images/user-avatar.png" alt="Carlos Rodriguez">
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Carlos Rodriguez</h3>
+              <p class="text-gray-600 dark:text-gray-400">CTO</p>
+            </div>
+            
+            <!-- Team Member 3 -->
+            <div class="text-center">
+              <img class="w-24 h-24 rounded-full mx-auto mb-3" src="./assets/images/user-avatar.png" alt="Aisha Nkosi">
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Aisha Nkosi</h3>
+              <p class="text-gray-600 dark:text-gray-400">Content Director</p>
+            </div>
+            
+            <!-- Team Member 4 -->
+            <div class="text-center">
+              <img class="w-24 h-24 rounded-full mx-auto mb-3" src="./assets/images/user-avatar.png" alt="Pierre Dubois">
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Pierre Dubois</h3>
+              <p class="text-gray-600 dark:text-gray-400">Translation Lead</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <!-- Footer -->
+  <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="col-span-1 md:col-span-2">
+          <a href="home.html" class="flex items-center gap-2 text-xl font-bold text-slate-900 dark:text-white mb-4">
+            Aristonis<span class="text-sky-500">Blog</span>
+          </a>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">
+            Connecting cultures through content. Aristonis is a platform for Aristonisl content creators and readers who want to explore ideas across languages and cultural boundaries.
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-sky-600 dark:hover:text-sky-500">
+              <i class="fab fa-twitter text-lg"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-sky-600 dark:hover:text-sky-500">
+              <i class="fab fa-facebook text-lg"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-sky-600 dark:hover:text-sky-500">
+              <i class="fab fa-instagram text-lg"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-sky-600 dark:hover:text-sky-500">
+              <i class="fab fa-linkedin text-lg"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4">Explore</h3>
+          <ul class="space-y-2">
+            <li><a href="home.html" class="text-gray-600 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500">Home</a></li>
+            <li><a href="authors.html" class="text-gray-600 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500">Authors</a></li>
+            <li><a href="sections.html" class="text-gray-600 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500">Sections</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4">Company</h3>
+          <ul class="space-y-2">
+            <li><a href="about.html" class="text-gray-600 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500">About Us</a></li>
+            <li><a href="contact.html" class="text-gray-600 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500">Contact Us</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500">Privacy Policy</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-200 dark:border-gray-700 mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center">
+        <p class="text-gray-500 dark:text-gray-400 text-sm">
+          &copy; 2025 Aristonis. All rights reserved.
+        </p>
+        <div class="mt-4 sm:mt-0">
+          <select id="footer-language" class="py-2 px-3 border-gray-200 rounded-lg text-sm focus:border-sky-500 focus:ring-sky-500 dark:bg-slate-800 dark:border-gray-700 dark:text-gray-300">
+            <option value="en">English</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="zh">中文</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Dark Mode Toggle Button -->
+  <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <!-- JavaScript for toggles and functionality -->
+  <script>
+    // Dark mode toggle
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const iconElement = darkModeToggle.querySelector('i');
+    
+    // Check for saved theme preference or prefer-color-scheme
+    if (localStorage.getItem('color-theme') === 'dark' || 
+        (!localStorage.getItem('color-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      iconElement.classList.remove('fa-moon');
+      iconElement.classList.add('fa-sun');
+    } else {
+      document.documentElement.classList.remove('dark');
+      iconElement.classList.remove('fa-sun');
+      iconElement.classList.add('fa-moon');
+    }
+    
+    darkModeToggle.addEventListener('click', function() {
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+        iconElement.classList.remove('fa-sun');
+        iconElement.classList.add('fa-moon');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+        iconElement.classList.remove('fa-moon');
+        iconElement.classList.add('fa-sun');
+      }
+    });
+    
+    // Language menu toggle
+    const languageSwitcher = document.getElementById('language-switcher');
+    const languageMenu = document.getElementById('language-menu');
+    const currentLanguage = document.getElementById('current-language');
+    const languageOptions = document.querySelectorAll('.language-option');
+    
+    languageSwitcher.addEventListener('click', function(e) {
+      e.stopPropagation();
+      languageMenu.classList.toggle('hidden');
+    });
+    
+    // Close language menu when clicking elsewhere
+    document.addEventListener('click', function() {
+      languageMenu.classList.add('hidden');
+    });
+    
+    // Prevent menu closing when clicking inside it
+    languageMenu.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+    
+    // Language selection
+    languageOptions.forEach(option => {
+      option.addEventListener('click', function() {
+        const lang = this.getAttribute('data-lang');
+        const langText = this.textContent.trim();
+        currentLanguage.textContent = langText;
+        languageMenu.classList.add('hidden');
+        // Here you would normally update the page content based on selected language
+        console.log(`Language changed to: ${lang}`);
+      });
+    });
+    
+    // User menu toggle
+    const userMenuButton = document.getElementById('user-menu-button');
+    const userMenu = document.getElementById('user-menu');
+    
+    userMenuButton.addEventListener('click', function(e) {
+      e.stopPropagation();
+      userMenu.classList.toggle('hidden');
+    });
+    
+    // Close user menu when clicking elsewhere
+    document.addEventListener('click', function() {
+      userMenu.classList.add('hidden');
+    });
+    
+    // Prevent menu closing when clicking inside it
+    userMenu.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+  </script>
+</body>
+</html>

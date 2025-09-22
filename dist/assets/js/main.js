@@ -6,81 +6,40 @@ document.addEventListener('DOMContentLoaded', function() {
   initLanguageSelector();
   initUserMenu();
   initDropdowns();
+  
+  tailwind.config = {
+    darkMode: "class", 
+    
+  };
 });
 
 // Dark mode toggle functionality
 function initDarkMode() {
   const darkModeToggle = document.getElementById('dark-mode-toggle');
   if (!darkModeToggle) return;
-  
+
   const iconElement = darkModeToggle.querySelector('i');
-  
-  // Check for saved theme preference or prefer-color-scheme
-  if (localStorage.getItem('color-theme') === 'dark' || 
-      (!localStorage.getItem('color-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+
+  // Initialize theme
+  const savedTheme = localStorage.getItem('color-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
     document.documentElement.classList.add('dark');
-    if (iconElement) {
-      iconElement.classList.remove('fa-moon');
-      iconElement.classList.add('fa-sun');
-    }
+    iconElement.classList.replace('fa-moon', 'fa-sun');
   } else {
     document.documentElement.classList.remove('dark');
-    if (iconElement) {
-      iconElement.classList.remove('fa-sun');
-      iconElement.classList.add('fa-moon');
-    }
+    iconElement.classList.replace('fa-sun', 'fa-moon');
   }
-  
-  // Add click event listener to toggle dark mode
-  darkModeToggle.addEventListener('click', function() {
-    if (document.documentElement.classList.contains('dark')) {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('color-theme', 'light');
-      if (iconElement) {
-        iconElement.classList.remove('fa-sun');
-        iconElement.classList.add('fa-moon');
-      }
-    } else {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('color-theme', 'dark');
-      if (iconElement) {
-        iconElement.classList.remove('fa-moon');
-        iconElement.classList.add('fa-sun');
-      }
-    }
+
+  // Toggle theme
+  darkModeToggle.addEventListener('click', () => {
+    document.documentElement.classList.toggle('dark');
+    const isDark = document.documentElement.classList.contains('dark');
+    localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
+    iconElement.classList.replace(isDark ? 'fa-moon' : 'fa-sun', isDark ? 'fa-sun' : 'fa-moon');
   });
 }
-//  const languageSwitcher = document.getElementById('language-switcher');
-//     const languageMenu = document.getElementById('language-menu');
-//     const currentLanguage = document.getElementById('current-language');
-//     const languageOptions = document.querySelectorAll('.language-option');
-    
-//     languageSwitcher.addEventListener('click', function(e) {
-//       e.stopPropagation();
-//       languageMenu.classList.toggle('hidden');
-//     });
-    
-//     // Close language menu when clicking elsewhere
-//     document.addEventListener('click', function() {
-//       languageMenu.classList.add('hidden');
-//     });
-    
-//     // Prevent menu closing when clicking inside it
-//     languageMenu.addEventListener('click', function(e) {
-//       e.stopPropagation();
-//     });
-    
-//     // Language selection
-//     languageOptions.forEach(option => {
-//       option.addEventListener('click', function() {
-//         const lang = this.getAttribute('data-lang');
-//         const langText = this.textContent.trim();
-//         currentLanguage.textContent = langText;
-//         languageMenu.classList.add('hidden');
-//         // Here you would normally update the page content based on selected language
-//         console.log(`Language changed to: ${lang}`);
-//       });
-//     });
+
     
 
 // Language selector dropdown

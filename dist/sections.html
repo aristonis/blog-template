@@ -1,584 +1,1027 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sections - Aristonis</title>
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Preline UI -->
-  <link rel="stylesheet" href="https://unpkg.com/preline/dist/preline.css" />
-  
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="assets/css/custom.css">
-</head>
-<body class="bg-slate-100 dark:bg-slate-900 min-h-screen flex flex-col">
-  <!-- Header & Navigation -->
-  <header class="sticky top-0 z-50 bg-white dark:bg-slate-800 border-b border-gray-200 dark:border-gray-700">
-    <nav class="px-4 sm:px-6 lg:px-8 py-4">
-      <div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
-        <!-- Logo -->
-        <a href="home.html" class="flex items-center gap-2 text-xl font-bold text-slate-900 dark:text-white">
-          Aristonis<span class="text-sky-500">Blog</span>
-        </a>
-        
-        <!-- Navigation links - visible on desktop -->
-        <div class="hidden lg:flex lg:items-center lg:gap-x-6">
-          <a href="home.html" class="text-slate-600 dark:text-slate-300 font-medium hover:text-sky-600 dark:hover:text-sky-500">Home</a>
-          <a href="authors.html" class="text-slate-600 dark:text-slate-300 font-medium hover:text-sky-600 dark:hover:text-sky-500">Authors</a>
-          <a href="sections.html" class="text-slate-900 dark:text-white font-medium hover:text-sky-600 dark:hover:text-sky-500">Sections</a>
-          <a href="contact.html" class="text-slate-600 dark:text-slate-300 font-medium hover:text-sky-600 dark:hover:text-sky-500">Contact Us</a>
-          <a href="about.html" class="text-slate-600 dark:text-slate-300 font-medium hover:text-sky-600 dark:hover:text-sky-500">About Us</a>
-        </div>
-        
-        <div class="flex items-center gap-x-4 ml-auto lg:ml-0">
-          <!-- Language Selector -->
-          <div class="relative inline-flex">
-            <button id="language-switcher" type="button" class="inline-flex items-center gap-x-2 text-sm font-medium text-gray-600 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-300">
-              <i class="fas fa-globe"></i>
-              <span id="current-language" class="language-text">English</span>
-              <i class="fas fa-chevron-down text-xs"></i>
-            </button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sections - Aristonis</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Preline UI -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/preline@3.2.3/src/plugins/accordion/variants.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/preline@3.2.3/dist/preline.min.js"></script>
 
-            <div id="language-menu" class="hidden absolute right-0 z-10 mt-2 min-w-40 bg-white dark:bg-gray-800 shadow-md rounded-lg p-2 dark:border dark:border-gray-700">
-              <!-- Language options will be dynamically populated by language.js -->
-            </div>
-          </div>
-          
-          <!-- User Profile dropdown -->
-          <div class="relative inline-flex">
-            <button id="user-menu-button" type="button" class="inline-flex items-center gap-x-2 text-sm font-medium text-gray-600 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-300">
-              <img class="w-8 h-8 rounded-full" src="./assets/images/user-avatar.png" alt="User Profile">
-              <span class="hidden sm:inline-block">John Doe</span>
-              <i class="fas fa-chevron-down text-xs"></i>
-            </button>
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/custom.css" />
+  </head>
+  <body class="bg-slate-100 dark:bg-slate-900 min-h-screen flex flex-col">
+    <!-- Header & Navigation -->
+    <header
+      class="sticky top-0 z-50 bg-white dark:bg-slate-800 border-b border-gray-200 dark:border-gray-700"
+    >
+      <nav class="px-4 sm:px-6 lg:px-8 py-4">
+        <div
+          class="flex flex-wrap items-center justify-between gap-x-6 gap-y-2"
+        >
+          <!-- Logo -->
+          <a
+            href="home.html"
+            class="flex items-center gap-2 text-xl font-bold text-slate-900 dark:text-white"
+          >
+            Aristonis<span class="text-sky-500">Blog</span>
+          </a>
 
-            <div id="user-menu" class="hidden absolute right-0 z-10 mt-2 min-w-40 bg-white dark:bg-gray-800 shadow-md rounded-lg p-2 dark:border dark:border-gray-700">
-              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200" href="author-profile.html">
-                <i class="fas fa-user"></i> My Profile
-              </a>
-              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200" href="settings.html">
-                <i class="fas fa-cog"></i> Settings
-              </a>
-              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200" href="statistics.html">
-                <i class="fas fa-chart-bar"></i> Statistics
-              </a>
-              <div class="border-t border-gray-200 dark:border-gray-700 my-2"></div>
-              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200" href="login.html">
-                <i class="fas fa-sign-out-alt"></i> Sign Out
-              </a>
-            </div>
+          <!-- Navigation links - visible on desktop -->
+          <div class="hidden lg:flex lg:items-center lg:gap-x-6">
+            <a
+              href="home.html"
+              class="text-slate-600 dark:text-slate-300 font-medium hover:text-sky-600 dark:hover:text-sky-500"
+              >Home</a
+            >
+            <a
+              href="authors.html"
+              class="text-slate-600 dark:text-slate-300 font-medium hover:text-sky-600 dark:hover:text-sky-500"
+              >Authors</a
+            >
+            <a
+              href="sections.html"
+              class="text-slate-900 dark:text-white font-medium hover:text-sky-600 dark:hover:text-sky-500"
+              >Sections</a
+            >
+            <a
+              href="contact.html"
+              class="text-slate-600 dark:text-slate-300 font-medium hover:text-sky-600 dark:hover:text-sky-500"
+              >Contact Us</a
+            >
+            <a
+              href="about.html"
+              class="text-slate-600 dark:text-slate-300 font-medium hover:text-sky-600 dark:hover:text-sky-500"
+              >About Us</a
+            >
           </div>
-          
-          <!-- Hamburger menu for mobile -->
-          <button type="button" class="lg:hidden inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs dark:bg-gray-800 dark:hover:bg-slate-800 dark:text-gray-400 dark:hover:text-white dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800" data-hs-overlay="#mobile-menu">
-            <i class="fas fa-bars"></i>
-          </button>
+
+          <div class="flex items-center gap-x-4 ml-auto lg:ml-0">
+            <!-- Language Selector -->
+            <div class="relative inline-flex">
+              <button
+                id="language-switcher"
+                type="button"
+                class="inline-flex items-center gap-x-2 text-sm font-medium text-gray-600 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-300"
+              >
+                <i class="fas fa-globe"></i>
+                <span id="current-language" class="language-text">English</span>
+                <i class="fas fa-chevron-down text-xs"></i>
+              </button>
+
+              <div
+                id="language-menu"
+                class="hidden absolute right-0 z-10 mt-2 min-w-40 bg-white dark:bg-gray-800 shadow-md rounded-lg p-2 dark:border dark:border-gray-700"
+              >
+                <!-- Language options will be dynamically populated by language.js -->
+              </div>
+            </div>
+
+            <!-- User Profile dropdown -->
+            <div class="relative inline-flex">
+              <button
+                id="user-menu-button"
+                type="button"
+                class="inline-flex items-center gap-x-2 text-sm font-medium text-gray-600 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-300"
+              >
+                <img
+                  class="w-8 h-8 rounded-full"
+                  src="./assets/images/user-avatar.png"
+                  alt="User Profile"
+                />
+                <span class="hidden sm:inline-block">John Doe</span>
+                <i class="fas fa-chevron-down text-xs"></i>
+              </button>
+
+              <div
+                id="user-menu"
+                class="hidden absolute right-0 z-10 mt-2 min-w-40 bg-white dark:bg-gray-800 shadow-md rounded-lg p-2 dark:border dark:border-gray-700"
+              >
+                <a
+                  class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200"
+                  href="author-profile.html"
+                >
+                  <i class="fas fa-user"></i> My Profile
+                </a>
+                <a
+                  class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200"
+                  href="settings.html"
+                >
+                  <i class="fas fa-cog"></i> Settings
+                </a>
+                <a
+                  class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200"
+                  href="statistics.html"
+                >
+                  <i class="fas fa-chart-bar"></i> Statistics
+                </a>
+                <div
+                  class="border-t border-gray-200 dark:border-gray-700 my-2"
+                ></div>
+                <a
+                  class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200"
+                  href="login.html"
+                >
+                  <i class="fas fa-sign-out-alt"></i> Sign Out
+                </a>
+              </div>
+            </div>
+
+            <!-- Hamburger menu for mobile -->
+            <button
+              type="button"
+              class="lg:hidden inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs dark:bg-gray-800 dark:hover:bg-slate-800 dark:text-gray-400 dark:hover:text-white dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800"
+              data-hs-overlay="#mobile-menu"
+            >
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
         </div>
+      </nav>
+    </header>
+
+    <!-- Mobile menu -->
+    <div
+      id="mobile-menu"
+      class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full fixed top-0 left-0 transition-all duration-300 transform h-full max-w-xs w-full z-[60] bg-white border-r dark:bg-gray-800 dark:border-gray-700"
+      tabindex="-1"
+    >
+      <div
+        class="flex justify-between items-center py-3 px-4 border-b dark:border-gray-700"
+      >
+        <h3 class="font-bold text-gray-800 dark:text-white">Menu</h3>
+        <button
+          type="button"
+          class="inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white text-sm dark:text-gray-400 dark:hover:text-gray-200 dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800"
+          data-hs-overlay="#mobile-menu"
+        >
+          <span class="sr-only">Close modal</span>
+          <i class="fas fa-times"></i>
+        </button>
       </div>
-    </nav>
-  </header>
-  
-  <!-- Mobile menu -->
-  <div id="mobile-menu" class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full fixed top-0 left-0 transition-all duration-300 transform h-full max-w-xs w-full z-[60] bg-white border-r dark:bg-gray-800 dark:border-gray-700" tabindex="-1">
-    <div class="flex justify-between items-center py-3 px-4 border-b dark:border-gray-700">
-      <h3 class="font-bold text-gray-800 dark:text-white">
-        Menu
-      </h3>
-      <button type="button" class="inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white text-sm dark:text-gray-400 dark:hover:text-gray-200 dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800" data-hs-overlay="#mobile-menu">
-        <span class="sr-only">Close modal</span>
-        <i class="fas fa-times"></i>
-      </button>
+      <div class="p-4">
+        <a
+          href="home.html"
+          class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+          >Home</a
+        >
+        <a
+          href="authors.html"
+          class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+          >Authors</a
+        >
+        <a
+          href="sections.html"
+          class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+          >Sections</a
+        >
+        <a
+          href="contact.html"
+          class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+          >Contact Us</a
+        >
+        <a
+          href="about.html"
+          class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+          >About Us</a
+        >
+      </div>
     </div>
-    <div class="p-4">
-      <a href="home.html" class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-700">Home</a>
-      <a href="authors.html" class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-700">Authors</a>
-      <a href="sections.html" class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">Sections</a>
-      <a href="contact.html" class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-700">Contact Us</a>
-      <a href="about.html" class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-700">About Us</a>
-    </div>
-  </div>
-  
-  <!-- Main Content -->
-  <main class="flex-grow px-4 sm:px-6 lg:px-8 py-8">
-    <div class="max-w-7xl mx-auto">
-      <div class="mb-8">
-        <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Content Sections</h1>
-        <p class="text-lg text-gray-600 dark:text-gray-300">
-          Explore articles organized by topic and interest. Each section contains curated content from our authors.
-        </p>
-      </div>
-      
-      <!-- Search & Filter -->
-      <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-4 mb-8">
-        <div class="flex flex-col sm:flex-row gap-4">
-          <div class="flex-1">
-            <label for="search" class="sr-only">Search</label>
-            <div class="relative">
-              <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                <i class="fas fa-search text-gray-400"></i>
-              </div>
-              <input type="text" id="search" class="py-3 px-4 pl-10 block w-full border-gray-200 rounded-lg text-sm focus:border-sky-500 focus:ring-sky-500 dark:bg-slate-800 dark:border-gray-700 dark:text-gray-300" placeholder="Search sections...">
-            </div>
-          </div>
-          
-          <div class="sm:w-48">
-            <label for="sort" class="sr-only">Sort</label>
-            <select id="sort" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-sky-500 focus:ring-sky-500 dark:bg-slate-800 dark:border-gray-700 dark:text-gray-300">
-              <option value="popularity">Sort by Popularity</option>
-              <option value="az">Name (A-Z)</option>
-              <option value="za">Name (Z-A)</option>
-              <option value="recent">Recently Updated</option>
-              <option value="articles">Most Articles</option>
-            </select>
-          </div>
-          
-          <button type="button" class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-lg border border-transparent font-semibold bg-sky-600 text-white hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 transition-all">
-            <i class="fas fa-filter"></i> Filter
-          </button>
-        </div>
-      </div>
-      
-      <!-- Main Sections Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-        <!-- Technology Section -->
-        <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-          <div class="relative h-40 bg-gradient-to-r from-blue-600 to-indigo-700">
-            <div class="absolute inset-0 flex items-center justify-center">
-              <i class="fas fa-microchip text-6xl text-white opacity-30"></i>
-            </div>
-            <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
-              <h2 class="text-xl font-bold text-white">Technology</h2>
-              <p class="text-sm text-gray-200">156 articles</p>
-            </div>
-          </div>
-          <div class="p-5">
-            <p class="text-gray-600 dark:text-gray-300 mb-4">
-              Explore the latest innovations in technology, from AI and machine learning to consumer gadgets and future tech trends.
-            </p>
-            <div class="flex flex-wrap gap-2 mb-4">
-              <span class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100">
-                <i class="fas fa-robot text-xs"></i> AI
-              </span>
-              <span class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-100">
-                <i class="fas fa-mobile-alt text-xs"></i> Gadgets
-              </span>
-              <span class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-100">
-                <i class="fas fa-code text-xs"></i> Software
-              </span>
-            </div>
-            <a href="section-detail.html" class="inline-flex items-center gap-2 text-sm font-medium text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400">
-              Browse Section <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-        
-        <!-- Culture Section -->
-        <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-          <div class="relative h-40 bg-gradient-to-r from-orange-500 to-pink-600">
-            <div class="absolute inset-0 flex items-center justify-center">
-              <i class="fas fa-globe-americas text-6xl text-white opacity-30"></i>
-            </div>
-            <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
-              <h2 class="text-xl font-bold text-white">Culture & Society</h2>
-              <p class="text-sm text-gray-200">124 articles</p>
-            </div>
-          </div>
-          <div class="p-5">
-            <p class="text-gray-600 dark:text-gray-300 mb-4">
-              Discover diverse perspectives on global cultures, social movements, traditions, and cultural exchange across borders.
-            </p>
-            <div class="flex flex-wrap gap-2 mb-4">
-              <span class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-100">
-                <i class="fas fa-landmark text-xs"></i> Heritage
-              </span>
-              <span class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-100">
-                <i class="fas fa-users text-xs"></i> Society
-              </span>
-              <span class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100">
-                <i class="fas fa-film text-xs"></i> Media
-              </span>
-            </div>
-            <a href="section-detail.html" class="inline-flex items-center gap-2 text-sm font-medium text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400">
-              Browse Section <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-        
-        <!-- Food & Cuisine Section -->
-        <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-          <div class="relative h-40 bg-gradient-to-r from-green-600 to-teal-600">
-            <div class="absolute inset-0 flex items-center justify-center">
-              <i class="fas fa-utensils text-6xl text-white opacity-30"></i>
-            </div>
-            <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
-              <h2 class="text-xl font-bold text-white">Food & Cuisine</h2>
-              <p class="text-sm text-gray-200">98 articles</p>
-            </div>
-          </div>
-          <div class="p-5">
-            <p class="text-gray-600 dark:text-gray-300 mb-4">
-              Explore global flavors, culinary traditions, cooking techniques, and the cultural significance of food around the world.
-            </p>
-            <div class="flex flex-wrap gap-2 mb-4">
-              <span class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100">
-                <i class="fas fa-pepper-hot text-xs"></i> Recipes
-              </span>
-              <span class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-teal-100 text-teal-800 dark:bg-teal-900 dark:text-teal-100">
-                <i class="fas fa-wine-glass-alt text-xs"></i> Cuisine
-              </span>
-              <span class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-lime-100 text-lime-800 dark:bg-lime-900 dark:text-lime-100">
-                <i class="fas fa-seedling text-xs"></i> Traditions
-              </span>
-            </div>
-            <a href="section-detail.html" class="inline-flex items-center gap-2 text-sm font-medium text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400">
-              Browse Section <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-        
-        <!-- Travel Section -->
-        <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-          <div class="relative h-40 bg-gradient-to-r from-sky-500 to-cyan-600">
-            <div class="absolute inset-0 flex items-center justify-center">
-              <i class="fas fa-plane text-6xl text-white opacity-30"></i>
-            </div>
-            <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
-              <h2 class="text-xl font-bold text-white">Travel & Exploration</h2>
-              <p class="text-sm text-gray-200">86 articles</p>
-            </div>
-          </div>
-          <div class="p-5">
-            <p class="text-gray-600 dark:text-gray-300 mb-4">
-              Journey through destinations worldwide with insights on local cultures, hidden gems, travel tips, and immersive experiences.
-            </p>
-            <div class="flex flex-wrap gap-2 mb-4">
-              <span class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-sky-100 text-sky-800 dark:bg-sky-900 dark:text-sky-100">
-                <i class="fas fa-map-marked-alt text-xs"></i> Destinations
-              </span>
-              <span class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-100">
-                <i class="fas fa-suitcase text-xs"></i> Tips
-              </span>
-              <span class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100">
-                <i class="fas fa-mountain text-xs"></i> Adventure
-              </span>
-            </div>
-            <a href="section-detail.html" class="inline-flex items-center gap-2 text-sm font-medium text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400">
-              Browse Section <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-        
-        <!-- Science Section -->
-        <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-          <div class="relative h-40 bg-gradient-to-r from-violet-600 to-purple-700">
-            <div class="absolute inset-0 flex items-center justify-center">
-              <i class="fas fa-atom text-6xl text-white opacity-30"></i>
-            </div>
-            <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
-              <h2 class="text-xl font-bold text-white">Science & Discovery</h2>
-              <p class="text-sm text-gray-200">72 articles</p>
-            </div>
-          </div>
-          <div class="p-5">
-            <p class="text-gray-600 dark:text-gray-300 mb-4">
-              Delve into scientific breakthroughs, research findings, natural phenomena, and how science shapes our understanding of the world.
-            </p>
-            <div class="flex flex-wrap gap-2 mb-4">
-              <span class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-violet-100 text-violet-800 dark:bg-violet-900 dark:text-violet-100">
-                <i class="fas fa-microscope text-xs"></i> Research
-              </span>
-              <span class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-100">
-                <i class="fas fa-flask text-xs"></i> Discovery
-              </span>
-              <span class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-fuchsia-100 text-fuchsia-800 dark:bg-fuchsia-900 dark:text-fuchsia-100">
-                <i class="fas fa-dna text-xs"></i> Biology
-              </span>
-            </div>
-            <a href="section-detail.html" class="inline-flex items-center gap-2 text-sm font-medium text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400">
-              Browse Section <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-        
-        <!-- Arts & Literature Section -->
-        <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-          <div class="relative h-40 bg-gradient-to-r from-amber-500 to-yellow-600">
-            <div class="absolute inset-0 flex items-center justify-center">
-              <i class="fas fa-book text-6xl text-white opacity-30"></i>
-            </div>
-            <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
-              <h2 class="text-xl font-bold text-white">Arts & Literature</h2>
-              <p class="text-sm text-gray-200">65 articles</p>
-            </div>
-          </div>
-          <div class="p-5">
-            <p class="text-gray-600 dark:text-gray-300 mb-4">
-              Explore literary works, visual arts, creative expression, and cultural movements from around the globe and throughout history.
-            </p>
-            <div class="flex flex-wrap gap-2 mb-4">
-              <span class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-100">
-                <i class="fas fa-book-open text-xs"></i> Literature
-              </span>
-              <span class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-100">
-                <i class="fas fa-paint-brush text-xs"></i> Visual Arts
-              </span>
-              <span class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-100">
-                <i class="fas fa-theater-masks text-xs"></i> Performing
-              </span>
-            </div>
-            <a href="section-detail.html" class="inline-flex items-center gap-2 text-sm font-medium text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400">
-              Browse Section <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Languages & Linguistics Section with Subsections -->
-      <div id="language" class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden mb-12">
-        <div class="relative h-48 bg-gradient-to-r from-indigo-600 to-blue-600">
-          <div class="absolute inset-0 flex items-center justify-center">
-            <i class="fas fa-language text-8xl text-white opacity-20"></i>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/70 to-transparent">
-            <h2 class="text-2xl font-bold text-white">Languages & Linguistics</h2>
-            <p class="text-gray-200">Explore the diversity of human language, translation, linguistics, and language learning</p>
-          </div>
-        </div>
-        
-        <div class="p-6">
-          <p class="text-gray-600 dark:text-gray-300 mb-6">
-            Language is the foundation of human communication and culture. This section explores the fascinating world of linguistics, language learning, translation studies, and how language shapes our perception of the world.
+
+    <!-- Main Content -->
+    <main class="flex-grow px-4 sm:px-6 lg:px-8 py-8">
+      <div class="max-w-7xl mx-auto">
+        <div class="mb-8">
+          <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            Content Sections
+          </h1>
+          <p class="text-lg text-gray-600 dark:text-gray-300">
+            Explore articles organized by topic and interest. Each section
+            contains curated content from our authors.
           </p>
-          
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Subsections</h3>
-          
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-            <!-- Subsection 1 -->
-            <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
-              <h4 class="font-medium text-gray-900 dark:text-white mb-1">Language Learning</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Techniques, resources, and insights for language acquisition</p>
-              <div class="flex justify-between items-center">
-                <span class="text-xs text-gray-500 dark:text-gray-500">24 articles</span>
-                <a href="section-detail.html" class="text-xs text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400">Explore</a>
+        </div>
+
+        <!-- Search & Filter -->
+        <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-4 mb-8">
+          <div class="flex flex-col sm:flex-row gap-4">
+            <div class="flex-1">
+              <label for="search" class="sr-only">Search</label>
+              <div class="relative">
+                <div
+                  class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+                >
+                  <i class="fas fa-search text-gray-400"></i>
+                </div>
+                <input
+                  type="text"
+                  id="search"
+                  class="py-3 px-4 pl-10 block w-full border-gray-200 rounded-lg text-sm focus:border-sky-500 focus:ring-sky-500 dark:bg-slate-800 dark:border-gray-700 dark:text-gray-300"
+                  placeholder="Search sections..."
+                />
               </div>
             </div>
-            
-            <!-- Subsection 2 -->
-            <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
-              <h4 class="font-medium text-gray-900 dark:text-white mb-1">Translation Studies</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">The art and science of transforming content across languages</p>
-              <div class="flex justify-between items-center">
-                <span class="text-xs text-gray-500 dark:text-gray-500">19 articles</span>
-                <a href="section-detail.html" class="text-xs text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400">Explore</a>
-              </div>
+
+            <div class="sm:w-48">
+              <label for="sort" class="sr-only">Sort</label>
+              <select
+                id="sort"
+                class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-sky-500 focus:ring-sky-500 dark:bg-slate-800 dark:border-gray-700 dark:text-gray-300"
+              >
+                <option value="popularity">Sort by Popularity</option>
+                <option value="az">Name (A-Z)</option>
+                <option value="za">Name (Z-A)</option>
+                <option value="recent">Recently Updated</option>
+                <option value="articles">Most Articles</option>
+              </select>
             </div>
-            
-            <!-- Subsection 3 -->
-            <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
-              <h4 class="font-medium text-gray-900 dark:text-white mb-1">Linguistics</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Scientific study of language and its structures</p>
-              <div class="flex justify-between items-center">
-                <span class="text-xs text-gray-500 dark:text-gray-500">17 articles</span>
-                <a href="section-detail.html" class="text-xs text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400">Explore</a>
-              </div>
-            </div>
-            
-            <!-- Subsection 4 -->
-            <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
-              <h4 class="font-medium text-gray-900 dark:text-white mb-1">Language & Identity</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">How language shapes cultural and personal identity</p>
-              <div class="flex justify-between items-center">
-                <span class="text-xs text-gray-500 dark:text-gray-500">15 articles</span>
-                <a href="section-detail.html" class="text-xs text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400">Explore</a>
-              </div>
-            </div>
-            
-            <!-- Subsection 5 -->
-            <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
-              <h4 class="font-medium text-gray-900 dark:text-white mb-1">Endangered Languages</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Preservation efforts and documentation of at-risk languages</p>
-              <div class="flex justify-between items-center">
-                <span class="text-xs text-gray-500 dark:text-gray-500">12 articles</span>
-                <a href="section-detail.html" class="text-xs text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400">Explore</a>
-              </div>
-            </div>
-            
-            <!-- Subsection 6 -->
-            <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
-              <h4 class="font-medium text-gray-900 dark:text-white mb-1">Language Technology</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Tools, apps, and AI systems for language processing</p>
-              <div class="flex justify-between items-center">
-                <span class="text-xs text-gray-500 dark:text-gray-500">21 articles</span>
-                <a href="section-detail.html" class="text-xs text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400">Explore</a>
-              </div>
-            </div>
-          </div>
-          
-          <div class="text-center">
-            <a href="#all-language-articles" class="inline-flex items-center gap-2 py-2.5 px-4 rounded-md border font-medium bg-gray-50 text-gray-700 shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-sky-600 transition-all text-sm dark:bg-slate-700 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-slate-600 dark:focus:ring-offset-gray-800">
-              View All Language Articles <i class="fas fa-arrow-right"></i>
-            </a>
+
+            <button
+              type="button"
+              class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-lg border border-transparent font-semibold bg-sky-600 text-white hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 transition-all"
+            >
+              <i class="fas fa-filter"></i> Filter
+            </button>
           </div>
         </div>
-      </div>
-      
-      <!-- Business & Economy Section with Featured Articles -->
-      <div id="business" class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden mb-8">
-        <div class="relative h-48 bg-gradient-to-r from-slate-700 to-slate-900">
-          <div class="absolute inset-0 flex items-center justify-center">
-            <i class="fas fa-chart-line text-8xl text-white opacity-20"></i>
+
+        <!-- Main Sections Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          <!-- Technology Section -->
+          <div
+            class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+          >
+            <div
+              class="relative h-40 bg-gradient-to-r from-blue-600 to-indigo-700"
+            >
+              <div class="absolute inset-0 flex items-center justify-center">
+                <i class="fas fa-microchip text-6xl text-white opacity-30"></i>
+              </div>
+              <div
+                class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent"
+              >
+                <h2 class="text-xl font-bold text-white">Technology</h2>
+                <p class="text-sm text-gray-200">156 articles</p>
+              </div>
+            </div>
+            <div class="p-5">
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Explore the latest innovations in technology, from AI and
+                machine learning to consumer gadgets and future tech trends.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100"
+                >
+                  <i class="fas fa-robot text-xs"></i> AI
+                </span>
+                <span
+                  class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-100"
+                >
+                  <i class="fas fa-mobile-alt text-xs"></i> Gadgets
+                </span>
+                <span
+                  class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-100"
+                >
+                  <i class="fas fa-code text-xs"></i> Software
+                </span>
+              </div>
+              <a
+                href="section-detail.html"
+                class="inline-flex items-center gap-2 text-sm font-medium text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400"
+              >
+                Browse Section <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
           </div>
-          <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/70 to-transparent">
-            <h2 class="text-2xl font-bold text-white">Business & Economy</h2>
-            <p class="text-gray-200">Global commerce, entrepreneurship, and economic trends across markets and cultures</p>
+
+          <!-- Culture Section -->
+          <div
+            class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+          >
+            <div
+              class="relative h-40 bg-gradient-to-r from-orange-500 to-pink-600"
+            >
+              <div class="absolute inset-0 flex items-center justify-center">
+                <i
+                  class="fas fa-globe-americas text-6xl text-white opacity-30"
+                ></i>
+              </div>
+              <div
+                class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent"
+              >
+                <h2 class="text-xl font-bold text-white">Culture & Society</h2>
+                <p class="text-sm text-gray-200">124 articles</p>
+              </div>
+            </div>
+            <div class="p-5">
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Discover diverse perspectives on global cultures, social
+                movements, traditions, and cultural exchange across borders.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-100"
+                >
+                  <i class="fas fa-landmark text-xs"></i> Heritage
+                </span>
+                <span
+                  class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-100"
+                >
+                  <i class="fas fa-users text-xs"></i> Society
+                </span>
+                <span
+                  class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100"
+                >
+                  <i class="fas fa-film text-xs"></i> Media
+                </span>
+              </div>
+              <a
+                href="section-detail.html"
+                class="inline-flex items-center gap-2 text-sm font-medium text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400"
+              >
+                Browse Section <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Food & Cuisine Section -->
+          <div
+            class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+          >
+            <div
+              class="relative h-40 bg-gradient-to-r from-green-600 to-teal-600"
+            >
+              <div class="absolute inset-0 flex items-center justify-center">
+                <i class="fas fa-utensils text-6xl text-white opacity-30"></i>
+              </div>
+              <div
+                class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent"
+              >
+                <h2 class="text-xl font-bold text-white">Food & Cuisine</h2>
+                <p class="text-sm text-gray-200">98 articles</p>
+              </div>
+            </div>
+            <div class="p-5">
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Explore global flavors, culinary traditions, cooking techniques,
+                and the cultural significance of food around the world.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100"
+                >
+                  <i class="fas fa-pepper-hot text-xs"></i> Recipes
+                </span>
+                <span
+                  class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-teal-100 text-teal-800 dark:bg-teal-900 dark:text-teal-100"
+                >
+                  <i class="fas fa-wine-glass-alt text-xs"></i> Cuisine
+                </span>
+                <span
+                  class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-lime-100 text-lime-800 dark:bg-lime-900 dark:text-lime-100"
+                >
+                  <i class="fas fa-seedling text-xs"></i> Traditions
+                </span>
+              </div>
+              <a
+                href="section-detail.html"
+                class="inline-flex items-center gap-2 text-sm font-medium text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400"
+              >
+                Browse Section <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Travel Section -->
+          <div
+            class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+          >
+            <div
+              class="relative h-40 bg-gradient-to-r from-sky-500 to-cyan-600"
+            >
+              <div class="absolute inset-0 flex items-center justify-center">
+                <i class="fas fa-plane text-6xl text-white opacity-30"></i>
+              </div>
+              <div
+                class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent"
+              >
+                <h2 class="text-xl font-bold text-white">
+                  Travel & Exploration
+                </h2>
+                <p class="text-sm text-gray-200">86 articles</p>
+              </div>
+            </div>
+            <div class="p-5">
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Journey through destinations worldwide with insights on local
+                cultures, hidden gems, travel tips, and immersive experiences.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-sky-100 text-sky-800 dark:bg-sky-900 dark:text-sky-100"
+                >
+                  <i class="fas fa-map-marked-alt text-xs"></i> Destinations
+                </span>
+                <span
+                  class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-100"
+                >
+                  <i class="fas fa-suitcase text-xs"></i> Tips
+                </span>
+                <span
+                  class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100"
+                >
+                  <i class="fas fa-mountain text-xs"></i> Adventure
+                </span>
+              </div>
+              <a
+                href="section-detail.html"
+                class="inline-flex items-center gap-2 text-sm font-medium text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400"
+              >
+                Browse Section <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Science Section -->
+          <div
+            class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+          >
+            <div
+              class="relative h-40 bg-gradient-to-r from-violet-600 to-purple-700"
+            >
+              <div class="absolute inset-0 flex items-center justify-center">
+                <i class="fas fa-atom text-6xl text-white opacity-30"></i>
+              </div>
+              <div
+                class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent"
+              >
+                <h2 class="text-xl font-bold text-white">
+                  Science & Discovery
+                </h2>
+                <p class="text-sm text-gray-200">72 articles</p>
+              </div>
+            </div>
+            <div class="p-5">
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Delve into scientific breakthroughs, research findings, natural
+                phenomena, and how science shapes our understanding of the
+                world.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-violet-100 text-violet-800 dark:bg-violet-900 dark:text-violet-100"
+                >
+                  <i class="fas fa-microscope text-xs"></i> Research
+                </span>
+                <span
+                  class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-100"
+                >
+                  <i class="fas fa-flask text-xs"></i> Discovery
+                </span>
+                <span
+                  class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-fuchsia-100 text-fuchsia-800 dark:bg-fuchsia-900 dark:text-fuchsia-100"
+                >
+                  <i class="fas fa-dna text-xs"></i> Biology
+                </span>
+              </div>
+              <a
+                href="section-detail.html"
+                class="inline-flex items-center gap-2 text-sm font-medium text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400"
+              >
+                Browse Section <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Arts & Literature Section -->
+          <div
+            class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+          >
+            <div
+              class="relative h-40 bg-gradient-to-r from-amber-500 to-yellow-600"
+            >
+              <div class="absolute inset-0 flex items-center justify-center">
+                <i class="fas fa-book text-6xl text-white opacity-30"></i>
+              </div>
+              <div
+                class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent"
+              >
+                <h2 class="text-xl font-bold text-white">Arts & Literature</h2>
+                <p class="text-sm text-gray-200">65 articles</p>
+              </div>
+            </div>
+            <div class="p-5">
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Explore literary works, visual arts, creative expression, and
+                cultural movements from around the globe and throughout history.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-100"
+                >
+                  <i class="fas fa-book-open text-xs"></i> Literature
+                </span>
+                <span
+                  class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-100"
+                >
+                  <i class="fas fa-paint-brush text-xs"></i> Visual Arts
+                </span>
+                <span
+                  class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-100"
+                >
+                  <i class="fas fa-theater-masks text-xs"></i> Performing
+                </span>
+              </div>
+              <a
+                href="section-detail.html"
+                class="inline-flex items-center gap-2 text-sm font-medium text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400"
+              >
+                Browse Section <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
           </div>
         </div>
-        
-        <div class="p-6">
-          <p class="text-gray-600 dark:text-gray-300 mb-6">
-            Understand the global economic landscape, international business practices, entrepreneurship across different cultures, and how business connects our world.
-          </p>
-          
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Featured Articles</h3>
-          
-          <!-- Featured Articles -->
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-            <!-- Featured Article 1 -->
-            <article class="flex gap-4">
-              <div class="flex-shrink-0 w-24 h-24 bg-gray-200 dark:bg-gray-700 rounded overflow-hidden">
-                <img src="https://pixabay.com/get/gbc3c7b5cc877143d5f33617beb172fea333c1b5794142bff2930a9f80919bcbd226839563e8f6dae36d2c12f8ba54ddc1fb72fd92c1662b0c63e7df39513ce42_1280.jpg" alt="Business article" class="w-full h-full object-cover">
-              </div>
-              <div>
-                <h4 class="text-base font-semibold text-gray-900 dark:text-white mb-1">
-                  <a href="post.html" class="hover:text-sky-600 dark:hover:text-sky-500">Cross-Cultural Negotiation: Business Practices Around the World</a>
+
+        <!-- Languages & Linguistics Section with Subsections -->
+        <div
+          id="language"
+          class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden mb-12"
+        >
+          <div
+            class="relative h-48 bg-gradient-to-r from-indigo-600 to-blue-600"
+          >
+            <div class="absolute inset-0 flex items-center justify-center">
+              <i class="fas fa-language text-8xl text-white opacity-20"></i>
+            </div>
+            <div
+              class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/70 to-transparent"
+            >
+              <h2 class="text-2xl font-bold text-white">
+                Languages & Linguistics
+              </h2>
+              <p class="text-gray-200">
+                Explore the diversity of human language, translation,
+                linguistics, and language learning
+              </p>
+            </div>
+          </div>
+
+          <div class="p-6">
+            <p class="text-gray-600 dark:text-gray-300 mb-6">
+              Language is the foundation of human communication and culture.
+              This section explores the fascinating world of linguistics,
+              language learning, translation studies, and how language shapes
+              our perception of the world.
+            </p>
+
+            <h3
+              class="text-lg font-semibold text-gray-900 dark:text-white mb-4"
+            >
+              Subsections
+            </h3>
+
+            <div
+              class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6"
+            >
+              <!-- Subsection 1 -->
+              <div
+                class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
+              >
+                <h4 class="font-medium text-gray-900 dark:text-white mb-1">
+                  Language Learning
                 </h4>
-                <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2 mb-2">How negotiation styles and expectations differ across cultures and how to navigate them effectively.</p>
-                <div class="flex items-center gap-3">
-                  <span class="text-xs text-gray-500 dark:text-gray-500">James Wilson</span>
-                  <span class="text-xs text-gray-500 dark:text-gray-500">3 days ago</span>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                  Techniques, resources, and insights for language acquisition
+                </p>
+                <div class="flex justify-between items-center">
+                  <span class="text-xs text-gray-500 dark:text-gray-500"
+                    >24 articles</span
+                  >
+                  <a
+                    href="section-detail.html"
+                    class="text-xs text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400"
+                    >Explore</a
+                  >
                 </div>
               </div>
-            </article>
-            
-            <!-- Featured Article 2 -->
-            <article class="flex gap-4">
-              <div class="flex-shrink-0 w-24 h-24 bg-gray-200 dark:bg-gray-700 rounded overflow-hidden">
-                <img src="https://pixabay.com/get/g645f3852d296f4881db24862a8accea39b57b4a37df2fb123d72000484068869137b28dc5d4680093c1e156eee0d604edec4cac9e48e091aa2bbd66b0a42f157_1280.jpg" alt="Business article" class="w-full h-full object-cover">
-              </div>
-              <div>
-                <h4 class="text-base font-semibold text-gray-900 dark:text-white mb-1">
-                  <a href="post.html" class="hover:text-sky-600 dark:hover:text-sky-500">The Rise of Aristonisl E-commerce: Reaching Global Markets</a>
+
+              <!-- Subsection 2 -->
+              <div
+                class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
+              >
+                <h4 class="font-medium text-gray-900 dark:text-white mb-1">
+                  Translation Studies
                 </h4>
-                <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2 mb-2">Strategies for businesses looking to expand internationally through Aristonisl platforms and localized marketing.</p>
-                <div class="flex items-center gap-3">
-                  <span class="text-xs text-gray-500 dark:text-gray-500">Elena Rodriguez</span>
-                  <span class="text-xs text-gray-500 dark:text-gray-500">1 week ago</span>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                  The art and science of transforming content across languages
+                </p>
+                <div class="flex justify-between items-center">
+                  <span class="text-xs text-gray-500 dark:text-gray-500"
+                    >19 articles</span
+                  >
+                  <a
+                    href="section-detail.html"
+                    class="text-xs text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400"
+                    >Explore</a
+                  >
                 </div>
               </div>
-            </article>
-          </div>
-          
-          <div class="text-center">
-            <a href="#all-business-articles" class="inline-flex items-center gap-2 py-2.5 px-4 rounded-md border font-medium bg-gray-50 text-gray-700 shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-sky-600 transition-all text-sm dark:bg-slate-700 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-slate-600 dark:focus:ring-offset-gray-800">
-              View All Business Articles <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-  
-  <!-- Footer -->
-  <footer class="bg-white dark:bg-slate-800 border-t border-gray-200 dark:border-gray-700 mt-auto">
-    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- About -->
-        <div>
-          <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">About Aristonis</h3>
-          <p class="text-gray-600 dark:text-gray-300 mb-4">
-            Aristonis is a platform dedicated to connecting readers and writers across languages and cultures.
-            Our mission is to break down linguistic barriers and promote global understanding.
-          </p>
-          <div class="flex space-x-4">
-            <a href="#" class="text-gray-500 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="#" class="text-gray-500 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500">
-              <i class="fab fa-facebook"></i>
-            </a>
-            <a href="#" class="text-gray-500 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500">
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a href="#" class="text-gray-500 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500">
-              <i class="fab fa-linkedin"></i>
-            </a>
-          </div>
-        </div>
-        
-        <!-- Quick Links -->
-        <div>
-          <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Quick Links</h3>
-          <ul class="space-y-2">
-            <li>
-              <a href="home.html" class="text-gray-600 hover:text-sky-600 dark:text-gray-300 dark:hover:text-sky-500">Home</a>
-            </li>
-            <li>
-              <a href="authors.html" class="text-gray-600 hover:text-sky-600 dark:text-gray-300 dark:hover:text-sky-500">Authors</a>
-            </li>
-            <li>
-              <a href="sections.html" class="text-gray-600 hover:text-sky-600 dark:text-gray-300 dark:hover:text-sky-500">Sections</a>
-            </li>
-            <li>
-              <a href="about.html" class="text-gray-600 hover:text-sky-600 dark:text-gray-300 dark:hover:text-sky-500">About Us</a>
-            </li>
-            <li>
-              <a href="contact.html" class="text-gray-600 hover:text-sky-600 dark:text-gray-300 dark:hover:text-sky-500">Contact Us</a>
-            </li>
-          </ul>
-        </div>
-        
-        <!-- Contact Info -->
-        <div>
-          <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Contact Us</h3>
-          <ul class="space-y-2">
-            <li class="flex items-start gap-2">
-              <i class="fas fa-map-marker-alt text-gray-500 dark:text-gray-400 mt-1"></i>
-              <span class="text-gray-600 dark:text-gray-300">Homs, Syria</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <i class="fas fa-envelope text-gray-500 dark:text-gray-400 mt-1"></i>
-              <span class="text-gray-600 dark:text-gray-300">mekadalibrahem123@gmail.com</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <i class="fas fa-phone text-gray-500 dark:text-gray-400 mt-1"></i>
-              <span class="text-gray-600 dark:text-gray-300">+963 99801935</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="border-t border-gray-200 dark:border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-        <p class="text-gray-500 dark:text-gray-400 text-sm">
-          &copy; 2023 Aristonis. All rights reserved.
-        </p>
-        <div class="mt-4 md:mt-0 flex space-x-6">
-          <a href="#" class="text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300 text-sm">Privacy Policy</a>
-          <a href="#" class="text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300 text-sm">Terms of Service</a>
-          <a href="#" class="text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300 text-sm">Cookie Policy</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-  
-  <!-- Dark Mode Toggle Button -->
-  <button id="dark-mode-toggle" class="dark-mode-toggle">
-    <i class="fas fa-moon"></i>
-  </button>
 
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/language.js"></script>
-</body>
+              <!-- Subsection 3 -->
+              <div
+                class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
+              >
+                <h4 class="font-medium text-gray-900 dark:text-white mb-1">
+                  Linguistics
+                </h4>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                  Scientific study of language and its structures
+                </p>
+                <div class="flex justify-between items-center">
+                  <span class="text-xs text-gray-500 dark:text-gray-500"
+                    >17 articles</span
+                  >
+                  <a
+                    href="section-detail.html"
+                    class="text-xs text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400"
+                    >Explore</a
+                  >
+                </div>
+              </div>
+
+              <!-- Subsection 4 -->
+              <div
+                class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
+              >
+                <h4 class="font-medium text-gray-900 dark:text-white mb-1">
+                  Language & Identity
+                </h4>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                  How language shapes cultural and personal identity
+                </p>
+                <div class="flex justify-between items-center">
+                  <span class="text-xs text-gray-500 dark:text-gray-500"
+                    >15 articles</span
+                  >
+                  <a
+                    href="section-detail.html"
+                    class="text-xs text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400"
+                    >Explore</a
+                  >
+                </div>
+              </div>
+
+              <!-- Subsection 5 -->
+              <div
+                class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
+              >
+                <h4 class="font-medium text-gray-900 dark:text-white mb-1">
+                  Endangered Languages
+                </h4>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                  Preservation efforts and documentation of at-risk languages
+                </p>
+                <div class="flex justify-between items-center">
+                  <span class="text-xs text-gray-500 dark:text-gray-500"
+                    >12 articles</span
+                  >
+                  <a
+                    href="section-detail.html"
+                    class="text-xs text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400"
+                    >Explore</a
+                  >
+                </div>
+              </div>
+
+              <!-- Subsection 6 -->
+              <div
+                class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
+              >
+                <h4 class="font-medium text-gray-900 dark:text-white mb-1">
+                  Language Technology
+                </h4>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                  Tools, apps, and AI systems for language processing
+                </p>
+                <div class="flex justify-between items-center">
+                  <span class="text-xs text-gray-500 dark:text-gray-500"
+                    >21 articles</span
+                  >
+                  <a
+                    href="section-detail.html"
+                    class="text-xs text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400"
+                    >Explore</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="text-center">
+              <a
+                href="#all-language-articles"
+                class="inline-flex items-center gap-2 py-2.5 px-4 rounded-md border font-medium bg-gray-50 text-gray-700 shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-sky-600 transition-all text-sm dark:bg-slate-700 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-slate-600 dark:focus:ring-offset-gray-800"
+              >
+                View All Language Articles <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Business & Economy Section with Featured Articles -->
+        <div
+          id="business"
+          class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden mb-8"
+        >
+          <div
+            class="relative h-48 bg-gradient-to-r from-slate-700 to-slate-900"
+          >
+            <div class="absolute inset-0 flex items-center justify-center">
+              <i class="fas fa-chart-line text-8xl text-white opacity-20"></i>
+            </div>
+            <div
+              class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/70 to-transparent"
+            >
+              <h2 class="text-2xl font-bold text-white">Business & Economy</h2>
+              <p class="text-gray-200">
+                Global commerce, entrepreneurship, and economic trends across
+                markets and cultures
+              </p>
+            </div>
+          </div>
+
+          <div class="p-6">
+            <p class="text-gray-600 dark:text-gray-300 mb-6">
+              Understand the global economic landscape, international business
+              practices, entrepreneurship across different cultures, and how
+              business connects our world.
+            </p>
+
+            <h3
+              class="text-lg font-semibold text-gray-900 dark:text-white mb-4"
+            >
+              Featured Articles
+            </h3>
+
+            <!-- Featured Articles -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+              <!-- Featured Article 1 -->
+              <article class="flex gap-4">
+                <div
+                  class="flex-shrink-0 w-24 h-24 bg-gray-200 dark:bg-gray-700 rounded overflow-hidden"
+                >
+                  <img
+                    src="https://pixabay.com/get/gbc3c7b5cc877143d5f33617beb172fea333c1b5794142bff2930a9f80919bcbd226839563e8f6dae36d2c12f8ba54ddc1fb72fd92c1662b0c63e7df39513ce42_1280.jpg"
+                    alt="Business article"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <div>
+                  <h4
+                    class="text-base font-semibold text-gray-900 dark:text-white mb-1"
+                  >
+                    <a
+                      href="post.html"
+                      class="hover:text-sky-600 dark:hover:text-sky-500"
+                      >Cross-Cultural Negotiation: Business Practices Around the
+                      World</a
+                    >
+                  </h4>
+                  <p
+                    class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2 mb-2"
+                  >
+                    How negotiation styles and expectations differ across
+                    cultures and how to navigate them effectively.
+                  </p>
+                  <div class="flex items-center gap-3">
+                    <span class="text-xs text-gray-500 dark:text-gray-500"
+                      >James Wilson</span
+                    >
+                    <span class="text-xs text-gray-500 dark:text-gray-500"
+                      >3 days ago</span
+                    >
+                  </div>
+                </div>
+              </article>
+
+              <!-- Featured Article 2 -->
+              <article class="flex gap-4">
+                <div
+                  class="flex-shrink-0 w-24 h-24 bg-gray-200 dark:bg-gray-700 rounded overflow-hidden"
+                >
+                  <img
+                    src="https://pixabay.com/get/g645f3852d296f4881db24862a8accea39b57b4a37df2fb123d72000484068869137b28dc5d4680093c1e156eee0d604edec4cac9e48e091aa2bbd66b0a42f157_1280.jpg"
+                    alt="Business article"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <div>
+                  <h4
+                    class="text-base font-semibold text-gray-900 dark:text-white mb-1"
+                  >
+                    <a
+                      href="post.html"
+                      class="hover:text-sky-600 dark:hover:text-sky-500"
+                      >The Rise of Aristonisl E-commerce: Reaching Global
+                      Markets</a
+                    >
+                  </h4>
+                  <p
+                    class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2 mb-2"
+                  >
+                    Strategies for businesses looking to expand internationally
+                    through Aristonisl platforms and localized marketing.
+                  </p>
+                  <div class="flex items-center gap-3">
+                    <span class="text-xs text-gray-500 dark:text-gray-500"
+                      >Elena Rodriguez</span
+                    >
+                    <span class="text-xs text-gray-500 dark:text-gray-500"
+                      >1 week ago</span
+                    >
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="text-center">
+              <a
+                href="#all-business-articles"
+                class="inline-flex items-center gap-2 py-2.5 px-4 rounded-md border font-medium bg-gray-50 text-gray-700 shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-sky-600 transition-all text-sm dark:bg-slate-700 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-slate-600 dark:focus:ring-offset-gray-800"
+              >
+                View All Business Articles <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer
+      class="bg-white dark:bg-slate-800 border-t border-gray-200 dark:border-gray-700 mt-auto"
+    >
+      <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- About -->
+          <div>
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">
+              About Aristonis
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              Aristonis is a platform dedicated to connecting readers and
+              writers across languages and cultures. Our mission is to break
+              down linguistic barriers and promote global understanding.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="text-gray-500 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500"
+              >
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-500 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500"
+              >
+                <i class="fab fa-facebook"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-500 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-500 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">
+              Quick Links
+            </h3>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="home.html"
+                  class="text-gray-600 hover:text-sky-600 dark:text-gray-300 dark:hover:text-sky-500"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="authors.html"
+                  class="text-gray-600 hover:text-sky-600 dark:text-gray-300 dark:hover:text-sky-500"
+                  >Authors</a
+                >
+              </li>
+              <li>
+                <a
+                  href="sections.html"
+                  class="text-gray-600 hover:text-sky-600 dark:text-gray-300 dark:hover:text-sky-500"
+                  >Sections</a
+                >
+              </li>
+              <li>
+                <a
+                  href="about.html"
+                  class="text-gray-600 hover:text-sky-600 dark:text-gray-300 dark:hover:text-sky-500"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="contact.html"
+                  class="text-gray-600 hover:text-sky-600 dark:text-gray-300 dark:hover:text-sky-500"
+                  >Contact Us</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact Info -->
+          <div>
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">
+              Contact Us
+            </h3>
+            <ul class="space-y-2">
+              <li class="flex items-start gap-2">
+                <i
+                  class="fas fa-map-marker-alt text-gray-500 dark:text-gray-400 mt-1"
+                ></i>
+                <span class="text-gray-600 dark:text-gray-300"
+                  >Homs, Syria</span
+                >
+              </li>
+              <li class="flex items-start gap-2">
+                <i
+                  class="fas fa-envelope text-gray-500 dark:text-gray-400 mt-1"
+                ></i>
+                <span class="text-gray-600 dark:text-gray-300"
+                  >mekadalibrahem123@gmail.com</span
+                >
+              </li>
+              <li class="flex items-start gap-2">
+                <i
+                  class="fas fa-phone text-gray-500 dark:text-gray-400 mt-1"
+                ></i>
+                <span class="text-gray-600 dark:text-gray-300"
+                  >+963 99801935</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-gray-200 dark:border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center"
+        >
+          <p class="text-gray-500 dark:text-gray-400 text-sm">
+            &copy; 2023 Aristonis. All rights reserved.
+          </p>
+          <div class="mt-4 md:mt-0 flex space-x-6">
+            <a
+              href="#"
+              class="text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300 text-sm"
+              >Privacy Policy</a
+            >
+            <a
+              href="#"
+              class="text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300 text-sm"
+              >Terms of Service</a
+            >
+            <a
+              href="#"
+              class="text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300 text-sm"
+              >Cookie Policy</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Dark Mode Toggle Button -->
+    <button id="dark-mode-toggle" class="dark-mode-toggle">
+      <i class="fas fa-moon"></i>
+    </button>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/language.js"></script>
+  </body>
 </html>

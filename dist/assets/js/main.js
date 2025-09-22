@@ -6,11 +6,14 @@ document.addEventListener('DOMContentLoaded', function() {
   // initLanguageSelector();
   initUserMenu();
   initDropdowns();
-  
+  initMobileMenu();
   tailwind.config = {
     darkMode: "class", 
     
   };
+  if (window.HSOverlay) {
+    HSOverlay.autoInit();
+  }
 });
 
 // Dark mode toggle functionality
@@ -190,59 +193,39 @@ function loadContent(containerId, content) {
     container.innerHTML = content;
   }
 }
-// Language selector dropdown
-function initLanguageSelector() {
-  const languageSwitcher = document.getElementById('language-switcher');
-  const languageMenu = document.getElementById('language-menu');
-  const currentLanguage = document.getElementById('current-language');
-  const languageOptions = document.querySelectorAll('.language-option');
-  
-  if (!languageSwitcher || !languageMenu || !currentLanguage) return;
-  
-  // Toggle language menu visibility
-  languageSwitcher.addEventListener('click', function(e) {
+
+// Mobile menu toggle functionality
+function initMobileMenu() {
+  const menuButton = document.querySelector('[data-hs-overlay="#mobile-menu"]');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const closeButton = mobileMenu?.querySelector('button[data-hs-overlay="#mobile-menu"]');
+
+  if (!menuButton || !mobileMenu) return;
+
+  // Toggle menu visibility
+  menuButton.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hs-overlay-open');
+    mobileMenu.classList.toggle('-translate-x-full');
+  });
+
+  // Close menu when close button is clicked
+  if (closeButton) {
+    closeButton.addEventListener('click', () => {
+      mobileMenu.classList.remove('hs-overlay-open');
+      mobileMenu.classList.add('-translate-x-full');
+    });
+  }
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!mobileMenu.contains(e.target) && !menuButton.contains(e.target)) {
+      mobileMenu.classList.remove('hs-overlay-open');
+      mobileMenu.classList.add('-translate-x-full');
+    }
+  });
+
+  // Prevent closing when clicking inside menu
+  mobileMenu.addEventListener('click', (e) => {
     e.stopPropagation();
-    languageMenu.classList.toggle('hidden');
   });
-  
-  // Close language menu when clicking elsewhere
-  document.addEventListener('click', function() {
-    if (languageMenu) {
-      languageMenu.classList.add('hidden');
-    }
-  });
-  
-  // Prevent menu closing when clicking inside it
-  if (languageMenu) {
-    languageMenu.addEventListener('click', function(e) {
-      e.stopPropagation();
-    });
-  }
-  
-  // Language selection
-  if (languageOptions) {
-    languageOptions.forEach(option => {
-      option.addEventListener('click', function() {
-        const lang = this.getAttribute('data-lang');
-        const langText = this.textContent.trim();
-        currentLanguage.textContent = langText;
-        languageMenu.classList.add('hidden');
-        
-        // Store the selected language preference
-        localStorage.setItem('selected-language', lang);
-        
-        // Here you would normally update the page content based on selected language
-        console.log(`Language changed to: ${lang}`);
-      });
-    });
-  }
-  
-  // Check for saved language preference
-  const savedLanguage = localStorage.getItem('selected-language');
-  if (savedLanguage) {
-    const option = document.querySelector(`.language-option[data-lang="${savedLanguage}"]`);
-    if (option) {
-      currentLanguage.textContent = option.textContent.trim();
-    }
-  }
 }

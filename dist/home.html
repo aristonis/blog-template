@@ -7,8 +7,12 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Preline UI -->
-    <link rel="stylesheet" href="https://unpkg.com/preline/dist/preline.css" />
-    
+    <link
+      href=" https://cdn.jsdelivr.net/npm/preline@3.2.3/src/plugins/accordion/variants.min.css "
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/preline@3.2.3/dist/preline.min.js"></script>
+
     <!-- Font Awesome Icons -->
     <link
       rel="stylesheet"
@@ -16,7 +20,6 @@
     />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/custom.css" />
-    
   </head>
   <body class="bg-slate-100 dark:bg-slate-900 min-h-screen flex flex-col">
     <!-- Header & Navigation -->
@@ -154,6 +157,7 @@
       class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full fixed top-0 left-0 transition-all duration-300 transform h-full max-w-xs w-full z-[60] bg-white border-r dark:bg-gray-800 dark:border-gray-700"
       tabindex="-1"
     >
+      >
       <div
         class="flex justify-between items-center py-3 px-4 border-b dark:border-gray-700"
       >
@@ -508,8 +512,7 @@
                     <h4
                       class="text-sm font-semibold text-gray-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky-500 transition-colors"
                     >
-                      Aristonisl UX Design: Creating Inclusive Digital
-                      Products
+                      Aristonisl UX Design: Creating Inclusive Digital Products
                     </h4>
                     <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
                       2.4k views
@@ -1065,57 +1068,6 @@
     <!-- Dark Mode Toggle Button -->
     <button id="dark-mode-toggle" class="dark-mode-toggle">
       <i class="fas fa-moon"></i>
-    </button>
-
-    <button
-      type="button"
-      class="hs-dark-mode hs-dark-mode-active:hidden flex items-center gap-x-2 py-2 px-3 bg-white/10 rounded-full text-sm text-white hover:bg-white/20 focus:outline-hidden focus:bg-white/20"
-      data-hs-theme-click-value="dark"
-    >
-      <svg
-        class="shrink-0 size-4"
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
-      </svg>
-      Dark
-    </button>
-    <button
-      type="button"
-      class="hs-dark-mode hs-dark-mode-active:inline-flex hidden items-center gap-x-2 py-2 px-3 bg-white/10 rounded-full text-sm text-white hover:bg-white/20 focus:outline-hidden focus:bg-white/20"
-      data-hs-theme-click-value="light"
-    >
-      <svg
-        class="shrink-0 size-4"
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <circle cx="12" cy="12" r="4"></circle>
-        <path d="M12 2v2"></path>
-        <path d="M12 20v2"></path>
-        <path d="m4.93 4.93 1.41 1.41"></path>
-        <path d="m17.66 17.66 1.41 1.41"></path>
-        <path d="M2 12h2"></path>
-        <path d="M20 12h2"></path>
-        <path d="m6.34 17.66-1.41 1.41"></path>
-        <path d="m19.07 4.93-1.41 1.41"></path>
-      </svg>
-      Light
     </button>
 
     <script src="assets/js/main.js"></script>

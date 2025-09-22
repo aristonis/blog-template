@@ -999,39 +999,6 @@
         initCharts();
       });
 
-      // Language menu toggle
-      const languageSwitcher = document.getElementById("language-switcher");
-      const languageMenu = document.getElementById("language-menu");
-      const currentLanguage = document.getElementById("current-language");
-      const languageOptions = document.querySelectorAll(".language-option");
-
-      languageSwitcher.addEventListener("click", function (e) {
-        e.stopPropagation();
-        languageMenu.classList.toggle("hidden");
-      });
-
-      // Close language menu when clicking elsewhere
-      document.addEventListener("click", function () {
-        languageMenu.classList.add("hidden");
-      });
-
-      // Prevent menu closing when clicking inside it
-      languageMenu.addEventListener("click", function (e) {
-        e.stopPropagation();
-      });
-
-      // Language selection
-      languageOptions.forEach((option) => {
-        option.addEventListener("click", function () {
-          const lang = this.getAttribute("data-lang");
-          const langText = this.textContent.trim();
-          currentLanguage.textContent = langText;
-          languageMenu.classList.add("hidden");
-          // Here you would normally update the page content based on selected language
-          console.log(`Language changed to: ${lang}`);
-        });
-      });
-
       // User menu toggle
       const userMenuButton = document.getElementById("user-menu-button");
       const userMenu = document.getElementById("user-menu");
@@ -1283,5 +1250,8 @@
         initCharts();
       });
     </script>
+   
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/language.js"></script>
   </body>
 </html>

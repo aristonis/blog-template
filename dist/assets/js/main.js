@@ -3,7 +3,7 @@
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
   initDarkMode();
-  initLanguageSelector();
+  // initLanguageSelector();
   initUserMenu();
   initDropdowns();
   
@@ -188,5 +188,61 @@ function loadContent(containerId, content) {
   const container = document.getElementById(containerId);
   if (container) {
     container.innerHTML = content;
+  }
+}
+// Language selector dropdown
+function initLanguageSelector() {
+  const languageSwitcher = document.getElementById('language-switcher');
+  const languageMenu = document.getElementById('language-menu');
+  const currentLanguage = document.getElementById('current-language');
+  const languageOptions = document.querySelectorAll('.language-option');
+  
+  if (!languageSwitcher || !languageMenu || !currentLanguage) return;
+  
+  // Toggle language menu visibility
+  languageSwitcher.addEventListener('click', function(e) {
+    e.stopPropagation();
+    languageMenu.classList.toggle('hidden');
+  });
+  
+  // Close language menu when clicking elsewhere
+  document.addEventListener('click', function() {
+    if (languageMenu) {
+      languageMenu.classList.add('hidden');
+    }
+  });
+  
+  // Prevent menu closing when clicking inside it
+  if (languageMenu) {
+    languageMenu.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+  }
+  
+  // Language selection
+  if (languageOptions) {
+    languageOptions.forEach(option => {
+      option.addEventListener('click', function() {
+        const lang = this.getAttribute('data-lang');
+        const langText = this.textContent.trim();
+        currentLanguage.textContent = langText;
+        languageMenu.classList.add('hidden');
+        
+        // Store the selected language preference
+        localStorage.setItem('selected-language', lang);
+        
+        // Here you would normally update the page content based on selected language
+        console.log(`Language changed to: ${lang}`);
+      });
+    });
+  }
+  
+  // Check for saved language preference
+  const savedLanguage = localStorage.getItem('selected-language');
+  if (savedLanguage) {
+    const option = document.querySelector(`.language-option[data-lang="${savedLanguage}"]`);
+    if (option) {
+      currentLanguage.textContent = option.textContent.trim();
+    }
   }
 }

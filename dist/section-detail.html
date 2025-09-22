@@ -1,827 +1,1338 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Technology Section - Aristonis</title>
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Preline UI -->
-  <link rel="stylesheet" href="https://unpkg.com/preline/dist/preline.css" />
-  
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Custom CSS -->
-  <link rel="stylesheet"  href="./assets/css/custom.css"  />
-</head>
-<body class="bg-slate-100 dark:bg-slate-900 min-h-screen flex flex-col">
-  <!-- Header & Navigation -->
-  <header class="sticky top-0 z-50 bg-white dark:bg-slate-800 border-b border-gray-200 dark:border-gray-700">
-    <nav class="px-4 sm:px-6 lg:px-8 py-4">
-      <div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
-        <!-- Logo -->
-        <a href="home.html" class="flex items-center gap-2 text-xl font-bold text-slate-900 dark:text-white">
-          Aristonis<span class="text-sky-500">Blog</span>
-        </a>
-        
-        <!-- Navigation links - visible on desktop -->
-        <div class="hidden lg:flex lg:items-center lg:gap-x-6">
-          <a href="home.html" class="text-slate-600 dark:text-slate-300 font-medium hover:text-sky-600 dark:hover:text-sky-500">Home</a>
-          <a href="authors.html" class="text-slate-600 dark:text-slate-300 font-medium hover:text-sky-600 dark:hover:text-sky-500">Authors</a>
-          <a href="sections.html" class="text-slate-900 dark:text-white font-medium hover:text-sky-600 dark:hover:text-sky-500">Sections</a>
-          <a href="contact.html" class="text-slate-600 dark:text-slate-300 font-medium hover:text-sky-600 dark:hover:text-sky-500">Contact Us</a>
-          <a href="about.html" class="text-slate-600 dark:text-slate-300 font-medium hover:text-sky-600 dark:hover:text-sky-500">About Us</a>
-        </div>
-        
-        <div class="flex items-center gap-x-4 ml-auto lg:ml-0">
-          <!-- Language Switch Button -->
-          <div class="inline-flex relative">
-            <button id="language-switcher" class="inline-flex items-center gap-x-2 text-sm font-medium text-gray-600 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-300">
-              <i class="fas fa-globe"></i>
-              <span id="current-language">English</span>
-              <i class="fas fa-chevron-down text-xs"></i>
-            </button>
-            
-            <!-- Language Menu (Hidden by default, shown with JavaScript) -->
-            <div id="language-menu" class="hidden absolute top-full right-0 mt-2 min-w-40 bg-white dark:bg-gray-800 shadow-md rounded-lg p-2 z-50 dark:border dark:border-gray-700">
-              <a href="#" class="language-option flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200" data-lang="en">
-                English
-              </a>
-              <a href="#" class="language-option flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200" data-lang="es">
-                Español
-              </a>
-              <a href="#" class="language-option flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200" data-lang="fr">
-                Français
-              </a>
-              <a href="#" class="language-option flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200" data-lang="de">
-                Deutsch
-              </a>
-              <a href="#" class="language-option flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200" data-lang="zh">
-                中文
-              </a>
-            </div>
-          </div>
-          
-          <!-- User Menu Button -->
-          <div class="inline-flex relative">
-            <button id="user-menu-button" class="inline-flex items-center gap-x-2 text-sm font-medium text-gray-600 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-300">
-              <img class="w-8 h-8 rounded-full" src="./assets/images/user-avatar.png" alt="User Profile">
-              <span class="hidden sm:inline-block">John Doe</span>
-              <i class="fas fa-chevron-down text-xs"></i>
-            </button>
-            
-            <!-- User Menu (Hidden by default, shown with JavaScript) -->
-            <div id="user-menu" class="hidden absolute top-full right-0 mt-2 min-w-40 bg-white dark:bg-gray-800 shadow-md rounded-lg p-2 z-50 dark:border dark:border-gray-700">
-              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200" href="author-profile.html">
-                <i class="fas fa-user"></i> My Profile
-              </a>
-              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200" href="settings.html">
-                <i class="fas fa-cog"></i> Settings
-              </a>
-              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200" href="statistics.html">
-                <i class="fas fa-chart-bar"></i> Statistics
-              </a>
-              <div class="border-t border-gray-200 dark:border-gray-700 my-2"></div>
-              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200" href="login.html">
-                <i class="fas fa-sign-out-alt"></i> Sign Out
-              </a>
-            </div>
-          </div>
-          
-          <!-- Hamburger menu for mobile -->
-          <button type="button" class="lg:hidden inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs dark:bg-gray-800 dark:hover:bg-slate-800 dark:text-gray-400 dark:hover:text-white dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800" data-hs-overlay="#mobile-menu">
-            <i class="fas fa-bars"></i>
-          </button>
-        </div>
-      </div>
-    </nav>
-  </header>
-  
-  <!-- Mobile menu -->
-  <div id="mobile-menu" class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full fixed top-0 left-0 transition-all duration-300 transform h-full max-w-xs w-full z-[60] bg-white border-r dark:bg-gray-800 dark:border-gray-700" tabindex="-1">
-    <div class="flex justify-between items-center py-3 px-4 border-b dark:border-gray-700">
-      <h3 class="font-bold text-gray-800 dark:text-white">
-        Menu
-      </h3>
-      <button type="button" class="inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white text-sm dark:text-gray-400 dark:hover:text-gray-200 dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800" data-hs-overlay="#mobile-menu">
-        <span class="sr-only">Close modal</span>
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
-    <div class="p-4">
-      <a href="home.html" class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-700">Home</a>
-      <a href="authors.html" class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-700">Authors</a>
-      <a href="sections.html" class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">Sections</a>
-      <a href="contact.html" class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-700">Contact Us</a>
-      <a href="about.html" class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-700">About Us</a>
-    </div>
-  </div>
-  
-  <!-- Breadcrumb -->
-  <div class="bg-white dark:bg-slate-800 border-b border-gray-200 dark:border-gray-700 py-2">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <nav class="flex" aria-label="Breadcrumb">
-        <ol class="inline-flex items-center space-x-1 md:space-x-3">
-          <li class="inline-flex items-center">
-            <a href="home.html" class="inline-flex items-center text-sm font-medium text-gray-600 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500">
-              <i class="fas fa-home mr-2"></i>
-              Home
-            </a>
-          </li>
-          <li>
-            <div class="flex items-center">
-              <i class="fas fa-chevron-right text-gray-400 mx-1 text-xs"></i>
-              <a href="sections.html" class="ml-1 text-sm font-medium text-gray-600 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500">Sections</a>
-            </div>
-          </li>
-          <li aria-current="page">
-            <div class="flex items-center">
-              <i class="fas fa-chevron-right text-gray-400 mx-1 text-xs"></i>
-              <span class="ml-1 text-sm font-medium text-gray-700 dark:text-gray-300">Technology</span>
-            </div>
-          </li>
-        </ol>
-      </nav>
-    </div>
-  </div>
-  
-  <!-- Main Content -->
-  <main class="flex-grow px-4 sm:px-6 lg:px-8 py-8">
-    <div class="max-w-7xl mx-auto">
-      <!-- Section Header -->
-      <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden mb-8">
-        <div class="relative h-64 bg-gradient-to-r from-blue-600 to-indigo-700">
-          <div class="absolute inset-0 flex items-center justify-center">
-            <i class="fas fa-microchip text-9xl text-white opacity-20"></i>
-          </div>
-          <div class="absolute inset-0 flex items-center justify-center">
-            <div class="text-center px-4 sm:px-6 lg:px-8">
-              <h1 class="text-4xl font-bold text-white mb-2">Technology</h1>
-              <p class="text-xl text-gray-200 max-w-3xl">
-                Explore the latest innovations in technology, from AI and machine learning to consumer gadgets and future tech trends.
-              </p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="p-6">
-          <div class="flex flex-wrap gap-3 mb-6">
-            <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-sm font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100">
-              <i class="fas fa-robot text-xs"></i> AI
-            </span>
-            <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-sm font-medium bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-100">
-              <i class="fas fa-mobile-alt text-xs"></i> Gadgets
-            </span>
-            <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-100">
-              <i class="fas fa-code text-xs"></i> Software
-            </span>
-            <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100">
-              <i class="fas fa-server text-xs"></i> Infrastructure
-            </span>
-            <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-sm font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100">
-              <i class="fas fa-shield-alt text-xs"></i> Cybersecurity
-            </span>
-          </div>
-          
-          <div class="border-t border-gray-200 dark:border-gray-700 pt-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-              <div class="col-span-1 md:col-span-3">
-                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">About This Section</h2>
-                <p class="text-gray-600 dark:text-gray-300 mb-4">
-                  The Technology section of Aristonis covers the rapidly evolving world of tech from a global perspective. Our writers come from diverse backgrounds in the tech industry, bringing insights from different regions and cultures.
-                </p>
-                <p class="text-gray-600 dark:text-gray-300 mb-4">
-                  From in-depth analysis of emerging technologies to practical guides and product reviews, we aim to make complex tech topics accessible to readers around the world in their preferred language.
-                </p>
-                <p class="text-gray-600 dark:text-gray-300">
-                  With 156 articles and counting, this section continues to grow with fresh content every week. Follow the Technology section to stay updated with the latest posts.
-                </p>
-              </div>
-              
-              <div class="bg-slate-50 dark:bg-slate-700 rounded-lg p-5">
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Section Stats</h3>
-                <div class="space-y-4">
-                  <div>
-                    <div class="flex justify-between text-sm mb-1">
-                      <span class="text-gray-600 dark:text-gray-300">Articles</span>
-                      <span class="font-medium text-gray-800 dark:text-gray-100">156</span>
-                    </div>
-                    <div class="h-2 rounded-full bg-gray-200 dark:bg-gray-600">
-                      <div class="h-2 rounded-full bg-blue-600" style="width: 78%"></div>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="flex justify-between text-sm mb-1">
-                      <span class="text-gray-600 dark:text-gray-300">Authors</span>
-                      <span class="font-medium text-gray-800 dark:text-gray-100">42</span>
-                    </div>
-                    <div class="h-2 rounded-full bg-gray-200 dark:bg-gray-600">
-                      <div class="h-2 rounded-full bg-purple-600" style="width: 65%"></div>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="flex justify-between text-sm mb-1">
-                      <span class="text-gray-600 dark:text-gray-300">Languages</span>
-                      <span class="font-medium text-gray-800 dark:text-gray-100">9</span>
-                    </div>
-                    <div class="h-2 rounded-full bg-gray-200 dark:bg-gray-600">
-                      <div class="h-2 rounded-full bg-green-600" style="width: 72%"></div>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="flex justify-between text-sm mb-1">
-                      <span class="text-gray-600 dark:text-gray-300">Monthly Readers</span>
-                      <span class="font-medium text-gray-800 dark:text-gray-100">128K</span>
-                    </div>
-                    <div class="h-2 rounded-full bg-gray-200 dark:bg-gray-600">
-                      <div class="h-2 rounded-full bg-yellow-600" style="width: 85%"></div>
-                    </div>
-                  </div>
-                </div>
-                
-                <button class="mt-6 py-2 px-4 w-full inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-sky-600 transition-all text-sm dark:bg-slate-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-slate-700 dark:focus:ring-offset-gray-800">
-                  <i class="fas fa-bell"></i> Follow This Section
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Sub-Sections -->
-      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Sub-Sections</h2>
-      
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-        <!-- AI & Machine Learning Sub-Section -->
-        <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-          <div class="relative h-32 bg-gradient-to-r from-blue-500 to-blue-700">
-            <div class="absolute inset-0 flex items-center justify-center">
-              <i class="fas fa-robot text-5xl text-white opacity-30"></i>
-            </div>
-            <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
-              <h3 class="text-xl font-bold text-white">AI & Machine Learning</h3>
-              <p class="text-sm text-gray-200">48 articles</p>
-            </div>
-          </div>
-          <div class="p-5">
-            <p class="text-gray-600 dark:text-gray-300 mb-4">
-              Explore the rapid advances in artificial intelligence, neural networks, and how machine learning is transforming industries worldwide.
-            </p>
-            <a href="#" class="inline-flex items-center gap-2 text-sm font-medium text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400">
-              Browse Sub-Section <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-        
-        <!-- Consumer Tech Sub-Section -->
-        <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-          <div class="relative h-32 bg-gradient-to-r from-purple-500 to-purple-700">
-            <div class="absolute inset-0 flex items-center justify-center">
-              <i class="fas fa-mobile-alt text-5xl text-white opacity-30"></i>
-            </div>
-            <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
-              <h3 class="text-xl font-bold text-white">Consumer Tech</h3>
-              <p class="text-sm text-gray-200">37 articles</p>
-            </div>
-          </div>
-          <div class="p-5">
-            <p class="text-gray-600 dark:text-gray-300 mb-4">
-              Stay updated on the latest smartphones, wearables, smart home devices, and other consumer electronics from around the world.
-            </p>
-            <a href="#" class="inline-flex items-center gap-2 text-sm font-medium text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400">
-              Browse Sub-Section <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-        
-        <!-- Software & Development Sub-Section -->
-        <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-          <div class="relative h-32 bg-gradient-to-r from-indigo-500 to-indigo-700">
-            <div class="absolute inset-0 flex items-center justify-center">
-              <i class="fas fa-code text-5xl text-white opacity-30"></i>
-            </div>
-            <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
-              <h3 class="text-xl font-bold text-white">Software & Development</h3>
-              <p class="text-sm text-gray-200">29 articles</p>
-            </div>
-          </div>
-          <div class="p-5">
-            <p class="text-gray-600 dark:text-gray-300 mb-4">
-              Dive into programming languages, frameworks, development methodologies, and software engineering best practices.
-            </p>
-            <a href="#" class="inline-flex items-center gap-2 text-sm font-medium text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400">
-              Browse Sub-Section <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-        
-        <!-- Cloud & Infrastructure Sub-Section -->
-        <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-          <div class="relative h-32 bg-gradient-to-r from-green-500 to-green-700">
-            <div class="absolute inset-0 flex items-center justify-center">
-              <i class="fas fa-server text-5xl text-white opacity-30"></i>
-            </div>
-            <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
-              <h3 class="text-xl font-bold text-white">Cloud & Infrastructure</h3>
-              <p class="text-sm text-gray-200">23 articles</p>
-            </div>
-          </div>
-          <div class="p-5">
-            <p class="text-gray-600 dark:text-gray-300 mb-4">
-              Learn about cloud computing, data centers, networking, and the infrastructure that powers our digital world.
-            </p>
-            <a href="#" class="inline-flex items-center gap-2 text-sm font-medium text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400">
-              Browse Sub-Section <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-        
-        <!-- Cybersecurity Sub-Section -->
-        <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-          <div class="relative h-32 bg-gradient-to-r from-red-500 to-red-700">
-            <div class="absolute inset-0 flex items-center justify-center">
-              <i class="fas fa-shield-alt text-5xl text-white opacity-30"></i>
-            </div>
-            <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
-              <h3 class="text-xl font-bold text-white">Cybersecurity</h3>
-              <p class="text-sm text-gray-200">19 articles</p>
-            </div>
-          </div>
-          <div class="p-5">
-            <p class="text-gray-600 dark:text-gray-300 mb-4">
-              Stay informed about digital security threats, privacy concerns, and best practices for protecting your data and identity online.
-            </p>
-            <a href="#" class="inline-flex items-center gap-2 text-sm font-medium text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400">
-              Browse Sub-Section <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Featured Articles -->
-      <div class="mb-12">
-        <div class="flex justify-between items-center mb-6">
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Featured Articles</h2>
-          <a href="#" class="text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium">
-            View All <i class="fas fa-arrow-right ml-1"></i>
-          </a>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <!-- Article 1 -->
-          <article class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-            <img class="w-full h-48 object-cover" src="https://pixabay.com/get/g0eb39a2f06dd6d69d10be4d1e7b30cbc80d5f304e1c5c5def7a60e1bc1aeabfa6af8bc54c53a5c0fb3fa0a8e7f89a35d6e7bfbd6f17be6e02f3adc5651b18c39_1280.jpg" alt="AI Neural Networks">
-            <div class="p-6">
-              <div class="flex items-center mb-4">
-                <img class="w-10 h-10 rounded-full mr-4" src="https://pixabay.com/get/g8db28524f63ec65bfd3f754e3a2056fe27c0cebff2ad86ba553b2dd23e1236e2ae5dd3fd7defe1bda36e02fc1aea31d2d00390cb71e9d7669d52a5b3f2bca306_1280.jpg" alt="Michael Chen">
-                <div>
-                  <h4 class="text-sm font-semibold text-gray-900 dark:text-white">Michael Chen</h4>
-                  <span class="text-xs text-gray-500 dark:text-gray-400">AI & Machine Learning</span>
-                </div>
-                <span class="ml-auto text-xs text-gray-500 dark:text-gray-400">2 days ago</span>
-              </div>
-              
-              <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2">How Neural Networks Are Revolutionizing Language Translation</h2>
-              
-              <p class="text-gray-600 dark:text-gray-300 mb-4">
-                The landscape of language translation is undergoing a revolutionary transformation powered by artificial intelligence. New neural network architectures are able to capture cultural nuances and improve accuracy...
-              </p>
-              
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100">
-                  <i class="fas fa-robot text-xs"></i> AI
-                </span>
-                <span class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-100">
-                  <i class="fas fa-language text-xs"></i> Translation
-                </span>
-              </div>
-              
-              <div class="flex items-center gap-3">
-                <button class="text-sm text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium">
-                  <i class="fas fa-language mr-1"></i> Translate
-                </button>
-                <a href="post.html" class="text-sm text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium">
-                  Read More <i class="fas fa-arrow-right ml-1"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-          
-          <!-- Article 2 -->
-          <article class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-            <img class="w-full h-48 object-cover" src="https://pixabay.com/get/gd9d22f6f7e71ada48daf4ee3a3b73fbe8a03d0c45b6df64fde34e5d21b69acc9a2a5e1c5b6bb03cb99f7c22bd6c9b2ece3d6bb2f00c31d9b78cd29db9f9bac9b_1280.jpg" alt="VR Technology">
-            <div class="p-6">
-              <div class="flex items-center mb-4">
-                <img class="w-10 h-10 rounded-full mr-4" src="https://pixabay.com/get/g76577ac4ba73a52a754d1bb1b47c1c73d7d9b928c52c4a7112780e29ea0447ae7d1b3d606ef5c896889a1ef7d9ab41f378f912b09a4df661f1b4fe051e5add8e_1280.jpg" alt="Elena Rodriguez">
-                <div>
-                  <h4 class="text-sm font-semibold text-gray-900 dark:text-white">Elena Rodriguez</h4>
-                  <span class="text-xs text-gray-500 dark:text-gray-400">Consumer Tech</span>
-                </div>
-                <span class="ml-auto text-xs text-gray-500 dark:text-gray-400">5 days ago</span>
-              </div>
-              
-              <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2">The Future of VR: Beyond Gaming and Entertainment</h2>
-              
-              <p class="text-gray-600 dark:text-gray-300 mb-4">
-                While virtual reality has made significant inroads in gaming and entertainment, its potential extends far beyond. From healthcare and education to architecture and remote work, VR is reshaping numerous industries...
-              </p>
-              
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-100">
-                  <i class="fas fa-vr-cardboard text-xs"></i> VR
-                </span>
-                <span class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100">
-                  <i class="fas fa-briefcase text-xs"></i> Business
-                </span>
-              </div>
-              
-              <div class="flex items-center gap-3">
-                <button class="text-sm text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium">
-                  <i class="fas fa-language mr-1"></i> Translate
-                </button>
-                <a href="post.html" class="text-sm text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium">
-                  Read More <i class="fas fa-arrow-right ml-1"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-          
-          <!-- Article 3 -->
-          <article class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-            <img class="w-full h-48 object-cover" src="https://pixabay.com/get/gcd9d67cb2d1fc9abc12f16b6c58881d6ddaac1b5eedd02ef9252ae9b75fbc1e7d11e5d15d064bcc6c03db4f1f72c9f6e91686243ddd7e2ae5bc7e77f86ff8ba4_1280.jpg" alt="Cybersecurity">
-            <div class="p-6">
-              <div class="flex items-center mb-4">
-                <img class="w-10 h-10 rounded-full mr-4" src="https://pixabay.com/get/ga69cb334522bb5a30dfe9bcc7dfb0a11867b97902f33714634d5f69a89f0af549bbcd6ce04f7c409bf2394c05e06cd5b62c6a8b36aa119d6bdf1248c704c726c_1280.jpg" alt="David Kim">
-                <div>
-                  <h4 class="text-sm font-semibold text-gray-900 dark:text-white">David Kim</h4>
-                  <span class="text-xs text-gray-500 dark:text-gray-400">Cybersecurity</span>
-                </div>
-                <span class="ml-auto text-xs text-gray-500 dark:text-gray-400">1 week ago</span>
-              </div>
-              
-              <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Zero Trust Security: Why Your Organization Needs It Now</h2>
-              
-              <p class="text-gray-600 dark:text-gray-300 mb-4">
-                With remote work becoming the norm and cyber threats growing in sophistication, traditional security perimeters no longer suffice. Zero Trust architecture assumes no user or system should be inherently trusted...
-              </p>
-              
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100">
-                  <i class="fas fa-shield-alt text-xs"></i> Security
-                </span>
-                <span class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300">
-                  <i class="fas fa-building text-xs"></i> Enterprise
-                </span>
-              </div>
-              
-              <div class="flex items-center gap-3">
-                <button class="text-sm text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium">
-                  <i class="fas fa-language mr-1"></i> Translate
-                </button>
-                <a href="post.html" class="text-sm text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium">
-                  Read More <i class="fas fa-arrow-right ml-1"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-      
-      <!-- Latest Articles -->
-      <div>
-        <div class="flex justify-between items-center mb-6">
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Latest Articles</h2>
-          <a href="#" class="text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium">
-            View All <i class="fas fa-arrow-right ml-1"></i>
-          </a>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <!-- Article 1 -->
-          <article class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-            <div class="p-6">
-              <div class="flex items-center mb-4">
-                <img class="w-10 h-10 rounded-full mr-4" src="https://pixabay.com/get/gfc15e5941d04e7d2900a1592f83541493341df9608c5caaf7d715086479e6ced83241510b34abcf8ad307b7dc659a45f8fa3b314a549257c95d29b548c3bf434_1280.jpg" alt="Maria Santos">
-                <div>
-                  <h4 class="text-sm font-semibold text-gray-900 dark:text-white">Maria Santos</h4>
-                  <span class="text-xs text-gray-500 dark:text-gray-400">Software & Development</span>
-                </div>
-                <span class="ml-auto text-xs text-gray-500 dark:text-gray-400">2 days ago</span>
-              </div>
-              
-              <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Why TypeScript is Taking Over Frontend Development</h2>
-              
-              <p class="text-gray-600 dark:text-gray-300 mb-4">
-                As codebases grow larger and teams become more distributed, TypeScript's static typing brings structure and reliability to JavaScript projects, making it increasingly popular among developers...
-              </p>
-              
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-100">
-                  <i class="fas fa-code text-xs"></i> Development
-                </span>
-                <span class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100">
-                  <i class="fab fa-js text-xs"></i> JavaScript
-                </span>
-              </div>
-              
-              <div class="flex items-center gap-3">
-                <button class="text-sm text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium">
-                  <i class="fas fa-language mr-1"></i> Translate
-                </button>
-                <a href="post.html" class="text-sm text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium">
-                  Read More <i class="fas fa-arrow-right ml-1"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-          
-          <!-- Article 2 -->
-          <article class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-            <div class="p-6">
-              <div class="flex items-center mb-4">
-                <img class="w-10 h-10 rounded-full mr-4" src="https://pixabay.com/get/g0eb39a2f06dd6d69d10be4d1e7b30cbc80d5f304e1c5c5def7a60e1bc1aeabfa6af8bc54c53a5c0fb3fa0a8e7f89a35d6e7bfbd6f17be6e02f3adc5651b18c39_1280.jpg" alt="James Wilson">
-                <div>
-                  <h4 class="text-sm font-semibold text-gray-900 dark:text-white">James Wilson</h4>
-                  <span class="text-xs text-gray-500 dark:text-gray-400">Cloud & Infrastructure</span>
-                </div>
-                <span class="ml-auto text-xs text-gray-500 dark:text-gray-400">3 days ago</span>
-              </div>
-              
-              <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Serverless Architecture: Benefits and Challenges for Modern Applications</h2>
-              
-              <p class="text-gray-600 dark:text-gray-300 mb-4">
-                Serverless computing promises reduced operational costs and maintenance, but comes with its own set of considerations. This article examines when to use serverless and when traditional infrastructure might be better...
-              </p>
-              
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100">
-                  <i class="fas fa-server text-xs"></i> Cloud
-                </span>
-                <span class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-100">
-                  <i class="fas fa-bolt text-xs"></i> Serverless
-                </span>
-              </div>
-              
-              <div class="flex items-center gap-3">
-                <button class="text-sm text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium">
-                  <i class="fas fa-language mr-1"></i> Translate
-                </button>
-                <a href="post.html" class="text-sm text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium">
-                  Read More <i class="fas fa-arrow-right ml-1"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-          
-          <!-- Article 3 -->
-          <article class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-            <div class="p-6">
-              <div class="flex items-center mb-4">
-                <img class="w-10 h-10 rounded-full mr-4" src="https://pixabay.com/get/gd11f34024f41dd0b291fcb08ae694bfb91a983044d83fbe02e06d89f104f160b2822e425494b0b973446fd700c0f2f34714c179a984a883c6026ba7326d95ff2_1280.jpg" alt="Sarah Johnson">
-                <div>
-                  <h4 class="text-sm font-semibold text-gray-900 dark:text-white">Sarah Johnson</h4>
-                  <span class="text-xs text-gray-500 dark:text-gray-400">Consumer Tech</span>
-                </div>
-                <span class="ml-auto text-xs text-gray-500 dark:text-gray-400">4 days ago</span>
-              </div>
-              
-              <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Sustainable Tech: How Companies Are Making Electronics More Eco-Friendly</h2>
-              
-              <p class="text-gray-600 dark:text-gray-300 mb-4">
-                From biodegradable components to energy-efficient designs and better recycling programs, tech companies are responding to consumer demand for more environmentally responsible products...
-              </p>
-              
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-100">
-                  <i class="fas fa-mobile-alt text-xs"></i> Gadgets
-                </span>
-                <span class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100">
-                  <i class="fas fa-leaf text-xs"></i> Sustainability
-                </span>
-              </div>
-              
-              <div class="flex items-center gap-3">
-                <button class="text-sm text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium">
-                  <i class="fas fa-language mr-1"></i> Translate
-                </button>
-                <a href="post.html" class="text-sm text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium">
-                  Read More <i class="fas fa-arrow-right ml-1"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-          
-          <!-- Article 4 -->
-          <article class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-            <div class="p-6">
-              <div class="flex items-center mb-4">
-                <img class="w-10 h-10 rounded-full mr-4" src="https://pixabay.com/get/g8db28524f63ec65bfd3f754e3a2056fe27c0cebff2ad86ba553b2dd23e1236e2ae5dd3fd7defe1bda36e02fc1aea31d2d00390cb71e9d7669d52a5b3f2bca306_1280.jpg" alt="Michael Chen">
-                <div>
-                  <h4 class="text-sm font-semibold text-gray-900 dark:text-white">Michael Chen</h4>
-                  <span class="text-xs text-gray-500 dark:text-gray-400">AI & Machine Learning</span>
-                </div>
-                <span class="ml-auto text-xs text-gray-500 dark:text-gray-400">5 days ago</span>
-              </div>
-              
-              <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2">The Ethics of AI: Balancing Innovation with Responsible Development</h2>
-              
-              <p class="text-gray-600 dark:text-gray-300 mb-4">
-                As AI becomes more integrated into everyday life, developers are facing tough questions about bias, privacy, and accountability. This article examines frameworks for ethical AI development...
-              </p>
-              
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100">
-                  <i class="fas fa-robot text-xs"></i> AI
-                </span>
-                <span class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-100">
-                  <i class="fas fa-balance-scale text-xs"></i> Ethics
-                </span>
-              </div>
-              
-              <div class="flex items-center gap-3">
-                <button class="text-sm text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium">
-                  <i class="fas fa-language mr-1"></i> Translate
-                </button>
-                <a href="post.html" class="text-sm text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium">
-                  Read More <i class="fas fa-arrow-right ml-1"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-        </div>
-        
-        <!-- Pagination -->
-        <div class="flex justify-center mt-8">
-          <nav class="inline-flex rounded-md shadow">
-            <a href="#" class="py-2 px-3 inline-flex items-center gap-2 bg-white border border-gray-200 text-gray-800 rounded-l-lg hover:bg-gray-50 dark:bg-slate-800 dark:border-gray-700 dark:text-white dark:hover:bg-slate-700">
-              <i class="fas fa-chevron-left text-xs"></i> Previous
-            </a>
-            <a href="#" class="py-2 px-3 inline-flex items-center gap-2 bg-sky-600 border border-sky-600 text-white font-semibold hover:bg-sky-700 dark:bg-sky-600 dark:border-sky-600 dark:hover:bg-sky-700">1</a>
-            <a href="#" class="py-2 px-3 inline-flex items-center gap-2 bg-white border border-gray-200 text-gray-800 hover:bg-gray-50 dark:bg-slate-800 dark:border-gray-700 dark:text-white dark:hover:bg-slate-700">2</a>
-            <a href="#" class="py-2 px-3 inline-flex items-center gap-2 bg-white border border-gray-200 text-gray-800 hover:bg-gray-50 dark:bg-slate-800 dark:border-gray-700 dark:text-white dark:hover:bg-slate-700">3</a>
-            <span class="py-2 px-3 inline-flex items-center gap-2 bg-white border border-gray-200 text-gray-400 dark:bg-slate-800 dark:border-gray-700 dark:text-gray-500">...</span>
-            <a href="#" class="py-2 px-3 inline-flex items-center gap-2 bg-white border border-gray-200 text-gray-800 hover:bg-gray-50 dark:bg-slate-800 dark:border-gray-700 dark:text-white dark:hover:bg-slate-700">12</a>
-            <a href="#" class="py-2 px-3 inline-flex items-center gap-2 bg-white border border-gray-200 text-gray-800 rounded-r-lg hover:bg-gray-50 dark:bg-slate-800 dark:border-gray-700 dark:text-white dark:hover:bg-slate-700">
-              Next <i class="fas fa-chevron-right text-xs"></i>
-            </a>
-          </nav>
-        </div>
-      </div>
-    </div>
-  </main>
-  
-  <!-- Footer -->
-  <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-        <div class="col-span-1 md:col-span-2">
-          <a href="home.html" class="flex items-center gap-2 text-xl font-bold text-slate-900 dark:text-white mb-4">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Technology Section - Aristonis</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Preline UI -->
+    <link rel="stylesheet" href="https://unpkg.com/preline/dist/preline.css" />
+
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./assets/css/custom.css" />
+  </head>
+  <body class="bg-slate-100 dark:bg-slate-900 min-h-screen flex flex-col">
+    <!-- Header & Navigation -->
+    <header
+      class="sticky top-0 z-50 bg-white dark:bg-slate-800 border-b border-gray-200 dark:border-gray-700"
+    >
+      <nav class="px-4 sm:px-6 lg:px-8 py-4">
+        <div
+          class="flex flex-wrap items-center justify-between gap-x-6 gap-y-2"
+        >
+          <!-- Logo -->
+          <a
+            href="home.html"
+            class="flex items-center gap-2 text-xl font-bold text-slate-900 dark:text-white"
+          >
             Aristonis<span class="text-sky-500">Blog</span>
           </a>
-          <p class="text-gray-600 dark:text-gray-400 mb-4">
-            Connecting cultures through content. Aristonis is a platform for Aristonisl content creators and readers who want to explore ideas across languages and cultural boundaries.
-          </p>
-          <div class="flex space-x-4">
-            <a href="#" class="text-gray-400 hover:text-sky-600 dark:hover:text-sky-500">
-              <i class="fab fa-twitter text-lg"></i>
-            </a>
-            <a href="#" class="text-gray-400 hover:text-sky-600 dark:hover:text-sky-500">
-              <i class="fab fa-facebook text-lg"></i>
-            </a>
-            <a href="#" class="text-gray-400 hover:text-sky-600 dark:hover:text-sky-500">
-              <i class="fab fa-instagram text-lg"></i>
-            </a>
-            <a href="#" class="text-gray-400 hover:text-sky-600 dark:hover:text-sky-500">
-              <i class="fab fa-linkedin text-lg"></i>
-            </a>
+
+          <!-- Navigation links - visible on desktop -->
+          <div class="hidden lg:flex lg:items-center lg:gap-x-6">
+            <a
+              href="home.html"
+              class="text-slate-600 dark:text-slate-300 font-medium hover:text-sky-600 dark:hover:text-sky-500"
+              >Home</a
+            >
+            <a
+              href="authors.html"
+              class="text-slate-600 dark:text-slate-300 font-medium hover:text-sky-600 dark:hover:text-sky-500"
+              >Authors</a
+            >
+            <a
+              href="sections.html"
+              class="text-slate-900 dark:text-white font-medium hover:text-sky-600 dark:hover:text-sky-500"
+              >Sections</a
+            >
+            <a
+              href="contact.html"
+              class="text-slate-600 dark:text-slate-300 font-medium hover:text-sky-600 dark:hover:text-sky-500"
+              >Contact Us</a
+            >
+            <a
+              href="about.html"
+              class="text-slate-600 dark:text-slate-300 font-medium hover:text-sky-600 dark:hover:text-sky-500"
+              >About Us</a
+            >
+          </div>
+
+          <div class="flex items-center gap-x-4 ml-auto lg:ml-0">
+            <!-- Language Switch Button -->
+            <div class="inline-flex relative">
+              <button
+                id="language-switcher"
+                class="inline-flex items-center gap-x-2 text-sm font-medium text-gray-600 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-300"
+              >
+                <i class="fas fa-globe"></i>
+                <span id="current-language">English</span>
+                <i class="fas fa-chevron-down text-xs"></i>
+              </button>
+
+              <!-- Language Menu (Hidden by default, shown with JavaScript) -->
+              <div
+                id="language-menu"
+                class="hidden absolute top-full right-0 mt-2 min-w-40 bg-white dark:bg-gray-800 shadow-md rounded-lg p-2 z-50 dark:border dark:border-gray-700"
+              >
+                <a
+                  href="#"
+                  class="language-option flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200"
+                  data-lang="en"
+                >
+                  English
+                </a>
+                <a
+                  href="#"
+                  class="language-option flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200"
+                  data-lang="es"
+                >
+                  Español
+                </a>
+                <a
+                  href="#"
+                  class="language-option flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200"
+                  data-lang="fr"
+                >
+                  Français
+                </a>
+                <a
+                  href="#"
+                  class="language-option flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200"
+                  data-lang="de"
+                >
+                  Deutsch
+                </a>
+                <a
+                  href="#"
+                  class="language-option flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200"
+                  data-lang="zh"
+                >
+                  中文
+                </a>
+              </div>
+            </div>
+
+            <!-- User Menu Button -->
+            <div class="inline-flex relative">
+              <button
+                id="user-menu-button"
+                class="inline-flex items-center gap-x-2 text-sm font-medium text-gray-600 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-300"
+              >
+                <img
+                  class="w-8 h-8 rounded-full"
+                  src="./assets/images/user-avatar.png"
+                  alt="User Profile"
+                />
+                <span class="hidden sm:inline-block">John Doe</span>
+                <i class="fas fa-chevron-down text-xs"></i>
+              </button>
+
+              <!-- User Menu (Hidden by default, shown with JavaScript) -->
+              <div
+                id="user-menu"
+                class="hidden absolute top-full right-0 mt-2 min-w-40 bg-white dark:bg-gray-800 shadow-md rounded-lg p-2 z-50 dark:border dark:border-gray-700"
+              >
+                <a
+                  class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200"
+                  href="author-profile.html"
+                >
+                  <i class="fas fa-user"></i> My Profile
+                </a>
+                <a
+                  class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200"
+                  href="settings.html"
+                >
+                  <i class="fas fa-cog"></i> Settings
+                </a>
+                <a
+                  class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200"
+                  href="statistics.html"
+                >
+                  <i class="fas fa-chart-bar"></i> Statistics
+                </a>
+                <div
+                  class="border-t border-gray-200 dark:border-gray-700 my-2"
+                ></div>
+                <a
+                  class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-200"
+                  href="login.html"
+                >
+                  <i class="fas fa-sign-out-alt"></i> Sign Out
+                </a>
+              </div>
+            </div>
+
+            <!-- Hamburger menu for mobile -->
+            <button
+              type="button"
+              class="lg:hidden inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs dark:bg-gray-800 dark:hover:bg-slate-800 dark:text-gray-400 dark:hover:text-white dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800"
+              data-hs-overlay="#mobile-menu"
+            >
+              <i class="fas fa-bars"></i>
+            </button>
           </div>
         </div>
-        
-        <div>
-          <h3 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4">Explore</h3>
-          <ul class="space-y-2">
-            <li><a href="home.html" class="text-gray-600 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500">Home</a></li>
-            <li><a href="authors.html" class="text-gray-600 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500">Authors</a></li>
-            <li><a href="sections.html" class="text-gray-600 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500">Sections</a></li>
-          </ul>
-        </div>
-        
-        <div>
-          <h3 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4">Company</h3>
-          <ul class="space-y-2">
-            <li><a href="about.html" class="text-gray-600 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500">About Us</a></li>
-            <li><a href="contact.html" class="text-gray-600 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500">Contact Us</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500">Privacy Policy</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500">Terms of Service</a></li>
-          </ul>
-        </div>
+      </nav>
+    </header>
+
+    <!-- Mobile menu -->
+    <div
+      id="mobile-menu"
+      class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full fixed top-0 left-0 transition-all duration-300 transform h-full max-w-xs w-full z-[60] bg-white border-r dark:bg-gray-800 dark:border-gray-700"
+      tabindex="-1"
+    >
+      <div
+        class="flex justify-between items-center py-3 px-4 border-b dark:border-gray-700"
+      >
+        <h3 class="font-bold text-gray-800 dark:text-white">Menu</h3>
+        <button
+          type="button"
+          class="inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white text-sm dark:text-gray-400 dark:hover:text-gray-200 dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800"
+          data-hs-overlay="#mobile-menu"
+        >
+          <span class="sr-only">Close modal</span>
+          <i class="fas fa-times"></i>
+        </button>
       </div>
-      
-      <div class="border-t border-gray-200 dark:border-gray-700 mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center">
-        <p class="text-gray-500 dark:text-gray-400 text-sm">
-          &copy; 2025 Aristonis. All rights reserved.
-        </p>
-        <div class="mt-4 sm:mt-0">
-          <select id="footer-language" class="py-2 px-3 border-gray-200 rounded-lg text-sm focus:border-sky-500 focus:ring-sky-500 dark:bg-slate-800 dark:border-gray-700 dark:text-gray-300">
-            <option value="en">English</option>
-            <option value="es">Español</option>
-            <option value="fr">Français</option>
-            <option value="de">Deutsch</option>
-            <option value="zh">中文</option>
-          </select>
-        </div>
+      <div class="p-4">
+        <a
+          href="home.html"
+          class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+          >Home</a
+        >
+        <a
+          href="authors.html"
+          class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+          >Authors</a
+        >
+        <a
+          href="sections.html"
+          class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+          >Sections</a
+        >
+        <a
+          href="contact.html"
+          class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+          >Contact Us</a
+        >
+        <a
+          href="about.html"
+          class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+          >About Us</a
+        >
       </div>
     </div>
-  </footer>
-  
-  <!-- Dark Mode Toggle Button -->
-  <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
-    <i class="fas fa-moon"></i>
-  </button>
 
-  <!-- JavaScript for toggles and functionality -->
-  <script>
-    // Dark mode toggle
-    const darkModeToggle = document.getElementById('dark-mode-toggle');
-    const iconElement = darkModeToggle.querySelector('i');
-    
-    // Check for saved theme preference or prefer-color-scheme
-    if (localStorage.getItem('color-theme') === 'dark' || 
-        (!localStorage.getItem('color-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark');
-      iconElement.classList.remove('fa-moon');
-      iconElement.classList.add('fa-sun');
-    } else {
-      document.documentElement.classList.remove('dark');
-      iconElement.classList.remove('fa-sun');
-      iconElement.classList.add('fa-moon');
-    }
-    
-    darkModeToggle.addEventListener('click', function() {
-      if (document.documentElement.classList.contains('dark')) {
-        document.documentElement.classList.remove('dark');
-        localStorage.setItem('color-theme', 'light');
-        iconElement.classList.remove('fa-sun');
-        iconElement.classList.add('fa-moon');
-      } else {
-        document.documentElement.classList.add('dark');
-        localStorage.setItem('color-theme', 'dark');
-        iconElement.classList.remove('fa-moon');
-        iconElement.classList.add('fa-sun');
-      }
-    });
-    
-    // Language menu toggle
-    const languageSwitcher = document.getElementById('language-switcher');
-    const languageMenu = document.getElementById('language-menu');
-    const currentLanguage = document.getElementById('current-language');
-    const languageOptions = document.querySelectorAll('.language-option');
-    
-    languageSwitcher.addEventListener('click', function(e) {
-      e.stopPropagation();
-      languageMenu.classList.toggle('hidden');
-    });
-    
-    // Close language menu when clicking elsewhere
-    document.addEventListener('click', function() {
-      languageMenu.classList.add('hidden');
-    });
-    
-    // Prevent menu closing when clicking inside it
-    languageMenu.addEventListener('click', function(e) {
-      e.stopPropagation();
-    });
-    
-    // Language selection
-    languageOptions.forEach(option => {
-      option.addEventListener('click', function() {
-        const lang = this.getAttribute('data-lang');
-        const langText = this.textContent.trim();
-        currentLanguage.textContent = langText;
-        languageMenu.classList.add('hidden');
-        // Here you would normally update the page content based on selected language
-        console.log(`Language changed to: ${lang}`);
-      });
-    });
-    
-    // User menu toggle
-    const userMenuButton = document.getElementById('user-menu-button');
-    const userMenu = document.getElementById('user-menu');
-    
-    userMenuButton.addEventListener('click', function(e) {
-      e.stopPropagation();
-      userMenu.classList.toggle('hidden');
-    });
-    
-    // Close user menu when clicking elsewhere
-    document.addEventListener('click', function() {
-      userMenu.classList.add('hidden');
-    });
-    
-    // Prevent menu closing when clicking inside it
-    userMenu.addEventListener('click', function(e) {
-      e.stopPropagation();
-    });
-  </script>
-</body>
+    <!-- Breadcrumb -->
+    <div
+      class="bg-white dark:bg-slate-800 border-b border-gray-200 dark:border-gray-700 py-2"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav class="flex" aria-label="Breadcrumb">
+          <ol class="inline-flex items-center space-x-1 md:space-x-3">
+            <li class="inline-flex items-center">
+              <a
+                href="home.html"
+                class="inline-flex items-center text-sm font-medium text-gray-600 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500"
+              >
+                <i class="fas fa-home mr-2"></i>
+                Home
+              </a>
+            </li>
+            <li>
+              <div class="flex items-center">
+                <i class="fas fa-chevron-right text-gray-400 mx-1 text-xs"></i>
+                <a
+                  href="sections.html"
+                  class="ml-1 text-sm font-medium text-gray-600 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500"
+                  >Sections</a
+                >
+              </div>
+            </li>
+            <li aria-current="page">
+              <div class="flex items-center">
+                <i class="fas fa-chevron-right text-gray-400 mx-1 text-xs"></i>
+                <span
+                  class="ml-1 text-sm font-medium text-gray-700 dark:text-gray-300"
+                  >Technology</span
+                >
+              </div>
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-grow px-4 sm:px-6 lg:px-8 py-8">
+      <div class="max-w-7xl mx-auto">
+        <!-- Section Header -->
+        <div
+          class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden mb-8"
+        >
+          <div
+            class="relative h-64 bg-gradient-to-r from-blue-600 to-indigo-700"
+          >
+            <div class="absolute inset-0 flex items-center justify-center">
+              <i class="fas fa-microchip text-9xl text-white opacity-20"></i>
+            </div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="text-center px-4 sm:px-6 lg:px-8">
+                <h1 class="text-4xl font-bold text-white mb-2">Technology</h1>
+                <p class="text-xl text-gray-200 max-w-3xl">
+                  Explore the latest innovations in technology, from AI and
+                  machine learning to consumer gadgets and future tech trends.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6">
+            <div class="flex flex-wrap gap-3 mb-6">
+              <span
+                class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-sm font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100"
+              >
+                <i class="fas fa-robot text-xs"></i> AI
+              </span>
+              <span
+                class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-sm font-medium bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-100"
+              >
+                <i class="fas fa-mobile-alt text-xs"></i> Gadgets
+              </span>
+              <span
+                class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-100"
+              >
+                <i class="fas fa-code text-xs"></i> Software
+              </span>
+              <span
+                class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100"
+              >
+                <i class="fas fa-server text-xs"></i> Infrastructure
+              </span>
+              <span
+                class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-sm font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100"
+              >
+                <i class="fas fa-shield-alt text-xs"></i> Cybersecurity
+              </span>
+            </div>
+
+            <div class="border-t border-gray-200 dark:border-gray-700 pt-6">
+              <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="col-span-1 md:col-span-3">
+                  <h2
+                    class="text-2xl font-bold text-gray-900 dark:text-white mb-4"
+                  >
+                    About This Section
+                  </h2>
+                  <p class="text-gray-600 dark:text-gray-300 mb-4">
+                    The Technology section of Aristonis covers the rapidly
+                    evolving world of tech from a global perspective. Our
+                    writers come from diverse backgrounds in the tech industry,
+                    bringing insights from different regions and cultures.
+                  </p>
+                  <p class="text-gray-600 dark:text-gray-300 mb-4">
+                    From in-depth analysis of emerging technologies to practical
+                    guides and product reviews, we aim to make complex tech
+                    topics accessible to readers around the world in their
+                    preferred language.
+                  </p>
+                  <p class="text-gray-600 dark:text-gray-300">
+                    With 156 articles and counting, this section continues to
+                    grow with fresh content every week. Follow the Technology
+                    section to stay updated with the latest posts.
+                  </p>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-slate-700 rounded-lg p-5">
+                  <h3
+                    class="text-lg font-semibold text-gray-900 dark:text-white mb-4"
+                  >
+                    Section Stats
+                  </h3>
+                  <div class="space-y-4">
+                    <div>
+                      <div class="flex justify-between text-sm mb-1">
+                        <span class="text-gray-600 dark:text-gray-300"
+                          >Articles</span
+                        >
+                        <span
+                          class="font-medium text-gray-800 dark:text-gray-100"
+                          >156</span
+                        >
+                      </div>
+                      <div
+                        class="h-2 rounded-full bg-gray-200 dark:bg-gray-600"
+                      >
+                        <div
+                          class="h-2 rounded-full bg-blue-600"
+                          style="width: 78%"
+                        ></div>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="flex justify-between text-sm mb-1">
+                        <span class="text-gray-600 dark:text-gray-300"
+                          >Authors</span
+                        >
+                        <span
+                          class="font-medium text-gray-800 dark:text-gray-100"
+                          >42</span
+                        >
+                      </div>
+                      <div
+                        class="h-2 rounded-full bg-gray-200 dark:bg-gray-600"
+                      >
+                        <div
+                          class="h-2 rounded-full bg-purple-600"
+                          style="width: 65%"
+                        ></div>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="flex justify-between text-sm mb-1">
+                        <span class="text-gray-600 dark:text-gray-300"
+                          >Languages</span
+                        >
+                        <span
+                          class="font-medium text-gray-800 dark:text-gray-100"
+                          >9</span
+                        >
+                      </div>
+                      <div
+                        class="h-2 rounded-full bg-gray-200 dark:bg-gray-600"
+                      >
+                        <div
+                          class="h-2 rounded-full bg-green-600"
+                          style="width: 72%"
+                        ></div>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="flex justify-between text-sm mb-1">
+                        <span class="text-gray-600 dark:text-gray-300"
+                          >Monthly Readers</span
+                        >
+                        <span
+                          class="font-medium text-gray-800 dark:text-gray-100"
+                          >128K</span
+                        >
+                      </div>
+                      <div
+                        class="h-2 rounded-full bg-gray-200 dark:bg-gray-600"
+                      >
+                        <div
+                          class="h-2 rounded-full bg-yellow-600"
+                          style="width: 85%"
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button
+                    class="mt-6 py-2 px-4 w-full inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-sky-600 transition-all text-sm dark:bg-slate-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-slate-700 dark:focus:ring-offset-gray-800"
+                  >
+                    <i class="fas fa-bell"></i> Follow This Section
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sub-Sections -->
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+          Sub-Sections
+        </h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          <!-- AI & Machine Learning Sub-Section -->
+          <div
+            class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+          >
+            <div
+              class="relative h-32 bg-gradient-to-r from-blue-500 to-blue-700"
+            >
+              <div class="absolute inset-0 flex items-center justify-center">
+                <i class="fas fa-robot text-5xl text-white opacity-30"></i>
+              </div>
+              <div
+                class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent"
+              >
+                <h3 class="text-xl font-bold text-white">
+                  AI & Machine Learning
+                </h3>
+                <p class="text-sm text-gray-200">48 articles</p>
+              </div>
+            </div>
+            <div class="p-5">
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Explore the rapid advances in artificial intelligence, neural
+                networks, and how machine learning is transforming industries
+                worldwide.
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center gap-2 text-sm font-medium text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400"
+              >
+                Browse Sub-Section <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Consumer Tech Sub-Section -->
+          <div
+            class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+          >
+            <div
+              class="relative h-32 bg-gradient-to-r from-purple-500 to-purple-700"
+            >
+              <div class="absolute inset-0 flex items-center justify-center">
+                <i class="fas fa-mobile-alt text-5xl text-white opacity-30"></i>
+              </div>
+              <div
+                class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent"
+              >
+                <h3 class="text-xl font-bold text-white">Consumer Tech</h3>
+                <p class="text-sm text-gray-200">37 articles</p>
+              </div>
+            </div>
+            <div class="p-5">
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Stay updated on the latest smartphones, wearables, smart home
+                devices, and other consumer electronics from around the world.
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center gap-2 text-sm font-medium text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400"
+              >
+                Browse Sub-Section <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Software & Development Sub-Section -->
+          <div
+            class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+          >
+            <div
+              class="relative h-32 bg-gradient-to-r from-indigo-500 to-indigo-700"
+            >
+              <div class="absolute inset-0 flex items-center justify-center">
+                <i class="fas fa-code text-5xl text-white opacity-30"></i>
+              </div>
+              <div
+                class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent"
+              >
+                <h3 class="text-xl font-bold text-white">
+                  Software & Development
+                </h3>
+                <p class="text-sm text-gray-200">29 articles</p>
+              </div>
+            </div>
+            <div class="p-5">
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Dive into programming languages, frameworks, development
+                methodologies, and software engineering best practices.
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center gap-2 text-sm font-medium text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400"
+              >
+                Browse Sub-Section <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Cloud & Infrastructure Sub-Section -->
+          <div
+            class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+          >
+            <div
+              class="relative h-32 bg-gradient-to-r from-green-500 to-green-700"
+            >
+              <div class="absolute inset-0 flex items-center justify-center">
+                <i class="fas fa-server text-5xl text-white opacity-30"></i>
+              </div>
+              <div
+                class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent"
+              >
+                <h3 class="text-xl font-bold text-white">
+                  Cloud & Infrastructure
+                </h3>
+                <p class="text-sm text-gray-200">23 articles</p>
+              </div>
+            </div>
+            <div class="p-5">
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Learn about cloud computing, data centers, networking, and the
+                infrastructure that powers our digital world.
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center gap-2 text-sm font-medium text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400"
+              >
+                Browse Sub-Section <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Cybersecurity Sub-Section -->
+          <div
+            class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+          >
+            <div class="relative h-32 bg-gradient-to-r from-red-500 to-red-700">
+              <div class="absolute inset-0 flex items-center justify-center">
+                <i class="fas fa-shield-alt text-5xl text-white opacity-30"></i>
+              </div>
+              <div
+                class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent"
+              >
+                <h3 class="text-xl font-bold text-white">Cybersecurity</h3>
+                <p class="text-sm text-gray-200">19 articles</p>
+              </div>
+            </div>
+            <div class="p-5">
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Stay informed about digital security threats, privacy concerns,
+                and best practices for protecting your data and identity online.
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center gap-2 text-sm font-medium text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400"
+              >
+                Browse Sub-Section <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Featured Articles -->
+        <div class="mb-12">
+          <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+              Featured Articles
+            </h2>
+            <a
+              href="#"
+              class="text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium"
+            >
+              View All <i class="fas fa-arrow-right ml-1"></i>
+            </a>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Article 1 -->
+            <article
+              class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+            >
+              <img
+                class="w-full h-48 object-cover"
+                src="https://pixabay.com/get/g0eb39a2f06dd6d69d10be4d1e7b30cbc80d5f304e1c5c5def7a60e1bc1aeabfa6af8bc54c53a5c0fb3fa0a8e7f89a35d6e7bfbd6f17be6e02f3adc5651b18c39_1280.jpg"
+                alt="AI Neural Networks"
+              />
+              <div class="p-6">
+                <div class="flex items-center mb-4">
+                  <img
+                    class="w-10 h-10 rounded-full mr-4"
+                    src="https://pixabay.com/get/g8db28524f63ec65bfd3f754e3a2056fe27c0cebff2ad86ba553b2dd23e1236e2ae5dd3fd7defe1bda36e02fc1aea31d2d00390cb71e9d7669d52a5b3f2bca306_1280.jpg"
+                    alt="Michael Chen"
+                  />
+                  <div>
+                    <h4
+                      class="text-sm font-semibold text-gray-900 dark:text-white"
+                    >
+                      Michael Chen
+                    </h4>
+                    <span class="text-xs text-gray-500 dark:text-gray-400"
+                      >AI & Machine Learning</span
+                    >
+                  </div>
+                  <span class="ml-auto text-xs text-gray-500 dark:text-gray-400"
+                    >2 days ago</span
+                  >
+                </div>
+
+                <h2
+                  class="text-xl font-bold text-gray-900 dark:text-white mb-2"
+                >
+                  How Neural Networks Are Revolutionizing Language Translation
+                </h2>
+
+                <p class="text-gray-600 dark:text-gray-300 mb-4">
+                  The landscape of language translation is undergoing a
+                  revolutionary transformation powered by artificial
+                  intelligence. New neural network architectures are able to
+                  capture cultural nuances and improve accuracy...
+                </p>
+
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100"
+                  >
+                    <i class="fas fa-robot text-xs"></i> AI
+                  </span>
+                  <span
+                    class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-100"
+                  >
+                    <i class="fas fa-language text-xs"></i> Translation
+                  </span>
+                </div>
+
+                <div class="flex items-center gap-3">
+                  <button
+                    class="text-sm text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium"
+                  >
+                    <i class="fas fa-language mr-1"></i> Translate
+                  </button>
+                  <a
+                    href="post.html"
+                    class="text-sm text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium"
+                  >
+                    Read More <i class="fas fa-arrow-right ml-1"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Article 2 -->
+            <article
+              class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+            >
+              <img
+                class="w-full h-48 object-cover"
+                src="https://pixabay.com/get/gd9d22f6f7e71ada48daf4ee3a3b73fbe8a03d0c45b6df64fde34e5d21b69acc9a2a5e1c5b6bb03cb99f7c22bd6c9b2ece3d6bb2f00c31d9b78cd29db9f9bac9b_1280.jpg"
+                alt="VR Technology"
+              />
+              <div class="p-6">
+                <div class="flex items-center mb-4">
+                  <img
+                    class="w-10 h-10 rounded-full mr-4"
+                    src="https://pixabay.com/get/g76577ac4ba73a52a754d1bb1b47c1c73d7d9b928c52c4a7112780e29ea0447ae7d1b3d606ef5c896889a1ef7d9ab41f378f912b09a4df661f1b4fe051e5add8e_1280.jpg"
+                    alt="Elena Rodriguez"
+                  />
+                  <div>
+                    <h4
+                      class="text-sm font-semibold text-gray-900 dark:text-white"
+                    >
+                      Elena Rodriguez
+                    </h4>
+                    <span class="text-xs text-gray-500 dark:text-gray-400"
+                      >Consumer Tech</span
+                    >
+                  </div>
+                  <span class="ml-auto text-xs text-gray-500 dark:text-gray-400"
+                    >5 days ago</span
+                  >
+                </div>
+
+                <h2
+                  class="text-xl font-bold text-gray-900 dark:text-white mb-2"
+                >
+                  The Future of VR: Beyond Gaming and Entertainment
+                </h2>
+
+                <p class="text-gray-600 dark:text-gray-300 mb-4">
+                  While virtual reality has made significant inroads in gaming
+                  and entertainment, its potential extends far beyond. From
+                  healthcare and education to architecture and remote work, VR
+                  is reshaping numerous industries...
+                </p>
+
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-100"
+                  >
+                    <i class="fas fa-vr-cardboard text-xs"></i> VR
+                  </span>
+                  <span
+                    class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100"
+                  >
+                    <i class="fas fa-briefcase text-xs"></i> Business
+                  </span>
+                </div>
+
+                <div class="flex items-center gap-3">
+                  <button
+                    class="text-sm text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium"
+                  >
+                    <i class="fas fa-language mr-1"></i> Translate
+                  </button>
+                  <a
+                    href="post.html"
+                    class="text-sm text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium"
+                  >
+                    Read More <i class="fas fa-arrow-right ml-1"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Article 3 -->
+            <article
+              class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+            >
+              <img
+                class="w-full h-48 object-cover"
+                src="https://pixabay.com/get/gcd9d67cb2d1fc9abc12f16b6c58881d6ddaac1b5eedd02ef9252ae9b75fbc1e7d11e5d15d064bcc6c03db4f1f72c9f6e91686243ddd7e2ae5bc7e77f86ff8ba4_1280.jpg"
+                alt="Cybersecurity"
+              />
+              <div class="p-6">
+                <div class="flex items-center mb-4">
+                  <img
+                    class="w-10 h-10 rounded-full mr-4"
+                    src="https://pixabay.com/get/ga69cb334522bb5a30dfe9bcc7dfb0a11867b97902f33714634d5f69a89f0af549bbcd6ce04f7c409bf2394c05e06cd5b62c6a8b36aa119d6bdf1248c704c726c_1280.jpg"
+                    alt="David Kim"
+                  />
+                  <div>
+                    <h4
+                      class="text-sm font-semibold text-gray-900 dark:text-white"
+                    >
+                      David Kim
+                    </h4>
+                    <span class="text-xs text-gray-500 dark:text-gray-400"
+                      >Cybersecurity</span
+                    >
+                  </div>
+                  <span class="ml-auto text-xs text-gray-500 dark:text-gray-400"
+                    >1 week ago</span
+                  >
+                </div>
+
+                <h2
+                  class="text-xl font-bold text-gray-900 dark:text-white mb-2"
+                >
+                  Zero Trust Security: Why Your Organization Needs It Now
+                </h2>
+
+                <p class="text-gray-600 dark:text-gray-300 mb-4">
+                  With remote work becoming the norm and cyber threats growing
+                  in sophistication, traditional security perimeters no longer
+                  suffice. Zero Trust architecture assumes no user or system
+                  should be inherently trusted...
+                </p>
+
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100"
+                  >
+                    <i class="fas fa-shield-alt text-xs"></i> Security
+                  </span>
+                  <span
+                    class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300"
+                  >
+                    <i class="fas fa-building text-xs"></i> Enterprise
+                  </span>
+                </div>
+
+                <div class="flex items-center gap-3">
+                  <button
+                    class="text-sm text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium"
+                  >
+                    <i class="fas fa-language mr-1"></i> Translate
+                  </button>
+                  <a
+                    href="post.html"
+                    class="text-sm text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium"
+                  >
+                    Read More <i class="fas fa-arrow-right ml-1"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Latest Articles -->
+        <div>
+          <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+              Latest Articles
+            </h2>
+            <a
+              href="#"
+              class="text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium"
+            >
+              View All <i class="fas fa-arrow-right ml-1"></i>
+            </a>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Article 1 -->
+            <article
+              class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+            >
+              <div class="p-6">
+                <div class="flex items-center mb-4">
+                  <img
+                    class="w-10 h-10 rounded-full mr-4"
+                    src="https://pixabay.com/get/gfc15e5941d04e7d2900a1592f83541493341df9608c5caaf7d715086479e6ced83241510b34abcf8ad307b7dc659a45f8fa3b314a549257c95d29b548c3bf434_1280.jpg"
+                    alt="Maria Santos"
+                  />
+                  <div>
+                    <h4
+                      class="text-sm font-semibold text-gray-900 dark:text-white"
+                    >
+                      Maria Santos
+                    </h4>
+                    <span class="text-xs text-gray-500 dark:text-gray-400"
+                      >Software & Development</span
+                    >
+                  </div>
+                  <span class="ml-auto text-xs text-gray-500 dark:text-gray-400"
+                    >2 days ago</span
+                  >
+                </div>
+
+                <h2
+                  class="text-xl font-bold text-gray-900 dark:text-white mb-2"
+                >
+                  Why TypeScript is Taking Over Frontend Development
+                </h2>
+
+                <p class="text-gray-600 dark:text-gray-300 mb-4">
+                  As codebases grow larger and teams become more distributed,
+                  TypeScript's static typing brings structure and reliability to
+                  JavaScript projects, making it increasingly popular among
+                  developers...
+                </p>
+
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-100"
+                  >
+                    <i class="fas fa-code text-xs"></i> Development
+                  </span>
+                  <span
+                    class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100"
+                  >
+                    <i class="fab fa-js text-xs"></i> JavaScript
+                  </span>
+                </div>
+
+                <div class="flex items-center gap-3">
+                  <button
+                    class="text-sm text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium"
+                  >
+                    <i class="fas fa-language mr-1"></i> Translate
+                  </button>
+                  <a
+                    href="post.html"
+                    class="text-sm text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium"
+                  >
+                    Read More <i class="fas fa-arrow-right ml-1"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Article 2 -->
+            <article
+              class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+            >
+              <div class="p-6">
+                <div class="flex items-center mb-4">
+                  <img
+                    class="w-10 h-10 rounded-full mr-4"
+                    src="https://pixabay.com/get/g0eb39a2f06dd6d69d10be4d1e7b30cbc80d5f304e1c5c5def7a60e1bc1aeabfa6af8bc54c53a5c0fb3fa0a8e7f89a35d6e7bfbd6f17be6e02f3adc5651b18c39_1280.jpg"
+                    alt="James Wilson"
+                  />
+                  <div>
+                    <h4
+                      class="text-sm font-semibold text-gray-900 dark:text-white"
+                    >
+                      James Wilson
+                    </h4>
+                    <span class="text-xs text-gray-500 dark:text-gray-400"
+                      >Cloud & Infrastructure</span
+                    >
+                  </div>
+                  <span class="ml-auto text-xs text-gray-500 dark:text-gray-400"
+                    >3 days ago</span
+                  >
+                </div>
+
+                <h2
+                  class="text-xl font-bold text-gray-900 dark:text-white mb-2"
+                >
+                  Serverless Architecture: Benefits and Challenges for Modern
+                  Applications
+                </h2>
+
+                <p class="text-gray-600 dark:text-gray-300 mb-4">
+                  Serverless computing promises reduced operational costs and
+                  maintenance, but comes with its own set of considerations.
+                  This article examines when to use serverless and when
+                  traditional infrastructure might be better...
+                </p>
+
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100"
+                  >
+                    <i class="fas fa-server text-xs"></i> Cloud
+                  </span>
+                  <span
+                    class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-100"
+                  >
+                    <i class="fas fa-bolt text-xs"></i> Serverless
+                  </span>
+                </div>
+
+                <div class="flex items-center gap-3">
+                  <button
+                    class="text-sm text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium"
+                  >
+                    <i class="fas fa-language mr-1"></i> Translate
+                  </button>
+                  <a
+                    href="post.html"
+                    class="text-sm text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium"
+                  >
+                    Read More <i class="fas fa-arrow-right ml-1"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Article 3 -->
+            <article
+              class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+            >
+              <div class="p-6">
+                <div class="flex items-center mb-4">
+                  <img
+                    class="w-10 h-10 rounded-full mr-4"
+                    src="https://pixabay.com/get/gd11f34024f41dd0b291fcb08ae694bfb91a983044d83fbe02e06d89f104f160b2822e425494b0b973446fd700c0f2f34714c179a984a883c6026ba7326d95ff2_1280.jpg"
+                    alt="Sarah Johnson"
+                  />
+                  <div>
+                    <h4
+                      class="text-sm font-semibold text-gray-900 dark:text-white"
+                    >
+                      Sarah Johnson
+                    </h4>
+                    <span class="text-xs text-gray-500 dark:text-gray-400"
+                      >Consumer Tech</span
+                    >
+                  </div>
+                  <span class="ml-auto text-xs text-gray-500 dark:text-gray-400"
+                    >4 days ago</span
+                  >
+                </div>
+
+                <h2
+                  class="text-xl font-bold text-gray-900 dark:text-white mb-2"
+                >
+                  Sustainable Tech: How Companies Are Making Electronics More
+                  Eco-Friendly
+                </h2>
+
+                <p class="text-gray-600 dark:text-gray-300 mb-4">
+                  From biodegradable components to energy-efficient designs and
+                  better recycling programs, tech companies are responding to
+                  consumer demand for more environmentally responsible
+                  products...
+                </p>
+
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-100"
+                  >
+                    <i class="fas fa-mobile-alt text-xs"></i> Gadgets
+                  </span>
+                  <span
+                    class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100"
+                  >
+                    <i class="fas fa-leaf text-xs"></i> Sustainability
+                  </span>
+                </div>
+
+                <div class="flex items-center gap-3">
+                  <button
+                    class="text-sm text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium"
+                  >
+                    <i class="fas fa-language mr-1"></i> Translate
+                  </button>
+                  <a
+                    href="post.html"
+                    class="text-sm text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium"
+                  >
+                    Read More <i class="fas fa-arrow-right ml-1"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Article 4 -->
+            <article
+              class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+            >
+              <div class="p-6">
+                <div class="flex items-center mb-4">
+                  <img
+                    class="w-10 h-10 rounded-full mr-4"
+                    src="https://pixabay.com/get/g8db28524f63ec65bfd3f754e3a2056fe27c0cebff2ad86ba553b2dd23e1236e2ae5dd3fd7defe1bda36e02fc1aea31d2d00390cb71e9d7669d52a5b3f2bca306_1280.jpg"
+                    alt="Michael Chen"
+                  />
+                  <div>
+                    <h4
+                      class="text-sm font-semibold text-gray-900 dark:text-white"
+                    >
+                      Michael Chen
+                    </h4>
+                    <span class="text-xs text-gray-500 dark:text-gray-400"
+                      >AI & Machine Learning</span
+                    >
+                  </div>
+                  <span class="ml-auto text-xs text-gray-500 dark:text-gray-400"
+                    >5 days ago</span
+                  >
+                </div>
+
+                <h2
+                  class="text-xl font-bold text-gray-900 dark:text-white mb-2"
+                >
+                  The Ethics of AI: Balancing Innovation with Responsible
+                  Development
+                </h2>
+
+                <p class="text-gray-600 dark:text-gray-300 mb-4">
+                  As AI becomes more integrated into everyday life, developers
+                  are facing tough questions about bias, privacy, and
+                  accountability. This article examines frameworks for ethical
+                  AI development...
+                </p>
+
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100"
+                  >
+                    <i class="fas fa-robot text-xs"></i> AI
+                  </span>
+                  <span
+                    class="inline-flex items-center gap-1 py-1 px-2 rounded-full text-xs font-medium bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-100"
+                  >
+                    <i class="fas fa-balance-scale text-xs"></i> Ethics
+                  </span>
+                </div>
+
+                <div class="flex items-center gap-3">
+                  <button
+                    class="text-sm text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium"
+                  >
+                    <i class="fas fa-language mr-1"></i> Translate
+                  </button>
+                  <a
+                    href="post.html"
+                    class="text-sm text-sky-600 hover:text-sky-700 dark:text-sky-500 dark:hover:text-sky-400 font-medium"
+                  >
+                    Read More <i class="fas fa-arrow-right ml-1"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Pagination -->
+          <div class="flex justify-center mt-8">
+            <nav class="inline-flex rounded-md shadow">
+              <a
+                href="#"
+                class="py-2 px-3 inline-flex items-center gap-2 bg-white border border-gray-200 text-gray-800 rounded-l-lg hover:bg-gray-50 dark:bg-slate-800 dark:border-gray-700 dark:text-white dark:hover:bg-slate-700"
+              >
+                <i class="fas fa-chevron-left text-xs"></i> Previous
+              </a>
+              <a
+                href="#"
+                class="py-2 px-3 inline-flex items-center gap-2 bg-sky-600 border border-sky-600 text-white font-semibold hover:bg-sky-700 dark:bg-sky-600 dark:border-sky-600 dark:hover:bg-sky-700"
+                >1</a
+              >
+              <a
+                href="#"
+                class="py-2 px-3 inline-flex items-center gap-2 bg-white border border-gray-200 text-gray-800 hover:bg-gray-50 dark:bg-slate-800 dark:border-gray-700 dark:text-white dark:hover:bg-slate-700"
+                >2</a
+              >
+              <a
+                href="#"
+                class="py-2 px-3 inline-flex items-center gap-2 bg-white border border-gray-200 text-gray-800 hover:bg-gray-50 dark:bg-slate-800 dark:border-gray-700 dark:text-white dark:hover:bg-slate-700"
+                >3</a
+              >
+              <span
+                class="py-2 px-3 inline-flex items-center gap-2 bg-white border border-gray-200 text-gray-400 dark:bg-slate-800 dark:border-gray-700 dark:text-gray-500"
+                >...</span
+              >
+              <a
+                href="#"
+                class="py-2 px-3 inline-flex items-center gap-2 bg-white border border-gray-200 text-gray-800 hover:bg-gray-50 dark:bg-slate-800 dark:border-gray-700 dark:text-white dark:hover:bg-slate-700"
+                >12</a
+              >
+              <a
+                href="#"
+                class="py-2 px-3 inline-flex items-center gap-2 bg-white border border-gray-200 text-gray-800 rounded-r-lg hover:bg-gray-50 dark:bg-slate-800 dark:border-gray-700 dark:text-white dark:hover:bg-slate-700"
+              >
+                Next <i class="fas fa-chevron-right text-xs"></i>
+              </a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer
+      class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-8"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div class="col-span-1 md:col-span-2">
+            <a
+              href="home.html"
+              class="flex items-center gap-2 text-xl font-bold text-slate-900 dark:text-white mb-4"
+            >
+              Aristonis<span class="text-sky-500">Blog</span>
+            </a>
+            <p class="text-gray-600 dark:text-gray-400 mb-4">
+              Connecting cultures through content. Aristonis is a platform for
+              Aristonisl content creators and readers who want to explore ideas
+              across languages and cultural boundaries.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="text-gray-400 hover:text-sky-600 dark:hover:text-sky-500"
+              >
+                <i class="fab fa-twitter text-lg"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-sky-600 dark:hover:text-sky-500"
+              >
+                <i class="fab fa-facebook text-lg"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-sky-600 dark:hover:text-sky-500"
+              >
+                <i class="fab fa-instagram text-lg"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-sky-600 dark:hover:text-sky-500"
+              >
+                <i class="fab fa-linkedin text-lg"></i>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h3
+              class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4"
+            >
+              Explore
+            </h3>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="home.html"
+                  class="text-gray-600 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="authors.html"
+                  class="text-gray-600 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500"
+                  >Authors</a
+                >
+              </li>
+              <li>
+                <a
+                  href="sections.html"
+                  class="text-gray-600 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500"
+                  >Sections</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3
+              class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4"
+            >
+              Company
+            </h3>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="about.html"
+                  class="text-gray-600 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="contact.html"
+                  class="text-gray-600 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500"
+                  >Contact Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-600 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500"
+                  >Privacy Policy</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-600 hover:text-sky-600 dark:text-gray-400 dark:hover:text-sky-500"
+                  >Terms of Service</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-gray-200 dark:border-gray-700 mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center"
+        >
+          <p class="text-gray-500 dark:text-gray-400 text-sm">
+            &copy; 2025 Aristonis. All rights reserved.
+          </p>
+          <div class="mt-4 sm:mt-0">
+            <select
+              id="footer-language"
+              class="py-2 px-3 border-gray-200 rounded-lg text-sm focus:border-sky-500 focus:ring-sky-500 dark:bg-slate-800 dark:border-gray-700 dark:text-gray-300"
+            >
+              <option value="en">English</option>
+              <option value="es">Español</option>
+              <option value="fr">Français</option>
+              <option value="de">Deutsch</option>
+              <option value="zh">中文</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Dark Mode Toggle Button -->
+    <button
+      id="dark-mode-toggle"
+      class="dark-mode-toggle"
+      aria-label="Toggle dark mode"
+    >
+      <i class="fas fa-moon"></i>
+    </button>
+
+  
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/language.js"></script>
+  </body>
 </html>

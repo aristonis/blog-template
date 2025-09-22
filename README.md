@@ -1,4 +1,4 @@
-# Aristonis Blog Template
+# Aristonis Blog Template  <span style="margin-left: 10px;"><a href="https://aristonis.github.io/blog-template/dist/index.html" style="text-decoration: none; background-color: #0ea5e9; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.4em; font-weight: 500; transition: background-color 0.3s;">Preview</a></span>
 
 A modern, responsive blog template for multilingual content creators, built with HTML, CSS, JavaScript, and Tailwind CSS. Features a clean layout for articles, author profiles, and reader engagement.
 
